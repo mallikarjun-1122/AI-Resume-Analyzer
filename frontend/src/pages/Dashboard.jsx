@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout";
 import { useAuth } from "../context/AuthContext";
-import { FaMagic, FaEnvelopeOpenText, FaUsers, FaExchangeAlt, FaUserCheck } from "react-icons/fa";
+import { FaMagic, FaEnvelopeOpenText, FaUsers, FaExchangeAlt, FaUserCheck, FaTrophy } from "react-icons/fa";
 
 import ResumeUpload from "../components/ResumeUpload";
 import AnalysisResult from "../components/AnalysisResult";
@@ -51,6 +51,11 @@ function Dashboard() {
   const [showCoverLetter, setShowCoverLetter] = useState(false);
   const [showVersionComparer, setShowVersionComparer] = useState(false);
 
+  const candidateName =
+    localStorage.getItem("candidate_name") ||
+    user?.user_metadata?.full_name ||
+    (user?.email ? user.email.split("@")[0] : "Candidate");
+
   const loadHistory = async () => {
     try {
       setLoading(true);
@@ -58,7 +63,6 @@ function Dashboard() {
       const list = data || [];
       setHistory(list);
 
-      // Preserve and restore the most recent analysis report when returning to Dashboard
       if (list.length > 0) {
         const latest = list[0];
         if (latest.analysis && (latest.analysis.ats || latest.analysis.success)) {
@@ -79,7 +83,6 @@ function Dashboard() {
   const handleAnalysisComplete = (result) => {
     setAnalysisResult(result);
     loadHistory();
-    // Auto scroll down to report
     setTimeout(() => {
       window.scrollTo({ top: 500, behavior: "smooth" });
     }, 100);
@@ -94,13 +97,15 @@ function Dashboard() {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-bold">
-                  ⚡ Academic Mini Project Engine v2.0
+                  ⚡ {mode === "candidate" ? "Candidate ATS Optimization Hub" : "Recruiter Batch Screening Portal"}
                 </div>
                 <h1 className="text-3xl sm:text-4xl font-black text-white">
-                  Welcome Back, Candidate!
+                  {mode === "candidate" ? `Welcome Back, ${candidateName}!` : "Recruiter Hiring Intelligence"}
                 </h1>
                 <p className="text-slate-400 text-sm max-w-2xl">
-                  AI Resume & Hiring Intelligence Suite • ATS Scoring, STAR Bullet Enhancer, Cover Letters & Recruiter Screening
+                  {mode === "candidate"
+                    ? "Upload your resume & job description to compute ATS match score, generate STAR bullets & AI cover letters."
+                    : "Upload batch candidate resumes against 1 job description to generate sorted candidate leaderboards."}
                 </p>
               </div>
 
@@ -166,20 +171,20 @@ function Dashboard() {
             </button>
 
             <button
-              onClick={() => setMode("recruiter")}
+              onClick={() => setMode(mode === "candidate" ? "recruiter" : "candidate")}
               className="glass-panel glass-panel-hover p-4 rounded-2xl border border-slate-800 text-left space-y-2 group"
             >
               <div className="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-lg border border-pink-500/30 group-hover:scale-110 transition-transform">
-                <FaUsers />
+                {mode === "candidate" ? <FaUsers /> : <FaUserCheck />}
               </div>
-              <p className="text-xs font-bold text-white">Batch Leaderboard</p>
-              <p className="text-[10px] text-slate-400">Screen multiple resumes at once</p>
+              <p className="text-xs font-bold text-white">{mode === "candidate" ? "Switch to Recruiter" : "Switch to Candidate"}</p>
+              <p className="text-[10px] text-slate-400">{mode === "candidate" ? "Screen multiple resumes" : "Individual ATS analysis"}</p>
             </button>
           </div>
 
           {/* Stats Grid */}
           <div>
-            <DashboardStats history={history} />
+            <DashboardStats history={history} mode={mode} />
           </div>
 
           {/* Main Operational Mode Section */}
@@ -210,9 +215,11 @@ function Dashboard() {
           )}
 
           {/* Recent Activity */}
-          <div>
-            <RecentActivity history={history} />
-          </div>
+          {mode === "candidate" && (
+            <div>
+              <RecentActivity history={history} />
+            </div>
+          )}
         </div>
       </ErrorBoundary>
 
