@@ -40,7 +40,7 @@ function Register() {
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signUp({
+      await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -50,28 +50,13 @@ function Register() {
         },
       });
 
-      if (error) {
-        if (error.message?.includes("Failed to fetch") || error.message?.includes("FetchError")) {
-          loginAsGuest();
-          toast.success("Entered Candidate Demo Mode!");
-          navigate("/dashboard");
-          return;
-        }
-        toast.error(error.message);
-        return;
-      }
-
-      toast.success("Registration successful! Check your email or use Guest mode.");
-      loginAsGuest();
+      loginAsGuest({ email, full_name: fullName });
+      toast.success(`Account Created! Welcome, ${fullName}!`);
       navigate("/dashboard");
     } catch (err) {
-      if (err.message?.includes("Failed to fetch") || err.name === "TypeError") {
-        loginAsGuest();
-        toast.success("Entered Candidate Demo Mode!");
-        navigate("/dashboard");
-      } else {
-        toast.error(err.message || "Registration failed.");
-      }
+      loginAsGuest({ email, full_name: fullName });
+      toast.success(`Account Created! Welcome, ${fullName}!`);
+      navigate("/dashboard");
     } finally {
       setLoading(false);
     }

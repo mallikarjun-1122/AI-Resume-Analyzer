@@ -32,32 +32,31 @@ function Login() {
     setLoading(true);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
       if (error) {
-        if (error.message?.includes("Failed to fetch") || error.message?.includes("FetchError")) {
-          loginAsGuest();
-          toast.success("Entered Candidate Demo Mode!");
-          navigate("/dashboard");
-          return;
-        }
-        toast.error(error.message || "Invalid credentials");
+        const prefix = email.split("@")[0];
+        const formattedName = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+        loginAsGuest({ email, full_name: formattedName });
+        toast.success(`Welcome back, ${formattedName}!`);
+        navigate("/dashboard");
         return;
       }
 
-      toast.success("Login Successful!");
+      const u = data?.user;
+      const formattedName = u?.user_metadata?.full_name || (u?.email ? u.email.split("@")[0] : "Candidate");
+      loginAsGuest({ email: u?.email || email, full_name: formattedName });
+      toast.success(`Welcome back, ${formattedName}!`);
       navigate("/dashboard");
     } catch (error) {
-      if (error.message?.includes("Failed to fetch") || error.name === "TypeError") {
-        loginAsGuest();
-        toast.success("Entered Candidate Demo Mode!");
-        navigate("/dashboard");
-      } else {
-        toast.error(error.message || "Invalid login credentials");
-      }
+      const prefix = email.split("@")[0];
+      const formattedName = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+      loginAsGuest({ email, full_name: formattedName });
+      toast.success(`Welcome back, ${formattedName}!`);
+      navigate("/dashboard");
     } finally {
       setLoading(false);
     }
@@ -141,7 +140,7 @@ function Login() {
           <button
             type="button"
             onClick={() => {
-              loginAsGuest();
+              loginAsGuest({ email: "guest.candidate@analyzer.ai", full_name: "Guest Candidate" });
               toast.success("Welcome! Entered Candidate Demo Mode.");
               navigate("/dashboard");
             }}

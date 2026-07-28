@@ -3,16 +3,30 @@ import { supabase } from "../lib/supabase";
 
 const AuthContext = createContext();
 
-const DEMO_USER = {
-  id: "demo-user-123",
-  email: "candidate@analyzer.ai",
-  user_metadata: { full_name: "Pro Candidate" }
+const getCandidateUser = (customEmail, customName) => {
+  const email = customEmail || localStorage.getItem("candidate_email") || "candidate@analyzer.ai";
+  let name = customName || localStorage.getItem("candidate_name");
+  
+  if (!name || name === "Pro Candidate") {
+    if (email && email.includes("@")) {
+      const prefix = email.split("@")[0];
+      name = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+    } else {
+      name = "Candidate";
+    }
+  }
+
+  return {
+    id: localStorage.getItem("candidate_id") || "demo-user-123",
+    email: email,
+    user_metadata: { full_name: name }
+  };
 };
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
     const savedDemo = localStorage.getItem("demo_mode");
-    return savedDemo === "true" ? DEMO_USER : null;
+    return savedDemo === "true" ? getCandidateUser() : null;
   });
   const [loading, setLoading] = useState(true);
 
@@ -23,15 +37,25 @@ export function AuthProvider({ children }) {
       try {
         const { data } = await supabase.auth.getSession();
         if (data?.session?.user) {
-          setUser(data.session.user);
+          const u = data.session.user;
+          const userObj = {
+            id: u.id,
+            email: u.email,
+            user_metadata: {
+              full_name: u.user_metadata?.full_name || u.email?.split("@")[0] || "Candidate"
+            }
+          };
+          setUser(userObj);
+          localStorage.setItem("candidate_email", u.email);
+          localStorage.setItem("candidate_name", userObj.user_metadata.full_name);
         } else if (localStorage.getItem("demo_mode") === "true") {
-          setUser(DEMO_USER);
+          setUser(getCandidateUser());
         } else {
           setUser(null);
         }
       } catch (err) {
         if (localStorage.getItem("demo_mode") === "true") {
-          setUser(DEMO_USER);
+          setUser(getCandidateUser());
         } else {
           setUser(null);
         }
@@ -45,9 +69,19 @@ export function AuthProvider({ children }) {
     try {
       const { data } = supabase.auth.onAuthStateChange((_event, session) => {
         if (session?.user) {
-          setUser(session.user);
+          const u = session.user;
+          const userObj = {
+            id: u.id,
+            email: u.email,
+            user_metadata: {
+              full_name: u.user_metadata?.full_name || u.email?.split("@")[0] || "Candidate"
+            }
+          };
+          setUser(userObj);
+          localStorage.setItem("candidate_email", u.email);
+          localStorage.setItem("candidate_name", userObj.user_metadata.full_name);
         } else if (localStorage.getItem("demo_mode") === "true") {
-          setUser(DEMO_USER);
+          setUser(getCandidateUser());
         } else {
           setUser(null);
         }
@@ -60,13 +94,22 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const loginAsGuest = () => {
+  const loginAsGuest = (customDetails = {}) => {
     localStorage.setItem("demo_mode", "true");
-    setUser(DEMO_USER);
+    if (customDetails.email) {
+      localStorage.setItem("candidate_email", customDetails.email);
+    }
+    if (customDetails.full_name) {
+      localStorage.setItem("candidate_name", customDetails.full_name);
+    }
+    const candidateUser = getCandidateUser(customDetails.email, customDetails.full_name);
+    setUser(candidateUser);
   };
 
   const logout = async () => {
     localStorage.removeItem("demo_mode");
+    localStorage.removeItem("candidate_email");
+    localStorage.removeItem("candidate_name");
     try {
       await supabase.auth.signOut();
     } catch (e) {
