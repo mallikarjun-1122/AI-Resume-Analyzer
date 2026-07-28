@@ -1,8 +1,12 @@
 import re
 import spacy
 
-# Load spaCy model once
-nlp = spacy.load("en_core_web_sm")
+# Safely load spaCy model with blank fallback if uninstalled
+try:
+    nlp = spacy.load("en_core_web_sm")
+except Exception:
+    print("spaCy model en_core_web_sm not found. Falling back to spacy.blank('en')")
+    nlp = spacy.blank("en")
 
 
 # -----------------------------
@@ -39,27 +43,27 @@ PORTFOLIO_REGEX = re.compile(
 
 def extract_name(text: str):
     """
-    Extract candidate name using spaCy.
-    Looks at the first few lines of the resume.
+    Extract candidate name using spaCy or line fallback.
     """
 
     if not text:
         return None
 
-    first_lines = "\n".join(text.split("\n")[:10])
+    try:
+        first_lines = "\n".join(text.split("\n")[:10])
+        doc = nlp(first_lines)
 
-    doc = nlp(first_lines)
-
-    for ent in doc.ents:
-        if ent.label_ == "PERSON":
-            return ent.text.strip()
+        for ent in doc.ents:
+            if ent.label_ == "PERSON":
+                return ent.text.strip()
+    except Exception:
+        pass
 
     # Fallback
     lines = [line.strip() for line in text.split("\n") if line.strip()]
 
     if lines:
         first = lines[0]
-
         if len(first.split()) <= 5:
             return first
 
@@ -71,12 +75,9 @@ def extract_name(text: str):
 # -----------------------------
 
 def extract_email(text: str):
-
     if not text:
         return None
-
     match = EMAIL_REGEX.search(text)
-
     return match.group() if match else None
 
 
@@ -85,22 +86,17 @@ def extract_email(text: str):
 # -----------------------------
 
 def extract_phone(text: str):
-
     if not text:
         return None
 
     match = PHONE_REGEX.search(text)
-
     if not match:
         return None
 
     phone = match.group()
-
     digits = re.sub(r"\D", "", phone)
-
     if len(digits) == 10:
         return f"+91-{digits}"
-
     return phone
 
 
@@ -109,16 +105,10 @@ def extract_phone(text: str):
 # -----------------------------
 
 def extract_linkedin(text: str):
-
     if not text:
         return None
-
     match = LINKEDIN_REGEX.search(text)
-
-    if match:
-        return match.group()
-
-    return None
+    return match.group() if match else None
 
 
 # -----------------------------
@@ -126,16 +116,10 @@ def extract_linkedin(text: str):
 # -----------------------------
 
 def extract_github(text: str):
-
     if not text:
         return None
-
     match = GITHUB_REGEX.search(text)
-
-    if match:
-        return match.group()
-
-    return None
+    return match.group() if match else None
 
 
 # -----------------------------
@@ -143,27 +127,14 @@ def extract_github(text: str):
 # -----------------------------
 
 def extract_portfolio(text: str):
-
     if not text:
         return None
-
     websites = PORTFOLIO_REGEX.findall(text)
-
     for site in websites:
-
         lower = site.lower()
-
-        if "linkedin" in lower:
+        if "linkedin" in lower or "github" in lower or "gmail" in lower:
             continue
-
-        if "github" in lower:
-            continue
-
-        if "gmail" in lower:
-            continue
-
         return site
-
     return None
 
 
@@ -172,10 +143,6 @@ def extract_portfolio(text: str):
 # -----------------------------
 
 def extract_personal_info(text: str):
-    """
-    Extract all personal information from resume.
-    """
-
     return {
         "name": extract_name(text),
         "email": extract_email(text),
