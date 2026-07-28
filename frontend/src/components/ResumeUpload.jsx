@@ -137,10 +137,11 @@ function ResumeUpload({ onAnalysisComplete }) {
       onAnalysisComplete(result);
     } catch (error) {
       console.error(error);
+      const isNetErr = error.message === "Network Error" || error.code === "ECONNABORTED";
       alert(
-        error.response?.data?.detail ||
-        error.message ||
-        "Analysis failed. Make sure the FastAPI backend is running on http://127.0.0.1:8000."
+        isNetErr
+          ? "Backend is spinning up from free-tier sleep (takes ~30s). Please tap 'Run AI Resume Analysis' again in a few seconds!"
+          : (error.response?.data?.detail || error.message || "Analysis failed. Please try again.")
       );
     } finally {
       setLoading(false);
