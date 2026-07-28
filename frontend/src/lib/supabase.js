@@ -1,9 +1,14 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "https://placeholder-project.supabase.co";
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.placeholder";
 
-export const supabase = createClient(
-  supabaseUrl,
-  supabaseAnonKey
-);
+let client;
+try {
+  client = createClient(supabaseUrl, supabaseAnonKey);
+} catch (e) {
+  console.warn("Supabase client fallback activated:", e);
+  client = createClient("https://placeholder.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.placeholder");
+}
+
+export const supabase = client;
