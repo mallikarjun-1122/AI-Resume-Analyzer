@@ -12,7 +12,7 @@
 An **end-to-end, dual-sided AI platform** designed for both job candidates and recruiters. Evaluates resume ATS compatibility against job descriptions, provides domain skill gap breakdowns, generates STAR method bullet enhancements, produces 1-click tailored cover letters, and features a recruiter batch screening leaderboard.
 
 🚀 **Live Application Demo**: [https://ai-resume-analyzer-tan-xi.vercel.app](https://ai-resume-analyzer-tan-xi.vercel.app)  
-📦 **Backend Service API**: [https://ai-resume-analyzer-d9kc.onrender.com](https://ai-resume-analyzer-d9kc.onrender.com)
+📦 **Backend Service API**: [https://ai-resume-analyzer-48h4.onrender.com](https://ai-resume-analyzer-48h4.onrender.com)
 
 ---
 
