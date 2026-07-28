@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { FaBars, FaTimes, FaRocket, FaMagic } from "react-icons/fa";
+import { FaBars, FaTimes, FaUserPlus } from "react-icons/fa";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,10 +62,10 @@ function Navbar() {
           </Link>
 
           <Link
-            to="/dashboard"
+            to="/register"
             className="px-6 py-2.5 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:to-purple-500 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/35 transition-all duration-300 flex items-center gap-2"
           >
-            <FaRocket className="text-cyan-200" /> Launch Analyzer
+            <FaUserPlus className="text-cyan-200" /> Register
           </Link>
         </div>
 
@@ -113,11 +113,11 @@ function Navbar() {
               Sign In
             </Link>
             <Link
-              to="/dashboard"
+              to="/register"
               className="block w-full text-center px-4 py-3 rounded-xl text-sm font-extrabold text-white bg-gradient-to-r from-cyan-500 to-purple-600 shadow-lg shadow-cyan-500/20"
               onClick={closeMenu}
             >
-              Launch Analyzer 🚀
+              Register
             </Link>
           </div>
         </div>
