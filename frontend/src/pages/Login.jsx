@@ -4,7 +4,6 @@ import {
   FaLock,
   FaEye,
   FaEyeSlash,
-  FaRocket,
 } from "react-icons/fa";
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
@@ -24,7 +23,8 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail || !password) {
       toast.error("Please enter email and password");
       return;
     }
@@ -33,14 +33,16 @@ function Login() {
 
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
-        email,
+        email: trimmedEmail,
         password,
       });
 
       if (error) {
-        const prefix = email.split("@")[0];
+        const prefix = trimmedEmail.split("@")[0];
         const formattedName = prefix.charAt(0).toUpperCase() + prefix.slice(1);
-        loginAsGuest({ email, full_name: formattedName });
+        localStorage.setItem("candidate_email", trimmedEmail);
+        localStorage.setItem("candidate_name", formattedName);
+        loginAsGuest({ email: trimmedEmail, full_name: formattedName });
         toast.success(`Welcome back, ${formattedName}!`);
         navigate("/dashboard");
         return;
@@ -48,13 +50,18 @@ function Login() {
 
       const u = data?.user;
       const formattedName = u?.user_metadata?.full_name || (u?.email ? u.email.split("@")[0] : "Candidate");
-      loginAsGuest({ email: u?.email || email, full_name: formattedName });
+      const userEmail = u?.email || trimmedEmail;
+      localStorage.setItem("candidate_email", userEmail);
+      localStorage.setItem("candidate_name", formattedName);
+      loginAsGuest({ email: userEmail, full_name: formattedName });
       toast.success(`Welcome back, ${formattedName}!`);
       navigate("/dashboard");
     } catch (error) {
-      const prefix = email.split("@")[0];
+      const prefix = trimmedEmail.split("@")[0];
       const formattedName = prefix.charAt(0).toUpperCase() + prefix.slice(1);
-      loginAsGuest({ email, full_name: formattedName });
+      localStorage.setItem("candidate_email", trimmedEmail);
+      localStorage.setItem("candidate_name", formattedName);
+      loginAsGuest({ email: trimmedEmail, full_name: formattedName });
       toast.success(`Welcome back, ${formattedName}!`);
       navigate("/dashboard");
     } finally {
@@ -126,27 +133,6 @@ function Login() {
             className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-extrabold text-sm shadow-xl shadow-cyan-500/20 transition-all disabled:opacity-50"
           >
             {loading ? "Signing in..." : "Log In"}
-          </button>
-
-          <div className="relative py-2 flex items-center justify-center">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-800"></div>
-            </div>
-            <span className="relative px-3 bg-slate-950 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-              or demo access
-            </span>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => {
-              loginAsGuest({ email: "guest.candidate@analyzer.ai", full_name: "Guest Candidate" });
-              toast.success("Welcome! Entered Candidate Demo Mode.");
-              navigate("/dashboard");
-            }}
-            className="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/30 text-xs font-bold transition-all flex items-center justify-center gap-2"
-          >
-            <FaRocket /> Instant Candidate Demo Access
           </button>
         </form>
 
