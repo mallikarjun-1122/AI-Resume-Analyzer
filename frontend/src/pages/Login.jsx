@@ -37,12 +37,27 @@ function Login() {
         password,
       });
 
-      if (error) throw error;
+      if (error) {
+        if (error.message?.includes("Failed to fetch") || error.message?.includes("FetchError")) {
+          loginAsGuest();
+          toast.success("Entered Candidate Demo Mode!");
+          navigate("/dashboard");
+          return;
+        }
+        toast.error(error.message || "Invalid credentials");
+        return;
+      }
 
       toast.success("Login Successful!");
       navigate("/dashboard");
     } catch (error) {
-      toast.error(error.message || "Invalid login credentials");
+      if (error.message?.includes("Failed to fetch") || error.name === "TypeError") {
+        loginAsGuest();
+        toast.success("Entered Candidate Demo Mode!");
+        navigate("/dashboard");
+      } else {
+        toast.error(error.message || "Invalid login credentials");
+      }
     } finally {
       setLoading(false);
     }
