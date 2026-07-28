@@ -4,8 +4,8 @@ import { supabase } from "../lib/supabase";
 const AuthContext = createContext();
 
 const getCandidateUser = (customEmail, customName) => {
-  const email = customEmail || localStorage.getItem("candidate_email") || "mallikarjun@analyzer.ai";
-  let name = customName || localStorage.getItem("candidate_name") || "Mallikarjun";
+  const email = customEmail || localStorage.getItem("candidate_email") || "";
+  let name = customName || localStorage.getItem("candidate_name") || (email.includes("@") ? email.split("@")[0] : "Candidate");
 
   return {
     id: localStorage.getItem("candidate_id") || "demo-user-123",
@@ -16,8 +16,7 @@ const getCandidateUser = (customEmail, customName) => {
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
-    const savedDemo = localStorage.getItem("demo_mode");
-    return savedDemo === "true" ? getCandidateUser() : getCandidateUser();
+    return getCandidateUser();
   });
   const [loading, setLoading] = useState(false);
 
@@ -33,7 +32,7 @@ export function AuthProvider({ children }) {
             id: u.id,
             email: u.email,
             user_metadata: {
-              full_name: u.user_metadata?.full_name || localStorage.getItem("candidate_name") || "Mallikarjun"
+              full_name: u.user_metadata?.full_name || localStorage.getItem("candidate_name") || u.email?.split("@")[0] || "Candidate"
             }
           };
           setUser(userObj);
@@ -59,7 +58,7 @@ export function AuthProvider({ children }) {
             id: u.id,
             email: u.email,
             user_metadata: {
-              full_name: u.user_metadata?.full_name || localStorage.getItem("candidate_name") || "Mallikarjun"
+              full_name: u.user_metadata?.full_name || localStorage.getItem("candidate_name") || u.email?.split("@")[0] || "Candidate"
             }
           };
           setUser(userObj);
@@ -98,7 +97,7 @@ export function AuthProvider({ children }) {
     } catch (e) {
       // ignore
     }
-    setUser(getCandidateUser("mallikarjun@analyzer.ai", "Mallikarjun"));
+    setUser(getCandidateUser("", "Candidate"));
   };
 
   return (

@@ -27,7 +27,10 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!fullName || !email || !password) {
+    const trimmedName = fullName.trim();
+    const trimmedEmail = email.trim();
+
+    if (!trimmedName || !trimmedEmail || !password) {
       toast.error("Please fill all fields.");
       return;
     }
@@ -40,22 +43,28 @@ function Register() {
     setLoading(true);
 
     try {
+      localStorage.setItem("candidate_name", trimmedName);
+      localStorage.setItem("candidate_email", trimmedEmail);
+
       await supabase.auth.signUp({
-        email,
+        email: trimmedEmail,
         password,
         options: {
           data: {
-            full_name: fullName,
+            full_name: trimmedName,
           },
         },
       });
 
-      loginAsGuest({ email, full_name: fullName });
-      toast.success(`Account Created! Welcome, ${fullName}!`);
+      loginAsGuest({ email: trimmedEmail, full_name: trimmedName });
+      toast.success(`Account Created! Welcome, ${trimmedName}!`);
       navigate("/dashboard");
     } catch (err) {
-      loginAsGuest({ email, full_name: fullName });
-      toast.success(`Account Created! Welcome, ${fullName}!`);
+      localStorage.setItem("candidate_name", trimmedName);
+      localStorage.setItem("candidate_email", trimmedEmail);
+
+      loginAsGuest({ email: trimmedEmail, full_name: trimmedName });
+      toast.success(`Account Created! Welcome, ${trimmedName}!`);
       navigate("/dashboard");
     } finally {
       setLoading(false);
