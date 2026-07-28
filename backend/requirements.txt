@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+python-multipart
+pdfplumber
+python-docx
+spacy
+scikit-learn
+numpy
+pandas
+python-dotenv
+google-genai==2.14.0

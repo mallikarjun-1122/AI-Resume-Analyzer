@@ -1,0 +1,22 @@
+# Node / React
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.ds_store
+
+# Python / Virtual Environment
+__pycache__/
+*.pyc
+backend/venv/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Environment variables
+.env
+backend/.env
+frontend/.env
+
+# Antigravity artifacts
+.gemini/
