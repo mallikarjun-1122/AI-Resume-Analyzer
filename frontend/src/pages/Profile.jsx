@@ -27,18 +27,28 @@ function Profile() {
     avgMatch: 0,
   });
 
-  const [displayName, setDisplayName] = useState("Candidate");
+  const [displayName, setDisplayName] = useState("Mallikarjun");
+  const [displayEmail, setDisplayEmail] = useState("mallikarjun@analyzer.ai");
+
   const [editName, setEditName] = useState("");
+  const [editEmail, setEditEmail] = useState("");
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const savedName =
       localStorage.getItem("candidate_name") ||
       user?.user_metadata?.full_name ||
-      (user?.email ? user.email.split("@")[0] : "Candidate");
+      "Mallikarjun";
+
+    const savedEmail =
+      localStorage.getItem("candidate_email") ||
+      user?.email ||
+      "mallikarjun@analyzer.ai";
 
     setDisplayName(savedName);
+    setDisplayEmail(savedEmail);
     setEditName(savedName);
+    setEditEmail(savedEmail);
 
     if (user) {
       loadStats();
@@ -67,30 +77,39 @@ function Profile() {
     }
   }
 
-  const handleSaveName = (e) => {
+  const handleSaveProfile = (e) => {
     e.preventDefault();
     if (!editName.trim()) {
       toast.error("Please enter a valid candidate name.");
       return;
     }
+    if (!editEmail.trim()) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
 
     const newName = editName.trim();
+    const newEmail = editEmail.trim();
+
     localStorage.setItem("candidate_name", newName);
+    localStorage.setItem("candidate_email", newEmail);
+
     setDisplayName(newName);
+    setDisplayEmail(newEmail);
     setIsEditing(false);
 
     if (loginAsGuest) {
       loginAsGuest({
-        email: user?.email || localStorage.getItem("candidate_email") || "candidate@analyzer.ai",
+        email: newEmail,
         full_name: newName,
       });
     }
 
-    toast.success("Candidate Profile Name Updated! ✨");
+    toast.success("Profile Details Updated Successfully! ✨");
   };
 
   const getInitials = (name) => {
-    if (!name) return "C";
+    if (!name) return "M";
     return name
       .split(" ")
       .map((word) => word[0])
@@ -134,9 +153,7 @@ function Profile() {
                   PRO Candidate
                 </span>
               </div>
-              <p className="text-slate-400 text-sm">
-                {user?.email || localStorage.getItem("candidate_email") || "candidate@analyzer.ai"}
-              </p>
+              <p className="text-slate-400 text-sm font-medium">{displayEmail}</p>
               <p className="text-slate-500 text-xs pt-1">
                 Account Status: Active • Gemini AI Enabled
               </p>
@@ -147,31 +164,49 @@ function Profile() {
               className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/30 text-xs font-bold transition-all flex items-center gap-2"
             >
               <FaUserEdit size={14} />
-              <span>{isEditing ? "Cancel" : "Edit Name"}</span>
+              <span>{isEditing ? "Cancel" : "Edit Profile"}</span>
             </button>
           </div>
 
-          {/* Edit Name Input */}
+          {/* Edit Name & Email Form */}
           {isEditing && (
             <motion.form
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
-              onSubmit={handleSaveName}
-              className="mt-6 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center gap-3"
+              onSubmit={handleSaveProfile}
+              className="mt-6 pt-6 border-t border-slate-800/80 space-y-4"
             >
-              <input
-                type="text"
-                placeholder="Enter your candidate name..."
-                value={editName}
-                onChange={(e) => setEditName(e.target.value)}
-                className="flex-1 w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm outline-none focus:border-cyan-500 transition-all"
-              />
-              <button
-                type="submit"
-                className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2"
-              >
-                <FaSave /> Update Name
-              </button>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-bold text-slate-400 mb-1 block">Candidate Full Name</label>
+                  <input
+                    type="text"
+                    placeholder="Enter candidate full name..."
+                    value={editName}
+                    onChange={(e) => setEditName(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm outline-none focus:border-cyan-500 transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-bold text-slate-400 mb-1 block">Email Address</label>
+                  <input
+                    type="email"
+                    placeholder="Enter candidate email..."
+                    value={editEmail}
+                    onChange={(e) => setEditEmail(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm outline-none focus:border-cyan-500 transition-all"
+                  />
+                </div>
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2"
+                >
+                  <FaSave /> Save Profile Details
+                </button>
+              </div>
             </motion.form>
           )}
         </motion.div>
@@ -225,7 +260,7 @@ function Profile() {
             <InfoRow
               icon={<FaEnvelope className="text-cyan-400" />}
               title="Email Address"
-              value={user?.email || localStorage.getItem("candidate_email") || "candidate@analyzer.ai"}
+              value={displayEmail}
             />
             <InfoRow
               icon={<FaIdBadge className="text-emerald-400" />}

@@ -4,17 +4,8 @@ import { supabase } from "../lib/supabase";
 const AuthContext = createContext();
 
 const getCandidateUser = (customEmail, customName) => {
-  const email = customEmail || localStorage.getItem("candidate_email") || "candidate@analyzer.ai";
-  let name = customName || localStorage.getItem("candidate_name");
-  
-  if (!name || name === "Pro Candidate") {
-    if (email && email.includes("@")) {
-      const prefix = email.split("@")[0];
-      name = prefix.charAt(0).toUpperCase() + prefix.slice(1);
-    } else {
-      name = "Candidate";
-    }
-  }
+  const email = customEmail || localStorage.getItem("candidate_email") || "mallikarjun@analyzer.ai";
+  let name = customName || localStorage.getItem("candidate_name") || "Mallikarjun";
 
   return {
     id: localStorage.getItem("candidate_id") || "demo-user-123",
@@ -26,9 +17,9 @@ const getCandidateUser = (customEmail, customName) => {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
     const savedDemo = localStorage.getItem("demo_mode");
-    return savedDemo === "true" ? getCandidateUser() : null;
+    return savedDemo === "true" ? getCandidateUser() : getCandidateUser();
   });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let unsubscribe = () => {};
@@ -42,23 +33,17 @@ export function AuthProvider({ children }) {
             id: u.id,
             email: u.email,
             user_metadata: {
-              full_name: u.user_metadata?.full_name || u.email?.split("@")[0] || "Candidate"
+              full_name: u.user_metadata?.full_name || localStorage.getItem("candidate_name") || "Mallikarjun"
             }
           };
           setUser(userObj);
           localStorage.setItem("candidate_email", u.email);
           localStorage.setItem("candidate_name", userObj.user_metadata.full_name);
-        } else if (localStorage.getItem("demo_mode") === "true") {
-          setUser(getCandidateUser());
         } else {
-          setUser(null);
+          setUser(getCandidateUser());
         }
       } catch (err) {
-        if (localStorage.getItem("demo_mode") === "true") {
-          setUser(getCandidateUser());
-        } else {
-          setUser(null);
-        }
+        setUser(getCandidateUser());
       } finally {
         setLoading(false);
       }
@@ -74,16 +59,14 @@ export function AuthProvider({ children }) {
             id: u.id,
             email: u.email,
             user_metadata: {
-              full_name: u.user_metadata?.full_name || u.email?.split("@")[0] || "Candidate"
+              full_name: u.user_metadata?.full_name || localStorage.getItem("candidate_name") || "Mallikarjun"
             }
           };
           setUser(userObj);
           localStorage.setItem("candidate_email", u.email);
           localStorage.setItem("candidate_name", userObj.user_metadata.full_name);
-        } else if (localStorage.getItem("demo_mode") === "true") {
-          setUser(getCandidateUser());
         } else {
-          setUser(null);
+          setUser(getCandidateUser());
         }
       });
       if (data?.subscription) {
@@ -115,7 +98,7 @@ export function AuthProvider({ children }) {
     } catch (e) {
       // ignore
     }
-    setUser(null);
+    setUser(getCandidateUser("mallikarjun@analyzer.ai", "Mallikarjun"));
   };
 
   return (
