@@ -2,10 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   FaEnvelope,
   FaLock,
-  FaRobot,
   FaEye,
   FaEyeSlash,
-  FaGoogle,
+  FaRocket,
 } from "react-icons/fa";
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
@@ -32,192 +31,118 @@ function Login() {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    setLoading(false);
+      if (error) throw error;
 
-    if (error) {
-      toast.error(error.message);
-      return;
+      toast.success("Login Successful!");
+      navigate("/dashboard");
+    } catch (error) {
+      toast.error(error.message || "Invalid login credentials");
+    } finally {
+      setLoading(false);
     }
-
-    toast.success("Login Successful!");
-    navigate("/dashboard");
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex">
-      {/* LEFT SIDE - Hero Section */}
-      <div className="hidden lg:flex w-1/2 items-center justify-center relative overflow-hidden">
-        {/* Animated Background Glows */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute w-96 h-96 bg-blue-300 rounded-full blur-[150px] opacity-30 top-10 left-10"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute w-96 h-96 bg-purple-300 rounded-full blur-[150px] opacity-30 bottom-10 right-10"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute w-64 h-64 bg-pink-300 rounded-full blur-[150px] opacity-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        />
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Background Ambient Glows */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-1/4 left-1/4 w-[30rem] h-[30rem] bg-cyan-500/10 rounded-full blur-[160px] animate-ambient"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-purple-600/10 rounded-full blur-[160px] animate-ambient" style={{ animationDelay: '6s' }}></div>
+      </div>
 
-        <div className="relative z-10 max-w-md p-8">
-          {/* Logo */}
-          <div className="flex items-center gap-4 mb-8">
-            
-            <div>
-              <h1 className="text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                AI Resume Analyzer
-              </h1>
-              <p className="text-gray-600 text-sm">Build smarter resumes with AI</p>
-            </div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-md glass-panel p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl relative z-10 space-y-6"
+      >
+        {/* Brand Header */}
+        <div className="text-center space-y-2">
+          <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center text-white text-2xl shadow-lg glow-cyan">
+            ⚡
+          </div>
+          <h1 className="text-3xl font-black gradient-text-primary">Welcome Back</h1>
+          <p className="text-slate-400 text-xs sm:text-sm">Log in to access your AI Resume Dashboard</p>
+        </div>
+
+        {/* Login Form */}
+        <form className="space-y-4" onSubmit={handleLogin}>
+          <div className="relative">
+            <FaEnvelope className="absolute top-3.5 left-4 text-slate-500" />
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full py-3 pl-11 pr-4 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm placeholder-slate-500 outline-none focus:border-cyan-500 transition-all"
+            />
           </div>
 
-          <h1 className="text-5xl font-extrabold leading-tight mb-8 text-gray-800">
-            
-          </h1>
-
-          
-
-          
-        </div>
-      </div>
-
-      {/* RIGHT SIDE - Login Form */}
-      <div className="flex-1 flex items-center justify-center px-6 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="w-full max-w-md bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-3xl p-10 shadow-2xl shadow-blue-500/10"
-        >
-          <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-2">
-            Welcome Back 👋
-          </h2>
-          <p className="text-center text-gray-500 mb-8">
-            Login to continue your journey
-          </p>
-
-          <form className="space-y-5" onSubmit={handleLogin}>
-            <div className="relative">
-              <FaEnvelope className="absolute top-4 left-4 text-gray-400" />
-              <input
-                type="email"
-                placeholder="Email Address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full py-3.5 pl-12 pr-4 rounded-xl bg-gray-50 border border-gray-200 text-gray-800 placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+          <div className="relative">
+            <FaLock className="absolute top-3.5 left-4 text-slate-500" />
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full py-3 pl-11 pr-11 rounded-xl bg-slate-900 border border-slate-800 text-white text-sm placeholder-slate-500 outline-none focus:border-cyan-500 transition-all"
+            />
+            {showPassword ? (
+              <FaEyeSlash
+                className="absolute top-3.5 right-4 cursor-pointer text-slate-500 hover:text-slate-300"
+                onClick={() => setShowPassword(false)}
               />
-            </div>
-
-            <div className="relative">
-              <FaLock className="absolute top-4 left-4 text-gray-400" />
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full py-3.5 pl-12 pr-12 rounded-xl bg-gray-50 border border-gray-200 text-gray-800 placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+            ) : (
+              <FaEye
+                className="absolute top-3.5 right-4 cursor-pointer text-slate-500 hover:text-slate-300"
+                onClick={() => setShowPassword(true)}
               />
-              {showPassword ? (
-                <FaEyeSlash
-                  className="absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
-                  onClick={() => setShowPassword(false)}
-                />
-              ) : (
-                <FaEye
-                  className="absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-gray-600 transition-colors"
-                  onClick={() => setShowPassword(true)}
-                />
-              )}
+            )}
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-extrabold text-sm shadow-xl shadow-cyan-500/20 transition-all disabled:opacity-50"
+          >
+            {loading ? "Signing in..." : "Log In"}
+          </button>
+
+          <div className="relative py-2 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-slate-800"></div>
             </div>
+            <span className="relative px-3 bg-slate-950 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+              or demo access
+            </span>
+          </div>
 
-            <div className="flex items-center justify-between text-sm">
-              <label className="flex items-center gap-2 text-gray-600 cursor-pointer">
-                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
-                Remember me
-              </label>
-              <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
-                Forgot password?
-              </a>
-            </div>
+          <button
+            type="button"
+            onClick={() => {
+              loginAsGuest();
+              toast.success("Welcome! Entered Candidate Demo Mode.");
+              navigate("/dashboard");
+            }}
+            className="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/30 text-xs font-bold transition-all flex items-center justify-center gap-2"
+          >
+            <FaRocket /> Instant Candidate Demo Access
+          </button>
+        </form>
 
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              disabled={loading}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold text-base shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Logging in...
-                </span>
-              ) : (
-                "Login"
-              )}
-            </motion.button>
-
-            <button
-              type="button"
-              onClick={() => {
-                loginAsGuest();
-                toast.success("Welcome! Entered Guest Demo Mode.");
-                navigate("/dashboard");
-              }}
-              className="w-full py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-all border border-slate-200"
-            >
-              🚀 Continue as Guest (Instant Demo)
-            </button>
-          </form>
-
-          <p className="text-center text-gray-600 mt-8">
-            Don't have an account?{" "}
-            <Link
-              to="/register"
-              className="text-blue-600 hover:text-blue-700 font-semibold hover:underline transition-colors"
-            >
-              Register
-            </Link>
-          </p>
-        </motion.div>
-      </div>
+        <p className="text-center text-xs text-slate-400 pt-2">
+          Don't have an account?{" "}
+          <Link to="/register" className="text-cyan-400 font-bold hover:underline">
+            Register
+          </Link>
+        </p>
+      </motion.div>
     </div>
   );
 }

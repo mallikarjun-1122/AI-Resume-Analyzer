@@ -10,8 +10,11 @@ const DEMO_USER = {
 };
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(DEMO_USER);
-  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(() => {
+    const savedDemo = localStorage.getItem("demo_mode");
+    return savedDemo === "true" ? DEMO_USER : null;
+  });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let unsubscribe = () => {};
@@ -21,11 +24,19 @@ export function AuthProvider({ children }) {
         const { data } = await supabase.auth.getSession();
         if (data?.session?.user) {
           setUser(data.session.user);
-        } else {
+        } else if (localStorage.getItem("demo_mode") === "true") {
           setUser(DEMO_USER);
+        } else {
+          setUser(null);
         }
       } catch (err) {
-        setUser(DEMO_USER);
+        if (localStorage.getItem("demo_mode") === "true") {
+          setUser(DEMO_USER);
+        } else {
+          setUser(null);
+        }
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -35,8 +46,10 @@ export function AuthProvider({ children }) {
       const { data } = supabase.auth.onAuthStateChange((_event, session) => {
         if (session?.user) {
           setUser(session.user);
-        } else {
+        } else if (localStorage.getItem("demo_mode") === "true") {
           setUser(DEMO_USER);
+        } else {
+          setUser(null);
         }
       });
       if (data?.subscription) {
@@ -45,8 +58,6 @@ export function AuthProvider({ children }) {
     } catch (e) {
       console.warn("Auth listener:", e);
     }
-
-    return () => unsubscribe();
   }, []);
 
   const loginAsGuest = () => {
@@ -55,12 +66,13 @@ export function AuthProvider({ children }) {
   };
 
   const logout = async () => {
+    localStorage.removeItem("demo_mode");
     try {
       await supabase.auth.signOut();
     } catch (e) {
       // ignore
     }
-    setUser(DEMO_USER);
+    setUser(null);
   };
 
   return (
