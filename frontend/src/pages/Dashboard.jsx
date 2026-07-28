@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout";
 import { useAuth } from "../context/AuthContext";
-import { motion } from "framer-motion";
 import { FaMagic, FaEnvelopeOpenText, FaUsers, FaExchangeAlt, FaUserCheck } from "react-icons/fa";
 
 import ResumeUpload from "../components/ResumeUpload";
@@ -56,7 +55,16 @@ function Dashboard() {
     try {
       setLoading(true);
       const data = await getHistory(user?.id);
-      setHistory(data || []);
+      const list = data || [];
+      setHistory(list);
+
+      // Preserve and restore the most recent analysis report when returning to Dashboard
+      if (list.length > 0) {
+        const latest = list[0];
+        if (latest.analysis && (latest.analysis.ats || latest.analysis.success)) {
+          setAnalysisResult(latest.analysis);
+        }
+      }
     } catch (error) {
       console.error("History Error:", error);
     } finally {
@@ -70,6 +78,7 @@ function Dashboard() {
 
   const handleAnalysisComplete = (result) => {
     setAnalysisResult(result);
+    loadHistory();
     // Auto scroll down to report
     setTimeout(() => {
       window.scrollTo({ top: 500, behavior: "smooth" });
