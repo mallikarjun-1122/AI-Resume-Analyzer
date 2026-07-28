@@ -3,6 +3,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import { useAuth } from "../context/AuthContext";
 import { getHistory } from "../services/historyService";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 import {
   FaEnvelope,
@@ -12,10 +13,12 @@ import {
   FaChartLine,
   FaFileAlt,
   FaBullseye,
+  FaUserEdit,
+  FaSave,
 } from "react-icons/fa";
 
 function Profile() {
-  const { user } = useAuth();
+  const { user, loginAsGuest } = useAuth();
 
   const [stats, setStats] = useState({
     total: 0,
@@ -25,44 +28,66 @@ function Profile() {
   });
 
   const [displayName, setDisplayName] = useState("Candidate");
+  const [editName, setEditName] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
+    const savedName =
+      localStorage.getItem("candidate_name") ||
+      user?.user_metadata?.full_name ||
+      (user?.email ? user.email.split("@")[0] : "Candidate");
+
+    setDisplayName(savedName);
+    setEditName(savedName);
+
     if (user) {
       loadStats();
-      setDisplayName(user.user_metadata?.full_name || user.email?.split("@")[0] || "Candidate");
     }
   }, [user]);
 
   async function loadStats() {
     try {
       const history = await getHistory(user?.id);
-
       if (!history || history.length === 0) return;
 
       const total = history.length;
-
       const avgATS = Math.round(
         history.reduce((sum, item) => sum + (item.ats_score || 0), 0) / total
       );
-
       const highestATS = Math.max(
         ...history.map((item) => item.ats_score || 0)
       );
-
       const avgMatch = Math.round(
         history.reduce((sum, item) => sum + (item.job_match || 0), 0) / total
       );
 
-      setStats({
-        total,
-        avgATS,
-        highestATS,
-        avgMatch,
-      });
+      setStats({ total, avgATS, highestATS, avgMatch });
     } catch (err) {
       console.error(err);
     }
   }
+
+  const handleSaveName = (e) => {
+    e.preventDefault();
+    if (!editName.trim()) {
+      toast.error("Please enter a valid candidate name.");
+      return;
+    }
+
+    const newName = editName.trim();
+    localStorage.setItem("candidate_name", newName);
+    setDisplayName(newName);
+    setIsEditing(false);
+
+    if (loginAsGuest) {
+      loginAsGuest({
+        email: user?.email || localStorage.getItem("candidate_email") || "candidate@analyzer.ai",
+        full_name: newName,
+      });
+    }
+
+    toast.success("Candidate Profile Name Updated! ✨");
+  };
 
   const getInitials = (name) => {
     if (!name) return "C";
@@ -109,12 +134,46 @@ function Profile() {
                   PRO Candidate
                 </span>
               </div>
-              <p className="text-slate-400 text-sm">{user?.email || "candidate@analyzer.ai"}</p>
+              <p className="text-slate-400 text-sm">
+                {user?.email || localStorage.getItem("candidate_email") || "candidate@analyzer.ai"}
+              </p>
               <p className="text-slate-500 text-xs pt-1">
                 Account Status: Active • Gemini AI Enabled
               </p>
             </div>
+
+            <button
+              onClick={() => setIsEditing(!isEditing)}
+              className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/30 text-xs font-bold transition-all flex items-center gap-2"
+            >
+              <FaUserEdit size={14} />
+              <span>{isEditing ? "Cancel" : "Edit Name"}</span>
+            </button>
           </div>
+
+          {/* Edit Name Input */}
+          {isEditing && (
+            <motion.form
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              onSubmit={handleSaveName}
+              className="mt-6 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center gap-3"
+            >
+              <input
+                type="text"
+                placeholder="Enter your candidate name..."
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+                className="flex-1 w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm outline-none focus:border-cyan-500 transition-all"
+              />
+              <button
+                type="submit"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2"
+              >
+                <FaSave /> Update Name
+              </button>
+            </motion.form>
+          )}
         </motion.div>
 
         {/* Statistics Grid */}
@@ -154,13 +213,30 @@ function Profile() {
           className="glass-panel p-8 rounded-3xl border border-slate-800 space-y-6"
         >
           <h2 className="text-xl font-extrabold text-white flex items-center gap-2">
-            <span>📋</span> Account Details
+            <span>📋</span> Candidate Details
           </h2>
 
           <div className="space-y-3">
-            <InfoRow icon={<FaEnvelope className="text-cyan-400" />} title="Email Address" value={user?.email || "candidate@analyzer.ai"} />
-            <InfoRow icon={<FaIdBadge className="text-purple-400" />} title="User ID" value={user?.id || "demo-user-123"} />
-            <InfoRow icon={<FaCalendarAlt className="text-emerald-400" />} title="Account Type" value="Pro Candidate Access" />
+            <InfoRow
+              icon={<FaUserEdit className="text-purple-400" />}
+              title="Full Name"
+              value={displayName}
+            />
+            <InfoRow
+              icon={<FaEnvelope className="text-cyan-400" />}
+              title="Email Address"
+              value={user?.email || localStorage.getItem("candidate_email") || "candidate@analyzer.ai"}
+            />
+            <InfoRow
+              icon={<FaIdBadge className="text-emerald-400" />}
+              title="Candidate ID"
+              value={user?.id || "demo-user-123"}
+            />
+            <InfoRow
+              icon={<FaCalendarAlt className="text-amber-400" />}
+              title="Account Type"
+              value="Pro Candidate Access"
+            />
           </div>
         </motion.div>
 
