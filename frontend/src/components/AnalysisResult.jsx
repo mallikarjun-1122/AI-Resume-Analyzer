@@ -1,7 +1,5 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import {
   FaChartLine,
   FaCheckCircle,
@@ -37,11 +35,13 @@ function AnalysisResult({ result }) {
     );
   }
 
-  const ai = result.ai_review || {};
-  const ats = result.ats || {};
-  const matching = result.matching || {};
+  // Safe unpacking of response formats
+  const res = result?.analysis || result?.data || result || {};
+  const ai = res.ai_review || res.ai || {};
+  const ats = res.ats || {};
+  const matching = res.matching || {};
 
-  const overallScore = ats.overall_score || matching.match_percentage || 85;
+  const overallScore = Number(ats.overall_score || matching.match_percentage || 85);
 
   const getScoreColor = (score) => {
     if (score >= 80) return "from-emerald-500 via-teal-500 to-green-600";
@@ -57,20 +57,24 @@ function AnalysisResult({ result }) {
 
   const handleCopySummary = () => {
     const summaryText = `AI Resume Analysis Summary:
-- ATS Score: ${ats.overall_score || overallScore}%
-- Job Match: ${matching.match_percentage || overallScore}%
+- ATS Score: ${overallScore}%
 - Recommendation: ${ai.hire_recommendation || matching.recommendation || "Recommended"}
-- Overall Rating: ${ai.overall_rating || "8.5/10"}`;
+- Rating: ${ai.overall_rating || "8.5/10"}`;
 
-    navigator.clipboard.writeText(summaryText);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(summaryText);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
   };
 
   const handleDownloadPDF = async () => {
     if (!reportRef.current) return;
     try {
       setDownloading(true);
+      const html2canvas = (await import("html2canvas")).default;
+      const jsPDF = (await import("jspdf")).default;
+
       const canvas = await html2canvas(reportRef.current, {
         scale: 2,
         backgroundColor: "#0f172a",
@@ -85,23 +89,10 @@ function AnalysisResult({ result }) {
       pdf.save(`AI_Resume_Report_${Date.now()}.pdf`);
     } catch (err) {
       console.error("PDF generation error:", err);
-      alert("Could not generate PDF. Please try taking a screenshot or print to PDF.");
+      window.print();
     } finally {
       setDownloading(false);
     }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   const matchedSkillsList = Array.isArray(ats.matched_skills)
@@ -136,12 +127,9 @@ function AnalysisResult({ result }) {
 
   return (
     <>
-      <motion.div
+      <div
         ref={reportRef}
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-        className="space-y-6"
+        className="space-y-6 text-slate-100"
       >
         {/* Top Action Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-3xl glass-panel border border-slate-800">
@@ -185,8 +173,7 @@ function AnalysisResult({ result }) {
         </div>
 
         {/* Main Score Hero Card */}
-        <motion.div
-          variants={itemVariants}
+        <div
           className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${getScoreColor(overallScore)} p-8 sm:p-10 text-white shadow-2xl shadow-cyan-500/20`}
         >
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white/10 blur-3xl pointer-events-none"></div>
@@ -226,15 +213,12 @@ function AnalysisResult({ result }) {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Metrics Row */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* ATS Score Details */}
-          <motion.div
-            variants={itemVariants}
-            className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl"
-          >
+          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg border border-cyan-500/30">
@@ -275,13 +259,10 @@ function AnalysisResult({ result }) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Job Description Match */}
-          <motion.div
-            variants={itemVariants}
-            className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl"
-          >
+          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/30">
@@ -299,14 +280,11 @@ function AnalysisResult({ result }) {
               <p className="font-semibold text-emerald-400">Recommendation Status:</p>
               <p>{matching.recommendation || ai.hire_recommendation || "Strongly Recommended Candidate"}</p>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Category Skill Visualizer Breakdown */}
-        <motion.div
-          variants={itemVariants}
-          className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl space-y-6"
-        >
+        <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-lg border border-purple-500/30">
               <FaLayerGroup />
@@ -323,15 +301,12 @@ function AnalysisResult({ result }) {
             <CategorySkillProgress title="Databases & Cloud" score={78} color="bg-amber-500" />
             <CategorySkillProgress title="Soft Skills & Leadership" score={88} color="bg-emerald-500" />
           </div>
-        </motion.div>
+        </div>
 
         {/* Skills Comparison Section */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* Matched Skills */}
-          <motion.div
-            variants={itemVariants}
-            className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl"
-          >
+          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/30">
                 <FaCheckCircle />
@@ -352,13 +327,10 @@ function AnalysisResult({ result }) {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Missing Skills */}
-          <motion.div
-            variants={itemVariants}
-            className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl"
-          >
+          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-lg border border-rose-500/30">
                 <FaTimesCircle />
@@ -379,15 +351,12 @@ function AnalysisResult({ result }) {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Strengths & Actionable Improvements */}
         <div className="grid md:grid-cols-2 gap-6">
-          <motion.div
-            variants={itemVariants}
-            className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl"
-          >
+          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg border border-cyan-500/30">
                 🌟
@@ -402,12 +371,9 @@ function AnalysisResult({ result }) {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={itemVariants}
-            className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl"
-          >
+          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg border border-amber-500/30">
                 <FaTools />
@@ -422,14 +388,11 @@ function AnalysisResult({ result }) {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         </div>
 
         {/* AI Tailored Interview Prep Section */}
-        <motion.div
-          variants={itemVariants}
-          className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl"
-        >
+        <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-lg border border-purple-500/30">
               <FaQuestionCircle />
@@ -481,8 +444,8 @@ function AnalysisResult({ result }) {
               );
             })}
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {/* Modals */}
       <CoverLetterModal isOpen={showCoverLetter} onClose={() => setShowCoverLetter(false)} />
