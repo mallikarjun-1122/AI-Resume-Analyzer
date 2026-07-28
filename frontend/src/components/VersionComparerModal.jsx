@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaTimes, FaExchangeAlt, FaArrowUp, FaArrowDown, FaCheckCircle, FaChartLine } from "react-icons/fa";
+import { FaTimes, FaExchangeAlt, FaArrowUp, FaArrowDown, FaChartLine } from "react-icons/fa";
 import { getHistory } from "../services/historyService";
 import { useAuth } from "../context/AuthContext";
 
@@ -11,9 +11,17 @@ export default function VersionComparerModal({ isOpen, onClose }) {
   const [resumeBId, setResumeBId] = useState("");
 
   useEffect(() => {
-    if (isOpen && user?.id) {
-      getHistory(user.id).then((data) => {
-        if (data) setHistory(data);
+    if (isOpen) {
+      getHistory(user?.id).then((data) => {
+        if (data) {
+          setHistory(data);
+          if (data.length >= 2) {
+            setResumeAId(data[1].id);
+            setResumeBId(data[0].id);
+          } else if (data.length === 1) {
+            setResumeBId(data[0].id);
+          }
+        }
       });
     }
   }, [isOpen, user]);
@@ -50,10 +58,10 @@ export default function VersionComparerModal({ isOpen, onClose }) {
           </div>
         </div>
 
-        {history.length < 2 ? (
+        {history.length < 1 ? (
           <div className="p-8 text-center bg-slate-900/60 rounded-2xl border border-slate-800">
-            <p className="text-sm font-bold text-slate-300">Minimum 2 Analyzed Resumes Required</p>
-            <p className="text-xs text-slate-400 mt-1">Analyze another resume version to unlock A/B comparison metrics.</p>
+            <p className="text-sm font-bold text-slate-300">Minimum 1 Analyzed Resume Required</p>
+            <p className="text-xs text-slate-400 mt-1">Analyze your resumes on the Dashboard to unlock A/B comparison metrics.</p>
           </div>
         ) : (
           <div className="space-y-6">
