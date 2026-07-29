@@ -6,50 +6,68 @@ const API = axios.create({
 });
 
 const SKILL_DICTIONARY = [
-  "python", "java", "dsa", "data structures", "powerbi", "power bi", "sql", "postgresql", "mysql",
-  "react", "fastapi", "javascript", "typescript", "node", "nodejs", "html", "css", "tailwind",
-  "docker", "kubernetes", "aws", "azure", "gcp", "git", "github", "ci/cd", "redis",
-  "machine learning", "deep learning", "ai", "pandas", "numpy", "pytorch", "tensorflow",
-  "tableau", "spark", "hadoop", "c++", "c#", "rest apis", "graphql", "excel", "testing", "pytest"
+  "python", "java", "javascript", "typescript", "c++", "c#", ".net",
+  "dsa", "data structures", "algorithms",
+  "html", "html5", "css", "css3", "tailwind", "bootstrap", "react", "next.js", "angular", "vue",
+  "fastapi", "node", "nodejs", "express", "spring boot", "django", "flask",
+  "sql", "mysql", "postgresql", "mongodb", "sqlite", "redis",
+  "powerbi", "power bi", "tableau", "excel",
+  "ai", "artificial intelligence", "machine learning", "deep learning", "pandas", "numpy", "pytorch", "tensorflow",
+  "docker", "kubernetes", "aws", "azure", "gcp", "google cloud", "ci/cd",
+  "git", "github", "gitlab",
+  "testing", "unit testing", "software testing", "pytest", "jest", "selenium", "postman"
 ];
+
+function normalizeSkill(skill) {
+  const s = skill.toLowerCase().trim();
+  if (s === "dsa" || s === "data structures" || s === "algorithms") return "DSA";
+  if (s === "sql" || s === "mysql" || s === "postgresql" || s === "sqlite") return "SQL";
+  if (s === "powerbi" || s === "power bi") return "PowerBI";
+  if (s === "html" || s === "html5") return "HTML5";
+  if (s === "css" || s === "css3") return "CSS3";
+  if (s === "git" || s === "github") return "Git & GitHub";
+  if (s === "ai" || s === "artificial intelligence" || s === "machine learning") return "AI / ML";
+  if (s === "testing" || s === "unit testing" || s === "software testing" || s === "pytest" || s === "jest") return "Software Testing";
+  if (s === "c#" || s === ".net") return "C# / .NET";
+  if (s === "azure" || s === "microsoft azure") return "Azure";
+  if (s === "docker" || s === "containers") return "Docker";
+  if (s === "aws") return "AWS";
+  if (s === "java") return "Java";
+  if (s === "javascript") return "JavaScript";
+  if (s === "python") return "Python";
+  if (s === "react") return "React";
+  if (s === "fastapi") return "FastAPI";
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
 
 function analyzeMatchingAndMissingSkills(jobDescriptionText = "") {
   const jdLower = (jobDescriptionText || "").toLowerCase();
   
-  // Extract skills mentioned in the target Job Description
+  // Extract all skills mentioned in the target Job Description
   const jdSkillsFound = SKILL_DICTIONARY.filter(skill => jdLower.includes(skill));
-  
-  // If JD text is custom/short, fallback default JD skills
-  const finalJdSkills = jdSkillsFound.length > 0 ? jdSkillsFound : ["python", "sql"];
+  const finalJdSkills = Array.from(new Set((jdSkillsFound.length > 0 ? jdSkillsFound : ["python", "sql", "java", "javascript", "git"]).map(normalizeSkill)));
 
-  // Candidate resume skills
-  const candidateResumeSkills = ["python", "java", "dsa", "powerbi", "react", "javascript", "git"];
+  // Candidate resume comprehensive skill set
+  const candidateResumeSkillsRaw = [
+    "python", "java", "javascript", "typescript", "dsa", "data structures",
+    "html", "html5", "css", "css3", "react", "fastapi", "sql", "powerbi", "power bi",
+    "git", "github", "ai", "testing", "c#", "azure", "docker"
+  ];
+  const candidateResumeSkills = Array.from(new Set(candidateResumeSkillsRaw.map(normalizeSkill)));
 
   // Matched Skills = Intersection ONLY (Skills present in BOTH Resume AND JD)
-  const matchedRaw = candidateResumeSkills.filter(rSkill => 
+  const matchedSkills = candidateResumeSkills.filter(rSkill => 
     finalJdSkills.some(jSkill => jSkill.toLowerCase() === rSkill.toLowerCase())
   );
 
   // Missing Skills = Skills required by JD that are NOT in Resume
-  const missingRaw = finalJdSkills.filter(jSkill => 
+  const missingSkills = finalJdSkills.filter(jSkill => 
     !candidateResumeSkills.some(rSkill => rSkill.toLowerCase() === jSkill.toLowerCase())
   );
 
-  const formatSkillName = (str) => {
-    if (str === "dsa" || str === "data structures") return "DSA";
-    if (str === "sql") return "SQL";
-    if (str === "powerbi" || str === "power bi") return "PowerBI";
-    if (str === "aws") return "AWS";
-    if (str === "html") return "HTML5";
-    if (str === "css") return "CSS3";
-    if (str === "rest apis") return "REST APIs";
-    if (str === "ci/cd") return "CI/CD";
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
-
   return {
-    matched_skills: Array.from(new Set(matchedRaw.map(formatSkillName))),
-    missing_skills: Array.from(new Set(missingRaw.map(formatSkillName))),
+    matched_skills: matchedSkills,
+    missing_skills: missingSkills,
     jd_skills_count: finalJdSkills.length,
   };
 }
@@ -95,7 +113,9 @@ const generateFallbackAnalysis = (jobDescription = "") => {
       missing_skills: missing_skills,
       status: status,
       issues: [
-        `Missing ${missing_skills.length} core JD skills: ${missing_skills.join(", ")}.`,
+        missing_skills.length > 0
+          ? `Missing ${missing_skills.length} core JD skills: ${missing_skills.join(", ")}.`
+          : "Include more quantified metrics (e.g. percentages, user growth numbers).",
         "Add explicit project bullet points demonstrating required skills."
       ]
     },

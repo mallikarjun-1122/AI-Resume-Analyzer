@@ -13,14 +13,19 @@
     "R",
     "Kotlin",
     "Swift",
-    "Dart"
+    "Dart",
+    "DSA",
+    "Data Structures"
   ],
 
   "Frontend": [
     "HTML",
+    "HTML5",
     "CSS",
+    "CSS3",
     "Bootstrap",
     "Tailwind CSS",
+    "Tailwind",
     "React",
     "Next.js",
     "Angular",
@@ -31,6 +36,7 @@
 
   "Backend": [
     "Node.js",
+    "Node",
     "Express.js",
     "Spring Boot",
     "FastAPI",
@@ -41,6 +47,7 @@
   ],
 
   "Database": [
+    "SQL",
     "MySQL",
     "PostgreSQL",
     "MongoDB",
@@ -52,8 +59,11 @@
   ],
 
   "AI & ML": [
+    "AI",
+    "Artificial Intelligence",
     "Machine Learning",
     "Deep Learning",
+    "Generative AI",
     "TensorFlow",
     "PyTorch",
     "Scikit-learn",
@@ -66,17 +76,20 @@
     "NumPy"
   ],
 
-  "Cloud": [
+  "Cloud & DevOps": [
     "AWS",
     "Azure",
     "Google Cloud",
+    "GCP",
     "Docker",
     "Kubernetes",
     "Jenkins",
-    "Terraform"
+    "Terraform",
+    "CI/CD"
   ],
 
   "BI & Analytics": [
+    "PowerBI",
     "Power BI",
     "Tableau",
     "Excel",
@@ -91,11 +104,14 @@
     "Bitbucket"
   ],
 
-  "Testing": [
+  "Testing & Quality": [
+    "Testing",
+    "Software Testing",
     "JUnit",
     "PyTest",
     "Selenium",
-    "Postman"
+    "Postman",
+    "Jest"
   ],
 
   "Soft Skills": [
