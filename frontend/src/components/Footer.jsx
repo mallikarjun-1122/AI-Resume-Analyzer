@@ -1,6 +1,4 @@
 import {
-  FaGithub,
-  FaLinkedin,
   FaArrowUp,
   FaHeart,
 } from "react-icons/fa";
@@ -15,7 +13,7 @@ function Footer() {
 
   return (
     <footer className="relative bg-slate-950 text-slate-400 pt-16 pb-8 border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
 
         {/* Logo & Description */}
         <div className="space-y-4">
@@ -28,38 +26,22 @@ function Footer() {
             </span>
           </div>
 
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-slate-400 leading-relaxed max-w-md">
             Empowering job seekers worldwide with real-time AI resume analysis, ATS scoring, and interview intelligence.
           </p>
         </div>
 
         {/* Quick Links */}
-        <div>
+        <div className="md:text-right">
           <h3 className="text-sm font-extrabold text-white uppercase tracking-wider mb-4">
             Navigation
           </h3>
 
-          <ul className="space-y-2 text-xs font-semibold">
+          <ul className="flex flex-wrap md:justify-end gap-6 text-xs font-semibold">
             <li><a href="#features" className="hover:text-cyan-400 transition-colors">Features</a></li>
             <li><a href="#how" className="hover:text-cyan-400 transition-colors">How It Works</a></li>
             <li><a href="#faq" className="hover:text-cyan-400 transition-colors">FAQ</a></li>
           </ul>
-        </div>
-
-        {/* Social */}
-        <div>
-          <h3 className="text-sm font-extrabold text-white uppercase tracking-wider mb-4">
-            Connect
-          </h3>
-
-          <div className="flex gap-4 text-xl">
-            <a href="#" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all">
-              <FaGithub />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all">
-              <FaLinkedin />
-            </a>
-          </div>
         </div>
 
       </div>
