@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout";
 import { useAuth } from "../context/AuthContext";
-import { FaMagic, FaEnvelopeOpenText, FaUsers, FaExchangeAlt, FaUserCheck, FaTrophy } from "react-icons/fa";
+import { FaMagic, FaEnvelopeOpenText, FaUsers, FaExchangeAlt, FaUserCheck } from "react-icons/fa";
 
 import ResumeUpload from "../components/ResumeUpload";
 import AnalysisResult from "../components/AnalysisResult";
@@ -68,6 +68,9 @@ function Dashboard() {
         if (latest.analysis && (latest.analysis.ats || latest.analysis.success)) {
           setAnalysisResult(latest.analysis);
         }
+      } else {
+        // When history is empty (e.g. after user deletes all history), clear the dashboard report
+        setAnalysisResult(null);
       }
     } catch (error) {
       console.error("History Error:", error);
