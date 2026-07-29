@@ -90,7 +90,7 @@ function HowItWorks() {
 
         <div className="text-center pt-6">
           <Link
-            to="/dashboard"
+            to="/login"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-base font-extrabold text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:to-purple-500 shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/35 transition-all duration-300"
           >
             <span>Start Free Analysis</span>

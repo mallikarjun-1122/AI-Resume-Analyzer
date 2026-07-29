@@ -1,7 +1,6 @@
 import {
   FaGithub,
   FaLinkedin,
-  FaEnvelope,
   FaArrowUp,
   FaHeart,
 } from "react-icons/fa";
@@ -16,7 +15,7 @@ function Footer() {
 
   return (
     <footer className="relative bg-slate-950 text-slate-400 pt-16 pb-8 border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
 
         {/* Logo & Description */}
         <div className="space-y-4">
@@ -45,20 +44,6 @@ function Footer() {
             <li><a href="#how" className="hover:text-cyan-400 transition-colors">How It Works</a></li>
             <li><a href="#faq" className="hover:text-cyan-400 transition-colors">FAQ</a></li>
           </ul>
-        </div>
-
-        {/* Contact */}
-        <div>
-          <h3 className="text-sm font-extrabold text-white uppercase tracking-wider mb-4">
-            Contact & Support
-          </h3>
-
-          <div className="space-y-2 text-xs font-semibold">
-            <p className="flex items-center gap-2 hover:text-cyan-400 cursor-pointer transition-colors">
-              <FaEnvelope className="text-cyan-400" />
-              support@resumeai.io
-            </p>
-          </div>
         </div>
 
         {/* Social */}
