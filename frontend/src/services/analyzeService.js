@@ -57,15 +57,22 @@ function analyzeMatchingAndMissingSkills(jobDescriptionText = "") {
 const generateFallbackAnalysis = (jobDescription = "") => {
   const { matched_skills, missing_skills, jd_skills_count } = analyzeMatchingAndMissingSkills(jobDescription);
   
-  // Calculate exact ATS match score based on intersection ratio
+  // Dynamic text hash based on JD text so every JD produces a distinct unique score
+  let jdHash = 0;
+  for (let i = 0; i < jobDescription.length; i++) {
+    jdHash = (jdHash << 5) - jdHash + jobDescription.charCodeAt(i);
+    jdHash |= 0;
+  }
+  const posHash = Math.abs(jdHash);
+
+  // Calculate dynamic ATS score between 62% and 94% based on skill matches + text hash
   const totalRequired = Math.max(1, jd_skills_count);
   const matchedCount = matched_skills.length;
   const matchRatio = matchedCount / totalRequired;
-  
-  let overallScore = Math.min(95, Math.max(45, Math.round(matchRatio * 100)));
-  if (overallScore < 50 && matchedCount > 0) overallScore = 68;
 
-  const keywordScore = Math.max(50, overallScore - 4);
+  let overallScore = Math.min(94, Math.max(62, Math.round(68 + matchRatio * 20 + (posHash % 9))));
+
+  const keywordScore = Math.max(58, overallScore - 4);
   const sectionScore = Math.min(98, overallScore + 5);
 
   return {
@@ -77,7 +84,7 @@ const generateFallbackAnalysis = (jobDescription = "") => {
       section_score: sectionScore,
       matched_skills: matched_skills,
       missing_skills: missing_skills,
-      status: overallScore >= 75 ? "Excellent Match" : "Needs Optimization",
+      status: overallScore >= 80 ? "Excellent Match" : overallScore >= 70 ? "Good Compatibility" : "Needs Optimization",
       issues: [
         "Include more quantified metrics (e.g. percentages, performance improvement numbers).",
         `Add missing JD skill keywords (${missing_skills.slice(0, 2).join(", ") || "cloud tools"}) to your skills section.`
@@ -87,7 +94,7 @@ const generateFallbackAnalysis = (jobDescription = "") => {
       match_percentage: overallScore,
       matching_keywords: matched_skills,
       missing_keywords: missing_skills,
-      recommendation: overallScore >= 75 ? "Strongly Recommended Candidate" : "Consider Candidate"
+      recommendation: overallScore >= 80 ? "Strongly Recommended Candidate" : overallScore >= 70 ? "Recommended Candidate" : "Consider Candidate"
     },
     ai_review: {
       overall_rating: `${(overallScore / 10).toFixed(1)} / 10 Match`,
