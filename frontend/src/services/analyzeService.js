@@ -57,23 +57,32 @@ function analyzeMatchingAndMissingSkills(jobDescriptionText = "") {
 const generateFallbackAnalysis = (jobDescription = "") => {
   const { matched_skills, missing_skills, jd_skills_count } = analyzeMatchingAndMissingSkills(jobDescription);
   
-  // Dynamic text hash based on JD text so every JD produces a distinct unique score
-  let jdHash = 0;
-  for (let i = 0; i < jobDescription.length; i++) {
-    jdHash = (jdHash << 5) - jdHash + jobDescription.charCodeAt(i);
-    jdHash |= 0;
-  }
-  const posHash = Math.abs(jdHash);
-
-  // Calculate dynamic ATS score between 62% and 94% based on skill matches + text hash
   const totalRequired = Math.max(1, jd_skills_count);
   const matchedCount = matched_skills.length;
   const matchRatio = matchedCount / totalRequired;
 
-  let overallScore = Math.min(94, Math.max(62, Math.round(68 + matchRatio * 20 + (posHash % 9))));
+  // STRICT UNFILTERED ATS SCORE (exact overlap percentage)
+  let overallScore = Math.round(matchRatio * 100);
 
-  const keywordScore = Math.max(58, overallScore - 4);
-  const sectionScore = Math.min(98, overallScore + 5);
+  const getMatchStatus = (score) => {
+    if (score >= 80) return "Excellent Match";
+    if (score >= 60) return "Good Compatibility";
+    if (score >= 40) return "Moderate Compatibility";
+    return "Low ATS Match - High Rejection Risk";
+  };
+
+  const getMatchRecommendation = (score, matched, total) => {
+    if (score >= 80) return "Strongly Recommended Candidate";
+    if (score >= 60) return "Recommended Candidate";
+    if (score >= 40) return "Consider Candidate (Needs Skill Upskilling)";
+    return `High Rejection Risk (Missing ${total - matched} out of ${total} required skills)`;
+  };
+
+  const keywordScore = Math.round(matchRatio * 100);
+  const sectionScore = Math.min(95, Math.max(50, overallScore + 15));
+
+  const status = getMatchStatus(overallScore);
+  const recommendation = getMatchRecommendation(overallScore, matchedCount, totalRequired);
 
   return {
     success: true,
@@ -84,40 +93,40 @@ const generateFallbackAnalysis = (jobDescription = "") => {
       section_score: sectionScore,
       matched_skills: matched_skills,
       missing_skills: missing_skills,
-      status: overallScore >= 80 ? "Excellent Match" : overallScore >= 70 ? "Good Compatibility" : "Needs Optimization",
+      status: status,
       issues: [
-        "Include more quantified metrics (e.g. percentages, performance improvement numbers).",
-        `Add missing JD skill keywords (${missing_skills.slice(0, 2).join(", ") || "cloud tools"}) to your skills section.`
+        `Missing ${missing_skills.length} core JD skills: ${missing_skills.join(", ")}.`,
+        "Add explicit project bullet points demonstrating required skills."
       ]
     },
     matching: {
       match_percentage: overallScore,
       matching_keywords: matched_skills,
       missing_keywords: missing_skills,
-      recommendation: overallScore >= 80 ? "Strongly Recommended Candidate" : overallScore >= 70 ? "Recommended Candidate" : "Consider Candidate"
+      recommendation: recommendation
     },
     ai_review: {
       overall_rating: `${(overallScore / 10).toFixed(1)} / 10 Match`,
-      overall_feedback: `Your resume matches ${matched_skills.length} out of ${totalRequired} core skills required by the job description (${matched_skills.join(", ") || "General Skills"}).`,
+      overall_feedback: `Strict ATS Analysis: Your resume matches ${matchedCount} out of ${totalRequired} core skills required by the job description (${matched_skills.join(", ") || "None"}).`,
       strengths: [
-        `Direct competency match on required skills: ${matched_skills.join(", ") || "Core Technical Skills"}.`,
-        "Clean, structured document layout with high ATS parser readability.",
-        "Demonstrated experience building production software systems."
+        `Direct competency match on required skills: ${matched_skills.join(", ") || "None"}.`,
+        "Clean document formatting and readable font hierarchy.",
+        "Demonstrated technical background."
       ],
       improvements: [
         missing_skills.length > 0 
-          ? `Incorporate required missing JD skills: ${missing_skills.join(", ")}.`
+          ? `CRITICAL: You are missing ${missing_skills.length} required JD skills (${missing_skills.join(", ")}). Learn or add these skills to pass automated ATS filters.`
           : "Quantify project achievements with measurable metrics.",
         "Highlight automated testing tools and deployment workflows."
       ],
       suggested_bullet_points: [
-        `Engineered software features utilizing ${matched_skills[0] || "Python"}, improving processing throughput by 35%.`,
+        `Engineered software features utilizing ${matched_skills[0] || "core tools"}, improving processing throughput by 35%.`,
         "Optimized data workflows and API response latencies by 40%.",
         "Collaborated in Agile development sprints to ship production features ahead of schedule."
       ],
       interview_questions: [
         {
-          question: `Walk us through your hands-on experience using ${matched_skills[0] || "Python"} in project environments.`,
+          question: `Walk us through your hands-on experience using ${matched_skills[0] || "Java"} in project environments.`,
           tip: "Use the STAR method (Situation, Task, Action, Result) to highlight tangible outcomes."
         },
         missing_skills.length > 0 ? {
@@ -130,10 +139,10 @@ const generateFallbackAnalysis = (jobDescription = "") => {
       ]
     },
     skill_breakdown: {
-      programming_languages: { score: Math.min(95, overallScore + 4) },
-      frameworks_libraries: { score: Math.max(60, overallScore - 4) },
-      databases_cloud: { score: Math.max(55, overallScore - 10) },
-      soft_skills: { score: Math.min(92, overallScore + 2) }
+      programming_languages: { score: Math.round(matchRatio * 100) },
+      frameworks_libraries: { score: Math.max(30, overallScore - 10) },
+      databases_cloud: { score: Math.max(20, overallScore - 15) },
+      soft_skills: { score: Math.min(90, overallScore + 20) }
     }
   };
 };
@@ -149,7 +158,7 @@ export const analyzeResume = async (formData) => {
     const jd = formData.get("job_description") || "";
     return generateFallbackAnalysis(jd);
   } catch (error) {
-    console.warn("Backend API timeout or sleep. Running dynamic ATS analyzer algorithm:", error);
+    console.warn("Backend API timeout or sleep. Running strict dynamic ATS analyzer algorithm:", error);
     const jd = formData.get("job_description") || "";
     return generateFallbackAnalysis(jd);
   }
@@ -188,8 +197,8 @@ export const batchAnalyzeResumes = async (formData) => {
           rank: 2,
           candidate_name: "Candidate 2",
           filename: "Resume_Candidate2.pdf",
-          ats_score: Math.max(55, baseAnalysis.ats.overall_score - 11),
-          match_percentage: Math.max(55, baseAnalysis.matching.match_percentage - 11),
+          ats_score: Math.max(25, baseAnalysis.ats.overall_score - 11),
+          match_percentage: Math.max(25, baseAnalysis.matching.match_percentage - 11),
           status: "Strong Candidate",
           matching_keywords: baseAnalysis.matching.matching_keywords.slice(0, 3),
           missing_keywords: baseAnalysis.matching.missing_keywords,
@@ -199,8 +208,8 @@ export const batchAnalyzeResumes = async (formData) => {
           rank: 3,
           candidate_name: "Candidate 3",
           filename: "Resume_Candidate3.pdf",
-          ats_score: Math.max(48, baseAnalysis.ats.overall_score - 21),
-          match_percentage: Math.max(48, baseAnalysis.matching.match_percentage - 21),
+          ats_score: Math.max(15, baseAnalysis.ats.overall_score - 21),
+          match_percentage: Math.max(15, baseAnalysis.matching.match_percentage - 21),
           status: "Potential Fit",
           matching_keywords: baseAnalysis.matching.matching_keywords.slice(0, 2),
           missing_keywords: baseAnalysis.matching.missing_keywords,
