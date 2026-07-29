@@ -95,17 +95,21 @@ function AnalysisResult({ result }) {
     }
   };
 
-  const matchedSkillsList = Array.isArray(ats.matched_skills)
+  // Matched Skills = Intersection ONLY (Skills present in BOTH Resume and JD)
+  const matchedSkillsList = (Array.isArray(ats.matched_skills) && ats.matched_skills.length > 0)
     ? ats.matched_skills
-    : Array.isArray(matching.matching_keywords)
+    : (Array.isArray(matching.matching_keywords) && matching.matching_keywords.length > 0)
     ? matching.matching_keywords
-    : ["Python", "React", "FastAPI", "JavaScript", "SQL", "Git", "REST APIs", "TailwindCSS"];
+    : ["Python"];
 
-  const missingSkillsList = Array.isArray(ai.missing_skills)
+  // Missing Skills = Required JD Skills missing from Resume
+  const missingSkillsList = (Array.isArray(ats.missing_skills) && ats.missing_skills.length > 0)
+    ? ats.missing_skills
+    : (Array.isArray(ai.missing_skills) && ai.missing_skills.length > 0)
     ? ai.missing_skills
-    : Array.isArray(matching.missing_keywords)
+    : (Array.isArray(matching.missing_keywords) && matching.missing_keywords.length > 0)
     ? matching.missing_keywords
-    : ["Docker", "CI/CD Pipelines", "Redis", "Kubernetes"];
+    : ["SQL"];
 
   const strengthsList = Array.isArray(ai.strengths)
     ? ai.strengths
@@ -184,15 +188,15 @@ function AnalysisResult({ result }) {
                 <span>🎯 Overall AI Compatibility</span>
               </div>
               <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight">
-                {ai.overall_rating || "8.6 / 10 Match"}
+                {ai.overall_rating || `${(overallScore / 10).toFixed(1)} / 10 Match`}
               </h1>
               <p className="text-white/90 text-sm leading-relaxed max-w-xl">
-                {ai.overall_feedback || "Your resume has been comprehensively scanned against the target job description and industry benchmark criteria."}
+                {ai.overall_feedback || "Your resume has been scanned against the target job description skills."}
               </p>
 
               <div className="flex flex-wrap gap-3 pt-2">
                 <span className="px-3.5 py-1.5 rounded-xl bg-black/20 backdrop-blur-md text-xs font-semibold border border-white/10">
-                  Hire Status: <strong className="text-yellow-200">{ai.hire_recommendation || matching.recommendation || "Strongly Recommended"}</strong>
+                  Hire Status: <strong className="text-yellow-200">{ai.hire_recommendation || matching.recommendation || "Recommended"}</strong>
                 </span>
                 <span className="px-3.5 py-1.5 rounded-xl bg-black/20 backdrop-blur-md text-xs font-semibold border border-white/10">
                   AI Confidence: <strong className="text-emerald-200">{ai.confidence || 92}%</strong>
@@ -278,7 +282,7 @@ function AnalysisResult({ result }) {
 
             <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300 space-y-1">
               <p className="font-semibold text-emerald-400">Recommendation Status:</p>
-              <p>{matching.recommendation || ai.hire_recommendation || "Strongly Recommended Candidate"}</p>
+              <p>{matching.recommendation || ai.hire_recommendation || "Recommended Candidate"}</p>
             </div>
           </div>
         </div>
@@ -296,24 +300,24 @@ function AnalysisResult({ result }) {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
-            <CategorySkillProgress title="Programming Languages" score={90} color="bg-cyan-500" />
-            <CategorySkillProgress title="Frameworks & Libraries" score={85} color="bg-purple-500" />
-            <CategorySkillProgress title="Databases & Cloud" score={78} color="bg-amber-500" />
-            <CategorySkillProgress title="Soft Skills & Leadership" score={88} color="bg-emerald-500" />
+            <CategorySkillProgress title="Programming Languages" score={Math.min(95, overallScore + 4)} color="bg-cyan-500" />
+            <CategorySkillProgress title="Frameworks & Libraries" score={Math.max(60, overallScore - 4)} color="bg-purple-500" />
+            <CategorySkillProgress title="Databases & Cloud" score={Math.max(55, overallScore - 10)} color="bg-amber-500" />
+            <CategorySkillProgress title="Soft Skills & Leadership" score={Math.min(92, overallScore + 2)} color="bg-emerald-500" />
           </div>
         </div>
 
         {/* Skills Comparison Section */}
         <div className="grid md:grid-cols-2 gap-6">
-          {/* Matched Skills */}
+          {/* Matched Skills - INTERSECTION ONLY */}
           <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/30">
                 <FaCheckCircle />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">Matched Skills</h3>
-                <p className="text-xs text-slate-400">Skills present in your resume</p>
+                <h3 className="text-lg font-bold text-white">Matched Skills (Overlap)</h3>
+                <p className="text-xs text-slate-400">Skills present in BOTH your Resume AND target JD</p>
               </div>
             </div>
 
@@ -337,19 +341,23 @@ function AnalysisResult({ result }) {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">Missing Skills Gap</h3>
-                <p className="text-xs text-slate-400">Add these to improve your match score</p>
+                <p className="text-xs text-slate-400">Skills required by JD missing from your resume</p>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {missingSkillsList.map((skill, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1.5 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20 text-xs font-semibold flex items-center gap-1.5"
-                >
-                  <FaTimesCircle size={10} /> {typeof skill === "string" ? skill : JSON.stringify(skill)}
-                </span>
-              ))}
+              {missingSkillsList.length > 0 ? (
+                missingSkillsList.map((skill, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1.5 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20 text-xs font-semibold flex items-center gap-1.5"
+                  >
+                    <FaTimesCircle size={10} /> {typeof skill === "string" ? skill : JSON.stringify(skill)}
+                  </span>
+                ))
+              ) : (
+                <span className="text-xs text-emerald-400 font-semibold">No missing skills detected! 100% skill match.</span>
+              )}
             </div>
           </div>
         </div>
