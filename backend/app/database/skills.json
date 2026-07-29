@@ -64,6 +64,7 @@
     "Machine Learning",
     "Deep Learning",
     "Generative AI",
+    "GenAI",
     "TensorFlow",
     "PyTorch",
     "Scikit-learn",
@@ -73,7 +74,17 @@
     "Transformers",
     "XGBoost",
     "Pandas",
-    "NumPy"
+    "NumPy",
+    "Matplotlib",
+    "Seaborn",
+    "LangChain",
+    "RAG",
+    "Prompt Engineering",
+    "Exploratory Data Analysis",
+    "EDA",
+    "Regression",
+    "Classification",
+    "Clustering"
   ],
 
   "Cloud & DevOps": [
@@ -97,11 +108,14 @@
     "Google Analytics"
   ],
 
-  "Version Control": [
+  "Tools & IDEs": [
     "Git",
     "GitHub",
     "GitLab",
-    "Bitbucket"
+    "Bitbucket",
+    "Jupyter Notebook",
+    "Jupyter",
+    "VS Code"
   ],
 
   "Testing & Quality": [

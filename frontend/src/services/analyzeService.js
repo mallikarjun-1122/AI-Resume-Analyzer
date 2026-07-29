@@ -12,9 +12,12 @@ const SKILL_DICTIONARY = [
   "fastapi", "node", "nodejs", "express", "spring boot", "django", "flask",
   "sql", "mysql", "postgresql", "mongodb", "sqlite", "redis",
   "powerbi", "power bi", "tableau", "excel",
-  "ai", "artificial intelligence", "machine learning", "deep learning", "pandas", "numpy", "pytorch", "tensorflow",
+  "ai", "artificial intelligence", "machine learning", "deep learning", "genai",
+  "pandas", "numpy", "matplotlib", "seaborn", "scikit-learn", "xgboost",
+  "langchain", "rag", "prompt engineering", "eda", "exploratory data analysis",
+  "regression", "classification", "clustering",
   "docker", "kubernetes", "aws", "azure", "gcp", "google cloud", "ci/cd",
-  "git", "github", "gitlab",
+  "git", "github", "gitlab", "jupyter", "vs code",
   "testing", "unit testing", "software testing", "pytest", "jest", "selenium", "postman"
 ];
 
@@ -26,7 +29,20 @@ function normalizeSkill(skill) {
   if (s === "html" || s === "html5") return "HTML5";
   if (s === "css" || s === "css3") return "CSS3";
   if (s === "git" || s === "github") return "Git & GitHub";
-  if (s === "ai" || s === "artificial intelligence" || s === "machine learning") return "AI / ML";
+  if (s === "ai" || s === "artificial intelligence" || s === "machine learning" || s === "genai") return "AI / Machine Learning";
+  if (s === "pandas") return "Pandas";
+  if (s === "numpy") return "NumPy";
+  if (s === "matplotlib") return "Matplotlib";
+  if (s === "scikit-learn") return "Scikit-Learn";
+  if (s === "xgboost") return "XGBoost";
+  if (s === "langchain") return "LangChain";
+  if (s === "rag") return "RAG";
+  if (s === "prompt engineering") return "Prompt Engineering";
+  if (s === "eda" || s === "exploratory data analysis") return "EDA";
+  if (s === "tableau") return "Tableau";
+  if (s === "excel") return "Excel";
+  if (s === "jupyter") return "Jupyter";
+  if (s === "vs code") return "VS Code";
   if (s === "testing" || s === "unit testing" || s === "software testing" || s === "pytest" || s === "jest") return "Software Testing";
   if (s === "c#" || s === ".net") return "C# / .NET";
   if (s === "azure" || s === "microsoft azure") return "Azure";
@@ -45,13 +61,15 @@ function analyzeMatchingAndMissingSkills(jobDescriptionText = "") {
   
   // Extract all skills mentioned in the target Job Description
   const jdSkillsFound = SKILL_DICTIONARY.filter(skill => jdLower.includes(skill));
-  const finalJdSkills = Array.from(new Set((jdSkillsFound.length > 0 ? jdSkillsFound : ["python", "sql", "java", "javascript", "git"]).map(normalizeSkill)));
+  const finalJdSkills = Array.from(new Set((jdSkillsFound.length > 0 ? jdSkillsFound : ["python", "sql", "pandas", "numpy"]).map(normalizeSkill)));
 
-  // Candidate resume comprehensive skill set
+  // Candidate resume comprehensive skill set including Data Science, ML & GenAI
   const candidateResumeSkillsRaw = [
     "python", "java", "javascript", "typescript", "dsa", "data structures",
     "html", "html5", "css", "css3", "react", "fastapi", "sql", "powerbi", "power bi",
-    "git", "github", "ai", "testing", "c#", "azure", "docker"
+    "pandas", "numpy", "matplotlib", "scikit-learn", "xgboost", "regression", "classification", "clustering",
+    "prompt engineering", "langchain", "rag", "eda", "exploratory data analysis",
+    "git", "github", "jupyter", "vs code", "ai", "genai", "testing"
   ];
   const candidateResumeSkills = Array.from(new Set(candidateResumeSkillsRaw.map(normalizeSkill)));
 
@@ -60,7 +78,7 @@ function analyzeMatchingAndMissingSkills(jobDescriptionText = "") {
     finalJdSkills.some(jSkill => jSkill.toLowerCase() === rSkill.toLowerCase())
   );
 
-  // Missing Skills = Skills required by JD that are NOT in Resume
+  // Missing Skills = Skills required by JD that are NOT in Candidate Resume
   const missingSkills = finalJdSkills.filter(jSkill => 
     !candidateResumeSkills.some(rSkill => rSkill.toLowerCase() === jSkill.toLowerCase())
   );
@@ -146,7 +164,7 @@ const generateFallbackAnalysis = (jobDescription = "") => {
       ],
       interview_questions: [
         {
-          question: `Walk us through your hands-on experience using ${matched_skills[0] || "Java"} in project environments.`,
+          question: `Walk us through your hands-on experience using ${matched_skills[0] || "Python"} in project environments.`,
           tip: "Use the STAR method (Situation, Task, Action, Result) to highlight tangible outcomes."
         },
         missing_skills.length > 0 ? {
