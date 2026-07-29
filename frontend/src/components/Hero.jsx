@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaRocket, FaPlay, FaCheckCircle, FaMagic, FaBrain, FaChartLine } from "react-icons/fa";
+import { FaRocket, FaCheckCircle, FaMagic } from "react-icons/fa";
 
 function Hero() {
   return (
@@ -62,7 +62,7 @@ function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-slate-400 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed"
         >
-          Stop getting rejected by automated resume scanners. Upload your resume, match against any job description, unlock instant ATS scores, and receive AI-tailored interview preparation in seconds.
+          Stop getting rejected by automated resume scanners. Log in to upload your resume, match against any job description, unlock instant ATS scores, and receive AI-tailored interview preparation in seconds.
         </motion.p>
 
         {/* Action Buttons */}
@@ -73,7 +73,7 @@ function Hero() {
           className="flex flex-col sm:flex-row justify-center gap-4 pt-2"
         >
           <Link
-            to="/dashboard"
+            to="/login"
             className="px-8 py-4 rounded-2xl text-base font-black text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:to-purple-500 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 flex items-center justify-center gap-3 glow-cyan group"
           >
             <FaRocket className="group-hover:translate-x-1 transition-transform" />
@@ -81,10 +81,10 @@ function Hero() {
           </Link>
 
           <Link
-            to="/login"
+            to="/register"
             className="px-8 py-4 rounded-2xl text-base font-bold text-slate-200 bg-slate-900/90 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 transition-all duration-300 flex items-center justify-center gap-2"
           >
-            <span>Try Instant Demo</span>
+            <span>Create Free Account</span>
           </Link>
         </motion.div>
 

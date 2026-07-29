@@ -5,8 +5,11 @@ import {
   FaLightbulb,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function Stats() {
+  const navigate = useNavigate();
+
   const reasons = [
     {
       icon: <FaRobot size={40} className="text-blue-600" />,
@@ -173,6 +176,7 @@ function Stats() {
           className="text-center mt-16"
         >
           <motion.button
+            onClick={() => navigate("/login")}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-10 py-5 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300"
