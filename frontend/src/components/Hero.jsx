@@ -88,37 +88,12 @@ function Hero() {
           </Link>
         </motion.div>
 
-        {/* Stat Highlights Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8"
-        >
-          <div className="p-5 rounded-2xl glass-panel border border-slate-800/80 text-center">
-            <div className="text-3xl font-black gradient-text-primary">98.4%</div>
-            <div className="text-xs font-semibold text-slate-400 mt-1">ATS Pass Rate</div>
-          </div>
-          <div className="p-5 rounded-2xl glass-panel border border-slate-800/80 text-center">
-            <div className="text-3xl font-black gradient-text-emerald">&lt; 3 Sec</div>
-            <div className="text-xs font-semibold text-slate-400 mt-1">AI Scan Speed</div>
-          </div>
-          <div className="p-5 rounded-2xl glass-panel border border-slate-800/80 text-center">
-            <div className="text-3xl font-black gradient-text-sunset">50K+</div>
-            <div className="text-xs font-semibold text-slate-400 mt-1">Resumes Analyzed</div>
-          </div>
-          <div className="p-5 rounded-2xl glass-panel border border-slate-800/80 text-center">
-            <div className="text-3xl font-black gradient-text-gold">4.9 / 5</div>
-            <div className="text-xs font-semibold text-slate-400 mt-1">Candidate Rating</div>
-          </div>
-        </motion.div>
-
         {/* Trust Badges */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="flex flex-wrap justify-center items-center gap-6 text-xs text-slate-400 font-semibold pt-4"
+          transition={{ delay: 0.5 }}
+          className="flex flex-wrap justify-center items-center gap-6 text-xs text-slate-400 font-semibold pt-6"
         >
           <span className="flex items-center gap-2 text-emerald-400">
             <FaCheckCircle /> 100% Free & Confidential

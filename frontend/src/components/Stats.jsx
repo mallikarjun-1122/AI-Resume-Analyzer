@@ -139,39 +139,11 @@ function Stats() {
           ))}
         </div>
 
-        {/* Trust Badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-20 pt-12 border-t border-gray-200/50"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-blue-600">95%</p>
-              <p className="text-sm text-gray-600 mt-2">Success Rate</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-green-600">10K+</p>
-              <p className="text-sm text-gray-600 mt-2">Resumes Analyzed</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-purple-600">4.9</p>
-              <p className="text-sm text-gray-600 mt-2">User Rating</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-orange-600">500+</p>
-              <p className="text-sm text-gray-600 mt-2">Companies Trust</p>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
           className="text-center mt-16"
         >
