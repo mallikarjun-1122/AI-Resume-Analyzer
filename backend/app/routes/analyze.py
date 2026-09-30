@@ -25,31 +25,53 @@ UPLOAD_DIR = Path("uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
 
 
+MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024  # 5 MB
+
+
 @router.post("/analyze")
 async def analyze_resume(
     file: UploadFile = File(...),
     job_description: str = Form(...)
 ):
+    file_path = None
     try:
-        print(f"1. Saving file: {file.filename}...")
+        # ── 1. Validate file type ──
         extension = Path(file.filename).suffix.lower()
-
         if extension not in {".pdf", ".docx"}:
-            return {
-                "success": False,
-                "error": "Only PDF and DOCX files are supported."
-            }
+            raise HTTPException(status_code=400, detail="Only PDF and DOCX files are supported.")
 
+        # ── 2. Validate file size ──
+        contents = await file.read()
+        if len(contents) > MAX_FILE_SIZE_BYTES:
+            raise HTTPException(status_code=400, detail="File too large. Maximum allowed size is 5MB.")
+        if len(contents) == 0:
+            raise HTTPException(status_code=400, detail="Uploaded file is empty.")
+
+        # ── 3. Validate JD ──
+        if len(job_description.strip()) < 50:
+            raise HTTPException(status_code=400, detail="Job description is too short. Please paste the full job description.")
+
+        # ── 4. Save file ──
+        print(f"1. Saving file: {file.filename}...")
         file_path = UPLOAD_DIR / file.filename
-
         with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
+            buffer.write(contents)
 
+        # ── 5. Extract text ──
         print(f"2. Extracting text for {extension}...")
         if extension == ".pdf":
             resume_text = extract_text_from_pdf(str(file_path))
         else:
             resume_text = extract_text_from_docx(str(file_path))
+
+        # ── 6. Guard against blank/scanned PDFs ──
+        if not resume_text or len(resume_text.strip()) < 100:
+            raise HTTPException(
+                status_code=422,
+                detail="Could not extract readable text from your resume. "
+                       "This usually happens with scanned or image-based PDFs. "
+                       "Please use a text-based PDF or DOCX file."
+            )
 
         print("3. Parsing Resume...")
         resume = parse_resume(resume_text)
@@ -58,17 +80,10 @@ async def analyze_resume(
         jd = parse_job_description(job_description)
 
         print("5. Matching Resume...")
-        matching = match_resume_with_jd(
-            resume,
-            jd
-        )
+        matching = match_resume_with_jd(resume, jd)
 
         print("6. Calculating ATS...")
-        ats = calculate_ats_score(
-            resume=resume,
-            jd=jd,
-            match_result=matching
-        )
+        ats = calculate_ats_score(resume=resume, jd=jd, match_result=matching)
 
         print("7. Generating AI Review with Gemini...")
         ai_review = generate_ai_review(resume, jd)
@@ -83,12 +98,19 @@ async def analyze_resume(
             "ai_review": ai_review
         }
 
+    except HTTPException:
+        raise
     except Exception as e:
         print("ANALYSIS ERROR:", e)
-        return {
-            "success": False,
-            "error": f"Error analyzing resume: {str(e)}"
-        }
+        return {"success": False, "error": f"Error analyzing resume: {str(e)}"}
+
+    finally:
+        # ── Always delete file from server after processing ──
+        if file_path and Path(file_path).exists():
+            try:
+                Path(file_path).unlink()
+            except Exception:
+                pass
 
 
 @router.post("/batch-analyze")

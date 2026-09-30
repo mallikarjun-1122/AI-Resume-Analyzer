@@ -82,6 +82,13 @@ function ResumeUpload({ onAnalysisComplete }) {
       return;
     }
 
+    // ── Client-side 5MB size check ──
+    if (selectedFile.size > 5 * 1024 * 1024) {
+      alert("File is too large. Maximum allowed size is 5MB. Please compress your PDF or use a DOCX file.");
+      e.target.value = "";
+      return;
+    }
+
     setFile(selectedFile);
   };
 
@@ -103,19 +110,39 @@ function ResumeUpload({ onAnalysisComplete }) {
       return;
     }
 
+    if (jobDescription.trim().length < 50) {
+      alert("Job description is too short. Please paste the full job description for accurate results.");
+      return;
+    }
+
     try {
       setLoading(true);
-      setStatusMessage("Extracting text & parsing resume structure...");
+
+      // ── Step-by-step status messages with delay ──
+      const steps = [
+        "📄 Reading and extracting resume text...",
+        "🔍 Identifying skills and experience...",
+        "🧠 Matching skills against job description...",
+        "📊 Calculating ATS compatibility score...",
+        "✨ Generating AI feedback with Gemini...",
+        "⏳ Almost done, finalizing your report...",
+      ];
+      let stepIndex = 0;
+      setStatusMessage(steps[0]);
+      const stepTimer = setInterval(() => {
+        stepIndex = (stepIndex + 1) % steps.length;
+        setStatusMessage(steps[stepIndex]);
+      }, 3000);
 
       const formData = new FormData();
       formData.append("file", file);
       formData.append("job_description", jobDescription);
 
-      setStatusMessage("Running AI analysis & calculating ATS compatibility...");
       const result = await analyzeResume(formData);
+      clearInterval(stepTimer);
 
       if (!result.success) {
-        alert(result.error || "Analysis failed. Please check backend server status.");
+        alert(result.error || "Analysis failed. Please check your resume file and try again.");
         return;
       }
 
@@ -138,11 +165,26 @@ function ResumeUpload({ onAnalysisComplete }) {
     } catch (error) {
       console.error(error);
       const isNetErr = error.message === "Network Error" || error.code === "ECONNABORTED";
-      alert(
-        isNetErr
-          ? "Backend is spinning up from free-tier sleep (takes ~30s). Please tap 'Run AI Resume Analysis' again in a few seconds!"
-          : (error.response?.data?.detail || error.message || "Analysis failed. Please try again.")
-      );
+      const isTimeout = error.code === "ECONNABORTED";
+
+      if (isTimeout) {
+        alert(
+          "⏱️ Request timed out.\n\nThe backend may be waking up from sleep (free tier). " +
+          "Please wait 30–60 seconds and try again."
+        );
+      } else if (isNetErr) {
+        alert(
+          "🔌 Cannot connect to the backend server.\n\n" +
+          "If this is your first request in a while, the server may be waking up (takes ~30–60 seconds on free tier). " +
+          "Please wait a moment and try again."
+        );
+      } else {
+        alert(
+          error.response?.data?.detail ||
+          error.message ||
+          "Analysis failed. Please try again."
+        );
+      }
     } finally {
       setLoading(false);
       setStatusMessage("");
@@ -168,6 +210,10 @@ function ResumeUpload({ onAnalysisComplete }) {
       const ext = droppedFile.name.substring(droppedFile.name.lastIndexOf(".")).toLowerCase();
       if (![".pdf", ".docx"].includes(ext)) {
         alert("Only PDF and DOCX files are allowed.");
+        return;
+      }
+      if (droppedFile.size > 5 * 1024 * 1024) {
+        alert("File is too large. Maximum allowed size is 5MB.");
         return;
       }
       setFile(droppedFile);
