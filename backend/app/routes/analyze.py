@@ -143,18 +143,37 @@ async def batch_analyze_resumes(
             matching = match_resume_with_jd(resume, jd)
             ats = calculate_ats_score(resume=resume, jd=jd, match_result=matching)
 
+            skill_score = ats.get("overall_score", 0)
+            breakdown = ats.get("breakdown", {})
+            exp_score = breakdown.get("experience", 0)  # max 20
+            edu_score = breakdown.get("education", 0)   # max 10
+
+            # Normalized Multi-Criteria Recruiter Ranking Formula:
+            # 60% Skill Compatibility + 25% Experience Depth + 15% Educational Background
+            exp_norm = (exp_score / 20) * 100 if exp_score else 50
+            edu_norm = (edu_score / 10) * 100 if edu_score else 50
+            composite_rank_score = round((skill_score * 0.60) + (exp_norm * 0.25) + (edu_norm * 0.15), 1)
+
             results.append({
                 "filename": file.filename,
-                "name": resume.get("personal_info", {}).get("name") or file.filename,
+                "name": resume.get("personal_info", {}).get("name") or file.filename.replace(ext, ""),
                 "email": resume.get("personal_info", {}).get("email") or "N/A",
-                "ats_score": ats.get("overall_score", 0),
+                "ats_score": skill_score,
+                "rank_score": composite_rank_score,
                 "match_percentage": matching.get("match_percentage", 0),
-                "recommendation": matching.get("recommendation", "Consider"),
+                "experience_score": exp_score,
+                "education_score": edu_score,
+                "recommendation": "Strong Hire" if composite_rank_score >= 75 else ("Consider" if composite_rank_score >= 50 else "Reject"),
                 "matched_skills": ats.get("matched_skills", []),
+                "missing_skills": ats.get("missing_skills", []),
             })
 
-        # Sort leaderboard by ATS score descending
-        results.sort(key=lambda x: x["ats_score"], reverse=True)
+            # Cleanup uploaded file
+            if file_path.exists():
+                file_path.unlink()
+
+        # Sort leaderboard by multi-factor composite rank score descending
+        results.sort(key=lambda x: x["rank_score"], reverse=True)
 
         return {
             "success": True,

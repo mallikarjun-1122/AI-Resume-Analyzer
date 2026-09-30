@@ -15,7 +15,15 @@ SECTION_PATTERNS = {
         "technical skills",
         "technical expertise",
         "core competencies",
-        "expertise"
+        "expertise",
+        "skills  abilities",
+        "technical proficiencies",
+        "tech stack",
+        "tools  technologies",
+        "technologies",
+        "technical toolbox",
+        "key skills",
+        "competencies"
     ],
 
     "experience": [
@@ -23,8 +31,13 @@ SECTION_PATTERNS = {
         "work experience",
         "professional experience",
         "employment history",
+        "work history",
+        "professional journey",
         "internship",
-        "internships"
+        "internships",
+        "experience  internships",
+        "industry experience",
+        "career history"
     ],
 
     "education": [
@@ -32,7 +45,10 @@ SECTION_PATTERNS = {
         "academic qualification",
         "academic background",
         "academics",
-        "qualification"
+        "qualification",
+        "educational details",
+        "education  training",
+        "degrees"
     ],
 
     "projects": [
@@ -40,7 +56,10 @@ SECTION_PATTERNS = {
         "academic projects",
         "personal projects",
         "major projects",
-        "key projects"
+        "key projects",
+        "notable projects",
+        "portfolio projects",
+        "technical projects"
     ],
 
     "certifications": [
