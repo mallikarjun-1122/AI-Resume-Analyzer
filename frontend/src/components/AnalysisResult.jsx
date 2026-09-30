@@ -12,9 +12,28 @@ import {
   FaChevronUp,
   FaMagic,
   FaEnvelopeOpenText,
+  FaLayerGroup,
 } from "react-icons/fa";
 import CoverLetterModal from "./CoverLetterModal";
 import BulletEnhancerModal from "./BulletEnhancerModal";
+
+function CategorySkillProgress({ title, score, color = "bg-green-400" }) {
+  const safeScore = Math.min(100, Math.max(0, Math.round(Number(score) || 0)));
+  return (
+    <div className="p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800 space-y-2">
+      <div className="flex justify-between items-center text-xs">
+        <span className="font-semibold text-zinc-300">{title}</span>
+        <span className="font-extrabold text-white">{safeScore}%</span>
+      </div>
+      <div className="h-1.5 w-full bg-zinc-950 rounded-full overflow-hidden">
+        <div
+          className={`h-full ${color} rounded-full transition-all duration-700`}
+          style={{ width: `${safeScore}%` }}
+        />
+      </div>
+    </div>
+  );
+}
 
 function AnalysisResult({ result }) {
   const reportRef = useRef(null);

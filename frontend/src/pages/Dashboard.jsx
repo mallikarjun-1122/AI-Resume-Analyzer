@@ -14,30 +14,6 @@ import VersionComparerModal from "../components/VersionComparerModal";
 
 import { getHistory } from "../services/historyService";
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-  componentDidCatch(error, info) {
-    console.error("Dashboard component caught error:", error, info);
-  }
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="glass-panel rounded-3xl p-8 text-center border border-slate-800 space-y-3">
-          <p className="text-white font-bold text-lg">Report Ready</p>
-          <p className="text-slate-400 text-xs">Refresh your browser page to view updated report metrics.</p>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
-
 function Dashboard() {
   const { user } = useAuth();
 
@@ -93,8 +69,7 @@ function Dashboard() {
 
   return (
     <DashboardLayout>
-      <ErrorBoundary>
-        <div className="space-y-8">
+      <div className="space-y-8">
           {/* Welcome Header */}
           <div className="relative overflow-hidden rounded-3xl bg-zinc-950 p-8 sm:p-10 border border-zinc-800 shadow-2xl">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
@@ -224,7 +199,6 @@ function Dashboard() {
             </div>
           )}
         </div>
-      </ErrorBoundary>
 
       {/* Tool Modals */}
       <BulletEnhancerModal isOpen={showBulletEnhancer} onClose={() => setShowBulletEnhancer(false)} />
