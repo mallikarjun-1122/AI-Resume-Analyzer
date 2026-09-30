@@ -1,0 +1,45 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_077
+Role: Data Scientist | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Student/intern Data Scientist with proven ability to build scalable software.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: Deep Learning, GCP, Machine Learning, pytorch, Python, SQL, Elixir
+
+WORK EXPERIENCE
+------------------------------
+Data Scientist   Jan 2023 - Present
+Blue Horizon Digital
+• Architected core Data Scientist features utilizing PyTorch.
+• Enhanced system efficiency and automated processing using Python.
+
+ACADEMIC BACKGROUND
+------------------------------
+M.Sc
+Pinnacle Polytechnic School
+2013 - 2017
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: GCP, Machine Learning
+• Constructed scalable service processing data with GCP.
+• Integrated automated pipelines and testing with Machine Learning.
+
+Synthetic Platform Project 2
+• Constructed scalable service processing data with Machine Learning.
+• Integrated automated pipelines and testing with SQL.
+
+COURSES
+------------------------------
+None.

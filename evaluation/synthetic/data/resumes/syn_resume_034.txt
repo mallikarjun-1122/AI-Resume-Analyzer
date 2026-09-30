@@ -1,0 +1,42 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_034
+Role: Frontend Developer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Junior Frontend Developer with proven ability to build scalable software.
+
+SKILLS
+------------------------------
+Technical Skills: CSS, HTML, Next.js, ReactJS, Tableau, TAILWIND CSS, typescript, WebAssembly
+
+EXPERIENCE
+------------------------------
+Frontend Developer   Jan 2022 - Present
+Blue Horizon Digital
+• Architected core Frontend Developer features utilizing React.
+• Enhanced system efficiency and automated processing using Tailwind CSS.
+
+EDUCATION
+------------------------------
+Self-taught practical background.
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with HTML.
+• Integrated automated pipelines and testing with Tailwind CSS.
+
+Synthetic Platform Project 2
+• Constructed scalable service processing data with CSS.
+• Integrated automated pipelines and testing with Tailwind CSS.
+
+CERTIFICATIONS
+------------------------------
+None.

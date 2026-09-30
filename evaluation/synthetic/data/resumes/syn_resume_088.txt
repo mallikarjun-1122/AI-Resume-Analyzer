@@ -1,0 +1,57 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_088
+Role: Software Engineer | Experience: Senior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Senior Software Engineer with proven ability to build scalable software.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: C++, DSA, Data Structures, Docker, Git, Java, Problem Solving, Python, SQL, Solidity
+
+CAREER TRAJECTORY
+------------------------------
+Software Engineer   Jan 2015 - Dec 2016
+Blue Horizon Digital
+• Architected core Software Engineer features utilizing Git.
+• Enhanced system efficiency and automated processing using Python.
+
+Software Engineer
+Nova Core Systems
+Jan 2017 - Dec 2018
+• Architected core Software Engineer features utilizing Data Structures.
+• Enhanced system efficiency and automated processing using C++.
+
+Senior Software Engineer   Jan 2019 - Present
+Vertex Cloud Solutions
+• Architected core Software Engineer features utilizing DSA.
+• Enhanced system efficiency and automated processing using Java.
+
+SCHOOLING AND DEGREES
+------------------------------
+Bachelor of Science in Computing
+National Technical University
+2019 - 2023
+CGPA: 3.31
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Git, Java, Problem Solving, SQL
+• Constructed scalable service processing data with Git.
+• Integrated automated pipelines and testing with SQL.
+
+Synthetic Platform Project 2
+• Constructed scalable service processing data with C++.
+• Integrated automated pipelines and testing with SQL.
+
+BADGES AND PAPERS
+------------------------------
+PostgreSQL Certified Professional

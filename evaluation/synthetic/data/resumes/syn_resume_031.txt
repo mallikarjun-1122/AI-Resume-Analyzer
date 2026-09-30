@@ -1,0 +1,48 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_031
+Role: QA Automation Engineer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Mid-level QA Automation Engineer with proven ability to build scalable software.
+
+SKILLS
+------------------------------
+Technical Skills: ci/cd, CSS, GIT, JEST, Postman, PyTest, Python, Selenium, Testing
+
+EXPERIENCE
+------------------------------
+QA Automation Engineer   Jan 2019 - Dec 2020
+Synthetix Data Labs
+• Architected core QA Automation Engineer features utilizing CSS.
+• Enhanced system efficiency and automated processing using CI/CD.
+
+QA Automation Engineer   Jan 2021 - Present
+Vertex Cloud Solutions
+• Architected core QA Automation Engineer features utilizing Testing.
+• Enhanced system efficiency and automated processing using Postman.
+
+EDUCATION
+------------------------------
+BCA
+Horizon Engineering College
+2018 - 2022
+CGPA: 3.35
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Postman, PyTest
+• Constructed scalable service processing data with Postman.
+• Integrated automated pipelines and testing with PyTest.
+
+CERTIFICATIONS
+------------------------------
+PostgreSQL Certified Professional
+Certified Systems Developer

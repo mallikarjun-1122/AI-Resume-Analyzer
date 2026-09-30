@@ -1,0 +1,51 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_080
+Role: Software Engineer | Experience: Senior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+M.Sc
+Horizon Engineering College
+2016 - 2020
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: DSA, Git
+• Constructed scalable service processing data with DSA.
+• Integrated automated pipelines and testing with Git.
+
+SKILLS
+------------------------------
+Technical Skills: C++, DSA, Data Structures, Docker, git, Java, Jenkins, Problem Solving, Python, SQL, Elixir
+
+EXPERIENCE
+------------------------------
+Software Engineer   Jan 2015 - Dec 2016
+Quantum Dynamics Corp
+• Architected core Software Engineer features utilizing Jenkins.
+• Enhanced system efficiency and automated processing using DSA.
+
+Software Engineer   Jan 2017 - Dec 2018
+Vertex Cloud Solutions
+• Architected core Software Engineer features utilizing Problem Solving.
+• Enhanced system efficiency and automated processing using Java.
+
+Senior Software Engineer   Jan 2019 - Present
+Vertex Cloud Solutions
+• Architected core Software Engineer features utilizing Data Structures.
+• Enhanced system efficiency and automated processing using DSA.
+
+CERTIFICATIONS
+------------------------------
+AWS Certified Professional
+
+SUMMARY
+------------------------------
+Dedicated Senior Software Engineer with proven ability to build scalable software.

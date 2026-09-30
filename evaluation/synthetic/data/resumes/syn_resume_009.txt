@@ -1,0 +1,37 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_009
+Role: Backend Developer | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Student/intern Backend Developer with proven ability to build scalable software. Currently exploring and learning Jest.
+
+SKILLS
+------------------------------
+Technical Skills: Django, Docker, Next js, NODE.JS, PostgreSQL, Redis, SQL
+
+EXPERIENCE
+------------------------------
+No previous formal industry employment.
+
+EDUCATION
+------------------------------
+Diploma
+Metropolitan Science Institute
+2014 - 2018
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with Django.
+• Integrated automated pipelines and testing with SQL.
+
+CERTIFICATIONS
+------------------------------
+None.

@@ -1,0 +1,53 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_035
+Role: Full Stack Developer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+Bachelor of Technology
+Apex Institute of Technology
+2014 - 2018
+CGPA: 3.60
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: HTML, PostgreSQL
+• Constructed scalable service processing data with HTML.
+• Integrated automated pipelines and testing with PostgreSQL.
+
+Synthetic Platform Project 2
+Technologies: CSS, React, TypeScript
+• Constructed scalable service processing data with CSS.
+• Integrated automated pipelines and testing with TypeScript.
+
+SKILLS
+------------------------------
+Technical Skills: CSS, Docker, FastAPI, git, HTML, Postgres, React, Redis, TypeScript
+
+EXPERIENCE
+------------------------------
+Full Stack Developer   Jan 2019 - Dec 2020
+Blue Horizon Digital
+• Architected core Full Stack Developer features utilizing HTML.
+• Enhanced system efficiency and automated processing using Redis.
+
+Full Stack Developer   Jan 2021 - Present
+Apex Global Software
+• Architected core Full Stack Developer features utilizing Redis.
+• Enhanced system efficiency and automated processing using CSS.
+
+CERTIFICATIONS
+------------------------------
+AWS Certified Professional
+Certified Systems Developer
+
+SUMMARY
+------------------------------
+Dedicated Mid-level Full Stack Developer with proven ability to build scalable software.

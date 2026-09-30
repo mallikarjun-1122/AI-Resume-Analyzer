@@ -1,0 +1,46 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_045
+Role: Data Scientist | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+Diploma
+Apex Institute of Technology
+2014 - 2018
+CGPA: 3.94
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with Pandas.
+• Integrated automated pipelines and testing with PyTorch.
+
+Synthetic Platform Project 2
+Technologies: Pandas, TensorFlow
+• Constructed scalable service processing data with Pandas.
+• Integrated automated pipelines and testing with TensorFlow.
+
+SKILLS
+------------------------------
+Technical Skills: Machine Learning, Pandas, PyTorch, Scikit-learn, TensorFlow, Julia
+
+EXPERIENCE
+------------------------------
+Data Scientist   Jan 2023 - Present
+Quantum Dynamics Corp
+• Architected core Data Scientist features utilizing Scikit-learn.
+• Enhanced system efficiency and automated processing using TensorFlow.
+
+CERTIFICATIONS
+------------------------------
+None.
+
+SUMMARY
+------------------------------
+Dedicated Student/intern Data Scientist with proven ability to build scalable software.

@@ -1,0 +1,36 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_029
+Role: Data Scientist | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Student/intern Data Scientist with proven ability to build scalable software.
+
+SKILLS
+------------------------------
+Technical Skills: CSS, Deep Learning, Machine Learning, NumPy, PyTorch, tensorflow
+
+EXPERIENCE
+------------------------------
+No previous formal industry employment.
+
+EDUCATION
+------------------------------
+Self-taught practical background.
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: CSS, Machine Learning
+• Constructed scalable service processing data with CSS.
+• Integrated automated pipelines and testing with Machine Learning.
+
+CERTIFICATIONS
+------------------------------
+None.

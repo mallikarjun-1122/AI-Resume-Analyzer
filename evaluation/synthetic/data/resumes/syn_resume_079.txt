@@ -1,0 +1,42 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_079
+Role: QA Automation Engineer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Mid-level QA Automation Engineer with proven ability to build scalable software. Currently exploring and learning TypeScript.
+
+SKILLS
+------------------------------
+Technical Skills: CI/CD, Git, JavaScript, Jest, KOTLIN, Postman, PyTest, Python, Selenium, Testing, Haskell
+
+EXPERIENCE
+------------------------------
+QA Automation Engineer
+Blue Horizon Digital
+Jan 2019 - Dec 2020
+• Architected core QA Automation Engineer features utilizing Testing.
+• Enhanced system efficiency and automated processing using PyTest.
+
+QA Automation Engineer   Jan 2021 - Present
+Quantum Dynamics Corp
+• Architected core QA Automation Engineer features utilizing Kotlin.
+• Enhanced system efficiency and automated processing using Jest.
+
+EDUCATION
+------------------------------
+Self-taught practical background.
+
+PROJECTS
+------------------------------
+Portfolio available upon request.
+
+CERTIFICATIONS
+------------------------------
+None.

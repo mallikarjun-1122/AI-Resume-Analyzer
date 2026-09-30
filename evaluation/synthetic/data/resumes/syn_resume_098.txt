@@ -1,0 +1,45 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_098
+Role: Frontend Developer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Junior Frontend Developer with proven ability to build scalable software.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: html, javascript, ReactJS, Redux, SWIFT, Tailwind CSS, TYPESCRIPT
+
+CAREER TRAJECTORY
+------------------------------
+Frontend Developer   Jan 2022 - Present
+Apex Global Software
+• Architected core Frontend Developer features utilizing Swift.
+• Enhanced system efficiency and automated processing using TypeScript.
+
+SCHOOLING AND DEGREES
+------------------------------
+B.Sc
+Pinnacle Polytechnic School
+2013 - 2017
+CGPA: 3.78
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with HTML.
+• Integrated automated pipelines and testing with React.
+
+Synthetic Platform Project 2
+• Constructed scalable service processing data with HTML.
+• Integrated automated pipelines and testing with TypeScript.
+
+BADGES AND PAPERS
+------------------------------
+None.

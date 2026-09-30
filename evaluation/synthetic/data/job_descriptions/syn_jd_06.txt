@@ -1,0 +1,12 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Full Stack Web & API Specialist
+LOCATION: On-site
+REQUIREMENTS:
+- Frontend: JavaScript, TypeScript, React, HTML, CSS, Tailwind CSS
+- Backend: Node.js, Express.js, MongoDB
+- Testing & Versioning: Git, Postman

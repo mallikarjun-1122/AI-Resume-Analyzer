@@ -1,0 +1,47 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_042
+Role: Frontend Developer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Junior Frontend Developer with proven ability to build scalable software.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: CSS, HTML, JavaScript, Next.js, ReactJS, Redux, Rust, TypeScript, GraphQL
+
+WORK EXPERIENCE
+------------------------------
+Frontend Developer
+Vertex Cloud Solutions
+Jan 2022 - Present
+• Architected core Frontend Developer features utilizing Rust.
+• Enhanced system efficiency and automated processing using React.
+
+ACADEMIC BACKGROUND
+------------------------------
+Bachelor of Arts in Applied Math
+State Engineering University
+2017 - 2021
+CGPA: 3.70
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with JavaScript.
+• Integrated automated pipelines and testing with TypeScript.
+
+Synthetic Platform Project 2
+Technologies: HTML, Next.js, Rust
+• Constructed scalable service processing data with HTML.
+• Integrated automated pipelines and testing with Rust.
+
+COURSES
+------------------------------
+None.

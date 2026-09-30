@@ -1,0 +1,10 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Frontend React Engineer
+REQUIREMENTS:
+- Core stack: JavaScript, TypeScript, React, HTML, CSS.
+- State management: Redux. Styling: Tailwind CSS.

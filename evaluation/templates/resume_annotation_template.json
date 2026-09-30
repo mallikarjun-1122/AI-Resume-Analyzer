@@ -1,0 +1,44 @@
+{
+  "resume_id": "REPLACE_WITH_UNIQUE_RESUME_ID",
+  "file_path": "resumes/REPLACE_WITH_FILENAME.txt",
+  "skills": {
+    "Programming Languages": [],
+    "Frontend": [],
+    "Backend": [],
+    "Database": [],
+    "Cloud & DevOps": [],
+    "AI & ML": [],
+    "BI & Analytics": [],
+    "Tools & IDEs": [],
+    "Testing & Quality": [],
+    "Soft Skills": []
+  },
+  "education": {
+    "degree": null,
+    "institution": null,
+    "cgpa": null,
+    "duration": null
+  },
+  "experience": [
+    {
+      "job_title": "Example: Software Engineer",
+      "company": "Example: Acme Corp",
+      "duration": "Example: Jan 2022 – Present",
+      "technologies": ["Python", "FastAPI"],
+      "description": [
+        "Example bullet 1 describing system development and achievements."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Example: Microservice Platform",
+      "technologies": ["FastAPI", "Docker"],
+      "description": [
+        "Example project bullet 1."
+      ]
+    }
+  ],
+  "certifications": [],
+  "notes": "Annotator remarks or edge cases."
+}

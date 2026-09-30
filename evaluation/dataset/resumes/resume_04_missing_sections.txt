@@ -1,0 +1,16 @@
+# DEMO DATA — NOT FOR RESEARCH RESULTS
+# Candidate: Riley Green
+# File: resume_04_missing_sections.txt
+
+SUMMARY
+Self-taught Frontend Web Developer creating reactive interfaces.
+
+SKILLS
+HTML, CSS, JavaScript, React, Tailwind CSS
+
+EXPERIENCE
+Frontend Developer
+Pixel Studio
+Mar 2023 – Present
+• Implemented responsive user interface layouts with React, HTML, and CSS.
+• Styled modular web pages using Tailwind CSS.

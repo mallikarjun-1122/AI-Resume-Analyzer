@@ -1,0 +1,22 @@
+# DEMO DATA — NOT FOR RESEARCH RESULTS
+# Candidate: Morgan Bailey
+# File: resume_05_no_recognized_skills.txt
+
+SUMMARY
+Dedicated Office Administrator with 4 years of experience coordinating administrative procedures, customer inquiries, and office operations.
+
+SKILLS
+Office Administration, Calendar Scheduling, Document Filing, Switchboard Operation, Inventory Auditing, Vendor Coordination
+
+EXPERIENCE
+Office Coordinator
+Global Logistics Co
+Jan 2021 – Dec 2023
+• Managed physical document filing, front-desk visitor registration, and telephone switchboards.
+• Coordinated vendor supply orders, inventory audits, and internal conference room schedules.
+
+EDUCATION
+Diploma
+Metropolitan Community College
+GPA: 3.5
+2019 – 2021

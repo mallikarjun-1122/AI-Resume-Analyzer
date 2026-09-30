@@ -1,0 +1,10 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Entry Level IT Support Coordinator
+REQUIREMENTS:
+- Knowledge of Excel spreadsheet tracking.
+- Strong Problem Solving and Communication skills.

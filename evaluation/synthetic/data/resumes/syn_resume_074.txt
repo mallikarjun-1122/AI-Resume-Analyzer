@@ -1,0 +1,39 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_074
+Role: Frontend Developer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Junior Frontend Developer with proven ability to build scalable software.
+
+SKILLS
+------------------------------
+Technical Skills: CSS, HTML, JavaScript, ReactJS, Tailwind CSS
+
+EXPERIENCE
+------------------------------
+Frontend Developer   Jan 2022 - Present
+Nova Core Systems
+• Architected core Frontend Developer features utilizing React.
+• Enhanced system efficiency and automated processing using CSS.
+
+EDUCATION
+------------------------------
+Bachelor of Technology
+Apex Institute of Technology
+2015 - 2019
+CGPA: 3.97
+
+PROJECTS
+------------------------------
+Portfolio available upon request.
+
+CERTIFICATIONS
+------------------------------
+None.

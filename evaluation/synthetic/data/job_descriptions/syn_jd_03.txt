@@ -1,0 +1,15 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Principal Backend Distributed Systems Engineer
+LOCATION: Synthetic Hub
+EXPERIENCE REQUIRED: 7+ years
+
+TECHNICAL REQUIREMENTS:
+- Strong command of Go, Python, and Java for concurrent service development.
+- Database expertise: PostgreSQL, Redis, MongoDB.
+- Infrastructure: Docker, Kubernetes, AWS, CI/CD, Git.
+- Solid mastery of Data Structures and system design.

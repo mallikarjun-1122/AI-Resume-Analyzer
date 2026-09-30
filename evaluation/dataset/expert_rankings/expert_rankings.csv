@@ -1,0 +1,7 @@
+# DEMO DATA — NOT FOR RESEARCH RESULTS
+group_id,jd_id,candidate_id,expert_rank,evaluator_id
+group_jd_01_cohort,jd_01_senior_fullstack,resume_01_fullstack_standard,1,evaluator_demo_01
+group_jd_01_cohort,jd_01_senior_fullstack,resume_02_backend_alt_headings,2,evaluator_demo_01
+group_jd_01_cohort,jd_01_senior_fullstack,resume_04_missing_sections,3,evaluator_demo_01
+group_jd_01_cohort,jd_01_senior_fullstack,resume_03_junior_data_analyst,4,evaluator_demo_01
+group_jd_01_cohort,jd_01_senior_fullstack,resume_05_no_recognized_skills,5,evaluator_demo_01

@@ -1,0 +1,10 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Machine Learning Engineer
+REQUIREMENTS:
+- Model building: Python, PyTorch, Scikit-learn.
+- Serving & Deploy: Docker, Git, FastAPI.

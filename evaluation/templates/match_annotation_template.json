@@ -1,0 +1,18 @@
+{
+  "match_id": "resume_ID__jd_ID",
+  "resume_id": "REPLACE_WITH_RESUME_ID",
+  "jd_id": "REPLACE_WITH_JD_ID",
+  "gold_relevant_skills": [
+    "Python",
+    "SQL",
+    "Docker"
+  ],
+  "gold_matched_skills": [
+    "Python",
+    "SQL"
+  ],
+  "gold_missing_skills": [
+    "Docker"
+  ],
+  "notes": "Annotator rationale regarding skills matching."
+}

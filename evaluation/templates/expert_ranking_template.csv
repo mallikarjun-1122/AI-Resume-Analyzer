@@ -1,0 +1,4 @@
+group_id,jd_id,candidate_id,expert_rank,evaluator_id
+cohort_01,jd_01,resume_01,1,expert_01
+cohort_01,jd_01,resume_02,2,expert_01
+cohort_01,jd_01,resume_03,3,expert_01

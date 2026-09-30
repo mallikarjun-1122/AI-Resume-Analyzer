@@ -1,0 +1,59 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_092
+Role: Data Analyst | Experience: Senior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Senior Data Analyst with proven ability to build scalable software. Currently exploring and learning Spring Boot.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: EXCEL, matplotlib, NumPy, Pandas, PowerBI, Problem Solving, Python, sql, Tableau
+
+WORK EXPERIENCE
+------------------------------
+Data Analyst   Jan 2015 - Dec 2016
+Quantum Dynamics Corp
+• Architected core Data Analyst features utilizing Problem Solving.
+• Enhanced system efficiency and automated processing using SQL.
+
+Data Analyst
+Nova Core Systems
+Jan 2017 - Dec 2018
+• Architected core Data Analyst features utilizing Matplotlib.
+• Enhanced system efficiency and automated processing using Python.
+
+Senior Data Analyst   Jan 2019 - Present
+Nova Core Systems
+• Architected core Data Analyst features utilizing Pandas.
+• Enhanced system efficiency and automated processing using Excel.
+
+ACADEMIC BACKGROUND
+------------------------------
+BS in Software Engineering
+State Engineering University
+2014 - 2018
+CGPA: 3.62
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Excel, Matplotlib, NumPy, Tableau
+• Constructed scalable service processing data with Excel.
+• Integrated automated pipelines and testing with Tableau.
+
+Synthetic Platform Project 2
+Technologies: Excel, Pandas, Python, Tableau
+• Constructed scalable service processing data with Excel.
+• Integrated automated pipelines and testing with Tableau.
+
+COURSES
+------------------------------
+PostgreSQL Certified Professional
+Certified Systems Developer

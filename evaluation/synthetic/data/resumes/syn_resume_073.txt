@@ -1,0 +1,41 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_073
+Role: Backend Developer | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Student/intern Backend Developer with proven ability to build scalable software.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: ci/cd, FASTAPI, Git, Node js, Python, RAG, Redis
+
+CAREER TRAJECTORY
+------------------------------
+Backend Developer   Jan 2023 - Present
+Apex Global Software
+• Architected core Backend Developer features utilizing Python.
+• Enhanced system efficiency and automated processing using RAG.
+
+SCHOOLING AND DEGREES
+------------------------------
+Bachelor of Arts in Applied Math
+State Engineering University
+2016 - 2020
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Node.js, Python, Redis
+• Constructed scalable service processing data with Node.js.
+• Integrated automated pipelines and testing with Redis.
+
+BADGES AND PAPERS
+------------------------------
+None.

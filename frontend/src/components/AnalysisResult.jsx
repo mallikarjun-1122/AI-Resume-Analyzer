@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import {
   FaChartLine,
   FaCheckCircle,
@@ -12,7 +13,6 @@ import {
   FaChevronUp,
   FaMagic,
   FaEnvelopeOpenText,
-  FaLayerGroup,
 } from "react-icons/fa";
 import CoverLetterModal from "./CoverLetterModal";
 import BulletEnhancerModal from "./BulletEnhancerModal";
@@ -40,8 +40,9 @@ function AnalysisResult({ result }) {
   const ai = res.ai_review || res.ai || {};
   const ats = res.ats || {};
   const matching = res.matching || {};
+  const breakdown = ats.breakdown || {};
 
-  const overallScore = Number(ats.overall_score || matching.match_percentage || 85);
+  const overallScore = Number(ats.overall_score ?? matching.match_percentage ?? 0);
 
   const getScoreColor = (score) => {
     if (score >= 80) return "from-emerald-500 via-teal-500 to-green-600";
@@ -56,10 +57,10 @@ function AnalysisResult({ result }) {
   };
 
   const handleCopySummary = () => {
-    const summaryText = `AI Resume Analysis Summary:
+    const summaryText = `Resume Analysis Summary:
 - ATS Score: ${overallScore}%
-- Recommendation: ${ai.hire_recommendation || matching.recommendation || "Recommended"}
-- Rating: ${ai.overall_rating || "8.5/10"}`;
+- Recommendation: ${ai.hire_recommendation ?? matching.recommendation ?? "Not assessed"}
+- Rating: ${ai.overall_rating ?? "Not assessed"}`;
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(summaryText);
@@ -96,38 +97,38 @@ function AnalysisResult({ result }) {
   };
 
   // Matched Skills = Intersection ONLY (Skills present in BOTH Resume and JD)
-  const matchedSkillsList = (Array.isArray(ats.matched_skills) && ats.matched_skills.length > 0)
+  const matchedSkillsList = Array.isArray(ats.matched_skills)
     ? ats.matched_skills
-    : (Array.isArray(matching.matching_keywords) && matching.matching_keywords.length > 0)
+    : Array.isArray(matching.matching_keywords)
     ? matching.matching_keywords
-    : ["Python"];
+    : [];
 
   // Missing Skills = Required JD Skills missing from Resume
-  const missingSkillsList = (Array.isArray(ats.missing_skills) && ats.missing_skills.length > 0)
+  const missingSkillsList = Array.isArray(ats.missing_skills)
     ? ats.missing_skills
-    : (Array.isArray(ai.missing_skills) && ai.missing_skills.length > 0)
+    : Array.isArray(ai.missing_skills)
     ? ai.missing_skills
-    : (Array.isArray(matching.missing_keywords) && matching.missing_keywords.length > 0)
+    : Array.isArray(matching.missing_keywords)
     ? matching.missing_keywords
-    : ["SQL"];
+    : [];
 
-  const strengthsList = Array.isArray(ai.strengths)
+  const strengthsList = Array.isArray(ats.strengths)
+    ? ats.strengths
+    : Array.isArray(ai.strengths)
     ? ai.strengths
-    : ["Clear project architecture and full-stack technical competencies.", "Demonstrated experience with React and FastAPI.", "Structured document layout and high ATS readability."];
+    : [];
 
-  const improvementsList = Array.isArray(ai.improvements)
+  const improvementsList = Array.isArray(ats.suggestions)
+    ? ats.suggestions
+    : Array.isArray(ai.improvements)
     ? ai.improvements
     : Array.isArray(ai.resume_improvements)
     ? ai.resume_improvements
-    : ["Quantify project achievements with measurable data metrics.", "Highlight target job keywords explicitly in your skills section."];
+    : [];
 
   const questionsList = Array.isArray(ai.interview_questions)
     ? ai.interview_questions
-    : [
-        { question: "Walk us through a technical challenge you resolved recently.", tip: "Use STAR method." },
-        { question: "How do you ensure code quality and maintainability?", tip: "Discuss unit testing, linting, and code reviews." },
-        { question: "Explain how your skills align with the core requirements of this role.", tip: "Highlight key project achievements." }
-      ];
+    : [];
 
   return (
     <>
@@ -139,7 +140,7 @@ function AnalysisResult({ result }) {
         <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-3xl glass-panel border border-slate-800">
           <div className="flex items-center gap-2 text-slate-300 text-sm font-semibold">
             <FaMagic className="text-yellow-400" />
-            <span>AI Analysis Generated</span>
+            <span>Resume Analysis Generated</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -185,21 +186,18 @@ function AnalysisResult({ result }) {
           <div className="relative z-10 grid md:grid-cols-3 gap-8 items-center">
             <div className="md:col-span-2 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold uppercase tracking-wider">
-                <span>🎯 Overall AI Compatibility</span>
+                <span>🎯 Overall Rule-Based Compatibility</span>
               </div>
               <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight">
-                {ai.overall_rating || `${(overallScore / 10).toFixed(1)} / 10 Match`}
+                {ai.overall_rating ?? "Rule-Based Resume Analysis"}
               </h1>
               <p className="text-white/90 text-sm leading-relaxed max-w-xl">
-                {ai.overall_feedback || "Your resume has been scanned against the target job description skills."}
+                {ai.overall_feedback ?? "The score is derived from the configured rule-based parser, matcher, and weighted scorer."}
               </p>
 
               <div className="flex flex-wrap gap-3 pt-2">
                 <span className="px-3.5 py-1.5 rounded-xl bg-black/20 backdrop-blur-md text-xs font-semibold border border-white/10">
-                  Hire Status: <strong className="text-yellow-200">{ai.hire_recommendation || matching.recommendation || "Recommended"}</strong>
-                </span>
-                <span className="px-3.5 py-1.5 rounded-xl bg-black/20 backdrop-blur-md text-xs font-semibold border border-white/10">
-                  AI Confidence: <strong className="text-emerald-200">{ai.confidence || 92}%</strong>
+                  Hire Status: <strong className="text-yellow-200">{ai.hire_recommendation ?? matching.recommendation ?? "Not assessed"}</strong>
                 </span>
               </div>
             </div>
@@ -246,35 +244,35 @@ function AnalysisResult({ result }) {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white">ATS Breakdown</h3>
-                  <p className="text-xs text-slate-400">Section completeness & keyword score</p>
+                  <p className="text-xs text-slate-400">Configured weighted score components</p>
                 </div>
               </div>
-              <span className="text-2xl font-extrabold text-cyan-400">{ats.overall_score || overallScore}%</span>
+              <span className="text-2xl font-extrabold text-cyan-400">{ats.overall_score ?? overallScore}%</span>
             </div>
 
             <div className="space-y-3">
               <div>
                 <div className="flex justify-between text-xs text-slate-300 font-medium mb-1">
-                  <span>Keyword Match</span>
-                  <span>{ats.keyword_score || matching.match_percentage || 84}%</span>
+                  <span>Skill Score Component</span>
+                  <span>{breakdown.skills ?? 0}/40</span>
                 </div>
                 <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-cyan-500 rounded-full transition-all duration-700"
-                    style={{ width: `${ats.keyword_score || matching.match_percentage || 84}%` }}
+                    style={{ width: `${Math.min(100, ((breakdown.skills ?? 0) / 40) * 100)}%` }}
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between text-xs text-slate-300 font-medium mb-1">
-                  <span>Section Completeness</span>
-                  <span>{ats.section_score || 88}%</span>
+                  <span>Experience Score Component</span>
+                  <span>{breakdown.experience ?? 0}/20</span>
                 </div>
                 <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-purple-500 rounded-full transition-all duration-700"
-                    style={{ width: `${ats.section_score || 88}%` }}
+                    style={{ width: `${Math.min(100, ((breakdown.experience ?? 0) / 20) * 100)}%` }}
                   />
                 </div>
               </div>
@@ -293,33 +291,13 @@ function AnalysisResult({ result }) {
                   <p className="text-xs text-slate-400">Direct requirement overlap</p>
                 </div>
               </div>
-              <span className="text-2xl font-extrabold text-emerald-400">{matching.match_percentage || overallScore}%</span>
+              <span className="text-2xl font-extrabold text-emerald-400">{matching.match_percentage ?? overallScore}%</span>
             </div>
 
             <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300 space-y-1">
               <p className="font-semibold text-emerald-400">Recommendation Status:</p>
-              <p>{matching.recommendation || ai.hire_recommendation || "Recommended Candidate"}</p>
+              <p>{matching.recommendation ?? ai.hire_recommendation ?? "Not assessed"}</p>
             </div>
-          </div>
-        </div>
-
-        {/* Category Skill Visualizer Breakdown */}
-        <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-lg border border-purple-500/30">
-              <FaLayerGroup />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-white">Skill Category Breakdown</h3>
-              <p className="text-xs text-slate-400">Visual proficiency across domain categories</p>
-            </div>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-4">
-            <CategorySkillProgress title="Programming Languages" score={Math.min(95, overallScore + 4)} color="bg-cyan-500" />
-            <CategorySkillProgress title="Frameworks & Libraries" score={Math.max(60, overallScore - 4)} color="bg-purple-500" />
-            <CategorySkillProgress title="Databases & Cloud" score={Math.max(55, overallScore - 10)} color="bg-amber-500" />
-            <CategorySkillProgress title="Soft Skills & Leadership" score={Math.min(92, overallScore + 2)} color="bg-emerald-500" />
           </div>
         </div>
 
@@ -346,6 +324,9 @@ function AnalysisResult({ result }) {
                   <FaCheckCircle size={10} /> {typeof skill === "string" ? skill : JSON.stringify(skill)}
                 </span>
               ))}
+              {matchedSkillsList.length === 0 && (
+                <span className="text-xs text-slate-400">No matched skills were extracted.</span>
+              )}
             </div>
           </div>
 
@@ -372,7 +353,7 @@ function AnalysisResult({ result }) {
                   </span>
                 ))
               ) : (
-                <span className="text-xs text-emerald-400 font-semibold">No missing skills detected! 100% skill match.</span>
+                <span className="text-xs text-slate-400">No missing skills were extracted.</span>
               )}
             </div>
           </div>
@@ -394,6 +375,9 @@ function AnalysisResult({ result }) {
                   <span>{typeof str === "string" ? str : JSON.stringify(str)}</span>
                 </li>
               ))}
+              {strengthsList.length === 0 && (
+                <li className="text-slate-400">No strengths were generated.</li>
+              )}
             </ul>
           </div>
 
@@ -411,6 +395,9 @@ function AnalysisResult({ result }) {
                   <span>{typeof imp === "string" ? imp : JSON.stringify(imp)}</span>
                 </li>
               ))}
+              {improvementsList.length === 0 && (
+                <li className="text-slate-400">No improvements were generated.</li>
+              )}
             </ul>
           </div>
         </div>
@@ -430,8 +417,8 @@ function AnalysisResult({ result }) {
           <div className="space-y-3">
             {questionsList.map((qObj, idx) => {
               const isOpen = expandedQuestion === idx;
-              const questionText = typeof qObj === "object" ? qObj.question || "Interview Question" : qObj;
-              const tipText = typeof qObj === "object" ? qObj.tip || "Use the STAR method." : "Demonstrate direct competencies.";
+              const questionText = qObj && typeof qObj === "object" ? qObj.question ?? "Question unavailable" : qObj;
+              const tipText = qObj && typeof qObj === "object" ? qObj.tip ?? "No preparation tip supplied." : "No preparation tip supplied.";
 
               return (
                 <div
@@ -467,6 +454,9 @@ function AnalysisResult({ result }) {
                 </div>
               );
             })}
+            {questionsList.length === 0 && (
+              <p className="text-xs text-slate-400">Interview questions are unavailable because no Gemini review was returned.</p>
+            )}
           </div>
         </div>
       </div>
@@ -475,20 +465,6 @@ function AnalysisResult({ result }) {
       <CoverLetterModal isOpen={showCoverLetter} onClose={() => setShowCoverLetter(false)} />
       <BulletEnhancerModal isOpen={showBulletEnhancer} onClose={() => setShowBulletEnhancer(false)} />
     </>
-  );
-}
-
-function CategorySkillProgress({ title, score, color }) {
-  return (
-    <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
-      <div className="flex justify-between text-xs font-bold text-slate-300">
-        <span>{title}</span>
-        <span className="text-slate-100">{score}%</span>
-      </div>
-      <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
-        <div className={`h-full ${color} rounded-full transition-all duration-700`} style={{ width: `${score}%` }} />
-      </div>
-    </div>
   );
 }
 

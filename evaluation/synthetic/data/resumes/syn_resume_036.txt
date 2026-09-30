@@ -1,0 +1,53 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_036
+Role: Data Analyst | Experience: Senior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Senior Data Analyst with proven ability to build scalable software.
+
+SKILLS
+------------------------------
+Technical Skills: Excel, Matplotlib, NumPy, pandas, Power BI, Problem Solving, Python, SQL, Tableau, WebAssembly
+
+EXPERIENCE
+------------------------------
+Data Analyst   Jan 2015 - Dec 2016
+Blue Horizon Digital
+• Architected core Data Analyst features utilizing Power BI.
+• Enhanced system efficiency and automated processing using Excel.
+
+Data Analyst   Jan 2017 - Dec 2018
+Synthetix Data Labs
+• Architected core Data Analyst features utilizing Pandas.
+• Enhanced system efficiency and automated processing using Power BI.
+
+Senior Data Analyst   Jan 2019 - Present
+Apex Global Software
+• Architected core Data Analyst features utilizing Python.
+• Enhanced system efficiency and automated processing using SQL.
+
+EDUCATION
+------------------------------
+Diploma
+Metropolitan Science Institute
+2016 - 2020
+CGPA: 3.21
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Excel, Pandas, Tableau
+• Constructed scalable service processing data with Excel.
+• Integrated automated pipelines and testing with Tableau.
+
+CERTIFICATIONS
+------------------------------
+AWS Certified Professional
+Certified Systems Developer

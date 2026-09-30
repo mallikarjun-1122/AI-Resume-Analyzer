@@ -1,0 +1,9 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Junior Software Engineer
+REQUIREMENTS:
+- Fundamental programming: Java, SQL, Git, DSA, Problem Solving, C++.

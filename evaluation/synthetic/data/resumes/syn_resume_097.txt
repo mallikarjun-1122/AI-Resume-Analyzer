@@ -1,0 +1,48 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_097
+Role: Backend Developer | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Student/intern Backend Developer with proven ability to build scalable software.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: Django, node.js, python, REDIS, SQL, Swift
+
+WORK EXPERIENCE
+------------------------------
+Backend Developer
+Apex Global Software
+Jan 2023 - Present
+• Architected core Backend Developer features utilizing Python.
+• Enhanced system efficiency and automated processing using Django.
+
+ACADEMIC BACKGROUND
+------------------------------
+Diploma
+National Technical University
+2019 - 2023
+CGPA: 4.00
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Node.js, Python, Swift
+• Constructed scalable service processing data with Node.js.
+• Integrated automated pipelines and testing with Swift.
+
+Synthetic Platform Project 2
+Technologies: Node.js, Python
+• Constructed scalable service processing data with Node.js.
+• Integrated automated pipelines and testing with Python.
+
+COURSES
+------------------------------
+None.

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Resume Ground Truth Annotation Schema",
+  "description": "Schema for manual gold annotations of individual resume entities.",
+  "type": "object",
+  "required": ["resume_id", "skills", "education", "experience", "projects", "certifications"],
+  "properties": {
+    "resume_id": {
+      "type": "string",
+      "description": "Unique identifier for the candidate resume, matching file stem."
+    },
+    "file_path": {
+      "type": "string",
+      "description": "Relative path to the raw resume file (e.g. resumes/resume_01.txt)."
+    },
+    "skills": {
+      "type": "object",
+      "description": "Categorized gold skills present in the resume, using standard dictionary category keys.",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "education": {
+      "type": "object",
+      "description": "Gold education facts present in the resume.",
+      "properties": {
+        "degree": { "type": ["string", "null"] },
+        "institution": { "type": ["string", "null"] },
+        "cgpa": { "type": ["string", "null"] },
+        "duration": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "experience": {
+      "type": "array",
+      "description": "List of professional or internship experience entries.",
+      "items": {
+        "type": "object",
+        "required": ["job_title", "company", "duration", "technologies", "description"],
+        "properties": {
+          "job_title": { "type": "string" },
+          "company": { "type": "string" },
+          "duration": { "type": "string" },
+          "technologies": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "description": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "projects": {
+      "type": "array",
+      "description": "List of academic, personal, or key project entries.",
+      "items": {
+        "type": "object",
+        "required": ["title", "technologies", "description"],
+        "properties": {
+          "title": { "type": "string" },
+          "technologies": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "description": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "description": "List of certification strings recognized as gold credentials.",
+      "items": { "type": "string" }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional annotator notes or edge-case remarks."
+    },
+    "evaluator_id": {
+      "type": "string",
+      "description": "Anonymized pseudonymous identifier of the annotator (e.g. evaluator_01)."
+    },
+    "adjudicated": {
+      "type": "boolean",
+      "description": "Whether this record is a post-disagreement consensus/adjudicated record."
+    }
+  },
+  "additionalProperties": false
+}

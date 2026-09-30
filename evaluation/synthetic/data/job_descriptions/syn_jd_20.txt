@@ -1,0 +1,14 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Strategic Public Relations & Media Diplomat
+LOCATION: Synthetic Media Bureau
+EXPERIENCE: 7+ years
+
+ROLE OVERVIEW:
+Spearhead high-visibility press briefings, crisis mitigation messaging,
+investor conference announcements, and editorial interviews.
+Requires diplomatic charisma, television presence, and executive stakeholder briefing skills.

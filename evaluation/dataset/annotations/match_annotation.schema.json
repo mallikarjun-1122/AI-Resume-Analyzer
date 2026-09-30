@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Resume-JD Match Ground Truth Annotation Schema",
+  "description": "Schema for manual gold annotations of resume-to-job-description matching.",
+  "type": "object",
+  "required": [
+    "match_id",
+    "resume_id",
+    "jd_id",
+    "gold_relevant_skills",
+    "gold_missing_skills",
+    "gold_matched_skills"
+  ],
+  "properties": {
+    "match_id": {
+      "type": "string",
+      "description": "Unique identifier for the pair evaluation (e.g. resume_01__jd_01)."
+    },
+    "resume_id": {
+      "type": "string",
+      "description": "ID of candidate resume."
+    },
+    "jd_id": {
+      "type": "string",
+      "description": "ID of target job description."
+    },
+    "gold_relevant_skills": {
+      "type": "array",
+      "description": "All skills declared relevant by the job description.",
+      "items": { "type": "string" }
+    },
+    "gold_matched_skills": {
+      "type": "array",
+      "description": "Subset of relevant skills demonstrably present in the candidate resume.",
+      "items": { "type": "string" }
+    },
+    "gold_missing_skills": {
+      "type": "array",
+      "description": "Subset of relevant skills required by JD but absent from the candidate resume.",
+      "items": { "type": "string" }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Annotator justification or context."
+    },
+    "evaluator_id": {
+      "type": "string",
+      "description": "Anonymized pseudonymous identifier of the annotator (e.g. evaluator_01)."
+    },
+    "adjudicated": {
+      "type": "boolean",
+      "description": "Whether this record is a post-disagreement consensus/adjudicated record."
+    }
+  },
+  "additionalProperties": false
+}

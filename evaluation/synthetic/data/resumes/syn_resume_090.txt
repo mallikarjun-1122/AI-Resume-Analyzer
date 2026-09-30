@@ -1,0 +1,46 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_090
+Role: Frontend Developer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+BCA
+Pinnacle Polytechnic School
+2013 - 2017
+CGPA: 3.64
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: HTML, JavaScript, Next.js, Tailwind CSS
+• Constructed scalable service processing data with HTML.
+• Integrated automated pipelines and testing with Tailwind CSS.
+
+Synthetic Platform Project 2
+• Constructed scalable service processing data with JavaScript.
+• Integrated automated pipelines and testing with Tailwind CSS.
+
+SKILLS
+------------------------------
+Technical Skills: Git, HTML, JavaScript, Next js, React, Redux, Tailwind CSS
+
+EXPERIENCE
+------------------------------
+Frontend Developer   Jan 2022 - Present
+Synthetix Data Labs
+• Architected core Frontend Developer features utilizing React.
+• Enhanced system efficiency and automated processing using Redux.
+
+CERTIFICATIONS
+------------------------------
+None.
+
+SUMMARY
+------------------------------
+Dedicated Junior Frontend Developer with proven ability to build scalable software.

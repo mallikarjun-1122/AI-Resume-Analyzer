@@ -1,0 +1,58 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_028
+Role: Data Analyst | Experience: Senior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Senior Data Analyst with proven ability to build scalable software.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: Excel, GitLab, Matplotlib, NumPy, Pandas, Power BI, Problem Solving, Python, sql, Tableau, GraphQL
+
+CAREER TRAJECTORY
+------------------------------
+Data Analyst   Jan 2015 - Dec 2016
+Quantum Dynamics Corp
+• Architected core Data Analyst features utilizing Excel.
+• Enhanced system efficiency and automated processing using Power BI.
+
+Data Analyst   Jan 2017 - Dec 2018
+Nova Core Systems
+• Architected core Data Analyst features utilizing Tableau.
+• Enhanced system efficiency and automated processing using Python.
+
+Senior Data Analyst   Jan 2019 - Present
+Quantum Dynamics Corp
+• Architected core Data Analyst features utilizing Python.
+• Enhanced system efficiency and automated processing using Power BI.
+
+SCHOOLING AND DEGREES
+------------------------------
+Bachelor of Engineering
+Pinnacle Polytechnic School
+2020 - 2024
+CGPA: 3.33
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Pandas, Problem Solving, SQL
+• Constructed scalable service processing data with Pandas.
+• Integrated automated pipelines and testing with SQL.
+
+Synthetic Platform Project 2
+Technologies: Matplotlib, Tableau
+• Constructed scalable service processing data with Matplotlib.
+• Integrated automated pipelines and testing with Tableau.
+
+BADGES AND PAPERS
+------------------------------
+AWS Certified Professional
+Certified Systems Developer

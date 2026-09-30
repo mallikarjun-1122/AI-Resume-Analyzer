@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Expert Relevance Score Annotation Schema",
+  "description": "Schema for independently assigned human expert relevance scores (0-100).",
+  "type": "object",
+  "required": ["resume_id", "jd_id", "expert_relevance_score"],
+  "properties": {
+    "resume_id": {
+      "type": "string",
+      "description": "ID of candidate resume."
+    },
+    "jd_id": {
+      "type": "string",
+      "description": "ID of target job description."
+    },
+    "expert_relevance_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Expert human rating of overall fit/relevance for the role (0-100)."
+    },
+    "evaluator_id": {
+      "type": "string",
+      "description": "Anonymized identifier for the human expert / rater."
+    },
+    "scoring_rationale": {
+      "type": "string",
+      "description": "Qualitative summary of why this score was assigned."
+    },
+    "adjudicated": {
+      "type": "boolean",
+      "description": "Whether this record is a post-disagreement consensus/adjudicated score."
+    }
+  },
+  "additionalProperties": false
+}

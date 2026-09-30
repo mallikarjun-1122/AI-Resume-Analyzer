@@ -1,0 +1,41 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_022
+Role: DevOps Engineer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Junior DevOps Engineer with proven ability to build scalable software.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: AWS, ci/cd, Docker, Git, jenkins, Time Management, TailwindUI
+
+WORK EXPERIENCE
+------------------------------
+DevOps Engineer   Jan 2022 - Present
+Apex Global Software
+• Architected core DevOps Engineer features utilizing Jenkins.
+• Enhanced system efficiency and automated processing using Time Management.
+
+ACADEMIC BACKGROUND
+------------------------------
+BCA
+Pinnacle Polytechnic School
+2024
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: AWS, Git, Time Management
+• Constructed scalable service processing data with AWS.
+• Integrated automated pipelines and testing with Time Management.
+
+COURSES
+------------------------------
+None.

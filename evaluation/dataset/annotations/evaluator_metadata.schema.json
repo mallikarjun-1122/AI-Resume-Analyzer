@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Anonymized Evaluator Metadata Schema",
+  "description": "Schema for storing evaluator credentials and qualification profiles without personal identifying information (PII).",
+  "type": "object",
+  "required": [
+    "evaluator_id",
+    "qualification_tier",
+    "years_of_experience",
+    "primary_domain",
+    "recruitment_experience",
+    "anonymization_verified"
+  ],
+  "properties": {
+    "evaluator_id": {
+      "type": "string",
+      "pattern": "^evaluator_[a-zA-Z0-9_-]+$",
+      "description": "Anonymized pseudonymous identifier (e.g. evaluator_01, evaluator_cs_senior_a)."
+    },
+    "qualification_tier": {
+      "type": "string",
+      "enum": [
+        "Senior Software Engineer",
+        "Technical Recruiter / Talent Acquisition Specialist",
+        "Engineering Manager / Tech Lead",
+        "Computer Science Faculty / Educator",
+        "Postgraduate Researcher (CS / Information Systems)",
+        "Mid-Level Software Engineer"
+      ],
+      "description": "Professional background tier of the evaluator."
+    },
+    "years_of_experience": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 50,
+      "description": "Total professional or academic years of relevant technical/hiring experience."
+    },
+    "primary_domain": {
+      "type": "string",
+      "description": "Primary specialization (e.g. Full-Stack Web Development, Data Science, Cloud Infrastructure, Technical Recruitment)."
+    },
+    "highest_degree": {
+      "type": "string",
+      "enum": ["Bachelors", "Masters", "Doctorate", "Associate / Diploma", "Self-Taught / Other"],
+      "description": "Highest completed education level."
+    },
+    "recruitment_experience": {
+      "type": "boolean",
+      "description": "Indicates whether evaluator has direct professional experience reviewing candidate resumes or making hiring screening decisions."
+    },
+    "anonymization_verified": {
+      "type": "boolean",
+      "const": true,
+      "description": "Confirmation that no PII (name, email, phone, location, employer company) is included in this record."
+    }
+  },
+  "additionalProperties": false
+}

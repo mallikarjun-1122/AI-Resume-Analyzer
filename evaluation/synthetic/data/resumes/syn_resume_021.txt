@@ -1,0 +1,40 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_021
+Role: Data Scientist | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Student/intern Data Scientist with proven ability to build scalable software. Currently exploring and learning Supabase.
+
+SKILLS
+------------------------------
+Technical Skills: Deep Learning, nlp, Pandas, PowerBI, Python, sklearn
+
+EXPERIENCE
+------------------------------
+Data Scientist   Jan 2023 - Present
+Nova Core Systems
+• Architected core Data Scientist features utilizing Deep Learning.
+• Enhanced system efficiency and automated processing using Pandas.
+
+EDUCATION
+------------------------------
+B.Tech
+Horizon Engineering College
+2014 - 2018
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with Deep Learning.
+• Integrated automated pipelines and testing with Python.
+
+CERTIFICATIONS
+------------------------------
+None.

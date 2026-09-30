@@ -1,0 +1,23 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Lead Data Scientist
+LOCATION: Synthetic Tech Hub
+EXPERIENCE REQUIRED: 6+ years
+
+JOB DESCRIPTION:
+Join our predictive modeling division to lead development of advanced machine learning pipelines.
+
+REQUIRED SKILLS:
+- Machine Learning, Deep Learning, PyTorch, TensorFlow, Scikit-learn
+- Python, Pandas, NumPy, SQL
+
+PREFERRED QUALIFICATIONS:
+- Experience with NLP, containerization with Docker, and Git workflows.
+
+DUTIES:
+- Train, tune, and evaluate deep neural networks.
+- Transform raw business tables using SQL into feature-engineered datasets.

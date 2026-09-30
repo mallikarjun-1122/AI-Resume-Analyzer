@@ -1,6 +1,5 @@
 import os
 import json
-import traceback
 
 from dotenv import load_dotenv
 from google import genai
@@ -32,8 +31,7 @@ def generate_ai_review(resume: dict, job_description: dict):
     client = get_gemini_client()
 
     if not client:
-        print("GEMINI_API_KEY not found or client failed to initialize. Using structural fallback review.")
-        return generate_structural_fallback(resume, job_description)
+        return ai_review_unavailable("Gemini is not configured or could not be initialized.")
 
     models_to_try = [
         "models/gemini-2.5-flash",
@@ -75,7 +73,7 @@ def generate_ai_review(resume: dict, job_description: dict):
             print(f"Model {model_name} failed: {e}")
             continue
 
-    return generate_structural_fallback(resume, job_description)
+    return ai_review_unavailable("Gemini did not return a valid review.")
 
 
 def enhance_bullet_point(bullet_point: str, target_role: str = "Software Engineer") -> list:
@@ -112,15 +110,9 @@ Return JSON array of 3 strings ONLY:
             if isinstance(res, list) and len(res) > 0:
                 return res
         except Exception as e:
-            print("Gemini bullet enhancement fallback:", e)
+            print("Gemini bullet enhancement failed:", e)
 
-    # Fallback response
-    bp = bullet_point.strip()
-    return [
-        f"Engineered and deployed scalable solutions for {bp.lower()}, reducing processing latency by 35% across core workflows.",
-        f"Spearheaded key initiatives involving {bp.lower()}, boosting team delivery efficiency and user satisfaction by 25%.",
-        f"Designed and optimized robust systems for {bp.lower()}, resulting in a 40% improvement in operational throughput."
-    ]
+    raise RuntimeError("Gemini bullet enhancement is unavailable. No replacement text was generated.")
 
 
 def generate_cover_letter_text(resume_name: str, job_description: str) -> str:
@@ -150,71 +142,15 @@ Do NOT include placeholder variables like [Your Name] in brackets—use "Applica
             if text:
                 return text
         except Exception as e:
-            print("Gemini cover letter fallback:", e)
+            print("Gemini cover letter generation failed:", e)
 
-    # Fallback cover letter text
-    return f"""Dear Hiring Team,
-
-I am writing to express my strong interest in the opportunity described in your job posting. With a solid foundation in software development, problem-solving, and continuous learning, I am eager to contribute my skills to your team's ongoing success.
-
-Throughout my technical experience, I have developed expertise in building scalable applications, collaborating across functional teams, and solving complex technical challenges. My background directly aligns with your requirements for key technologies and software engineering best practices. I take pride in writing clean, well-tested code and delivering measurable impact.
-
-I would welcome the opportunity to discuss how my qualifications, technical skills, and enthusiasm make me a strong fit for your team. Thank you for your time and consideration.
-
-Sincerely,
-Applicant"""
+    raise RuntimeError("Gemini cover letter generation is unavailable. No replacement letter was generated.")
 
 
-def generate_structural_fallback(resume: dict, jd: dict) -> dict:
-    resume_skills = set()
-    skills_data = resume.get("skills", {})
-    if isinstance(skills_data, dict):
-        for category, s_list in skills_data.items():
-            if isinstance(s_list, list):
-                for s in s_list:
-                    resume_skills.add(str(s).strip().lower())
-    elif isinstance(skills_data, list):
-        for s in skills_data:
-            resume_skills.add(str(s).strip().lower())
-
-    jd_skills = set()
-    jd_skills_data = jd.get("skills", {}) if isinstance(jd, dict) else {}
-    if isinstance(jd_skills_data, dict):
-        for category, s_list in jd_skills_data.items():
-            if isinstance(s_list, list):
-                for s in s_list:
-                    jd_skills.add(str(s).strip().lower())
-
-    matched = resume_skills.intersection(jd_skills)
-    missing = jd_skills - resume_skills
-    total = len(jd_skills) or 1
-    match_pct = min(100, int((len(matched) / total) * 100))
-
-    rating = "Strong Fit" if match_pct >= 80 else ("Moderate Fit" if match_pct >= 50 else "Needs Improvement")
-    recommendation = "Hire" if match_pct >= 75 else ("Consider" if match_pct >= 50 else "Reject")
-
+def ai_review_unavailable(reason: str) -> dict:
+    """Describe an unavailable optional review without inventing candidate feedback."""
     return {
-        "overall_rating": rating,
-        "hire_recommendation": recommendation,
-        "confidence": 85,
-        "experience_assessment": "Evaluated based on extracted resume history and matching skills.",
-        "overall_feedback": f"Resume matches {len(matched)} key skills out of {len(jd_skills)} required skills.",
-        "strengths": [f"Demonstrated proficiency in {s.title()}" for s in list(matched)[:4]] or ["Clear resume section structure"],
-        "weaknesses": [f"Missing required skill: {s.title()}" for s in list(missing)[:3]] or ["Could add quantifiable metrics to project descriptions"],
-        "missing_skills": [s.title() for s in list(missing)[:5]],
-        "resume_improvements": [
-            "Quantify key achievements with measurable impact metrics (e.g., increased performance by 25%).",
-            "Tailor bullet points to emphasize required job description keywords.",
-            "Add a concise professional summary highlighting your key qualifications."
-        ],
-        "recommended_projects": [
-            "Full-Stack Web Application with modern React/Python stack",
-            "Cloud Infrastructure Automation & CI/CD Pipeline project",
-            "Data Analytics Dashboard with real-time reporting"
-        ],
-        "interview_questions": [
-            "Can you walk us through the architecture of a major project on your resume?",
-            "How do you approach debugging performance bottlenecks in production applications?",
-            "Explain how you handle missing skills or technologies when starting a new project."
-        ]
+        "available": False,
+        "status": "unavailable",
+        "message": reason,
     }

@@ -1,0 +1,47 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_017
+Role: Backend Developer | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Student/intern Backend Developer with proven ability to build scalable software. Currently exploring and learning Seaborn.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: Django, Docker, Postgres, Python, Redis, Prisma
+
+WORK EXPERIENCE
+------------------------------
+Backend Developer   Jan 2023 - Present
+Vertex Cloud Solutions
+• Architected core Backend Developer features utilizing PostgreSQL.
+• Enhanced system efficiency and automated processing using Django.
+
+ACADEMIC BACKGROUND
+------------------------------
+M.Tech
+National Technical University
+2013 - 2017
+CGPA: 3.61
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Docker, PostgreSQL, Python
+• Constructed scalable service processing data with Docker.
+• Integrated automated pipelines and testing with Python.
+
+Synthetic Platform Project 2
+Technologies: Docker, Python, Redis
+• Constructed scalable service processing data with Docker.
+• Integrated automated pipelines and testing with Redis.
+
+COURSES
+------------------------------
+None.

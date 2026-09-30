@@ -1,0 +1,45 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_066
+Role: Frontend Developer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Junior Frontend Developer with proven ability to build scalable software. Currently exploring and learning PostgreSQL.
+
+SKILLS
+------------------------------
+Technical Skills: CSS, git, HTML, Next js, ReactJS, redux, TypeScript
+
+EXPERIENCE
+------------------------------
+Frontend Developer   Jan 2022 - Present
+Quantum Dynamics Corp
+• Architected core Frontend Developer features utilizing Git.
+• Enhanced system efficiency and automated processing using HTML.
+
+EDUCATION
+------------------------------
+BS in Software Engineering
+Metropolitan Science Institute
+2018 - 2022
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with CSS.
+• Integrated automated pipelines and testing with TypeScript.
+
+Synthetic Platform Project 2
+Technologies: Next.js, Redux, TypeScript
+• Constructed scalable service processing data with Next.js.
+• Integrated automated pipelines and testing with TypeScript.
+
+CERTIFICATIONS
+------------------------------
+None.

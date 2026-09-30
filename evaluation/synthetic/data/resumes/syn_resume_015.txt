@@ -1,0 +1,47 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_015
+Role: QA Automation Engineer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+Bachelor of Science in Computing
+National Technical University
+2017 - 2021
+CGPA: 3.33
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Git, JavaScript, Selenium
+• Constructed scalable service processing data with Git.
+• Integrated automated pipelines and testing with Selenium.
+
+SKILLS
+------------------------------
+Technical Skills: CI/CD, git, Google Cloud, JavaScript, Jest, Postman, PyTest, Python, Selenium, Testing, Solidity
+
+EXPERIENCE
+------------------------------
+QA Automation Engineer   Jan 2019 - Dec 2020
+Quantum Dynamics Corp
+• Architected core QA Automation Engineer features utilizing CI/CD.
+• Enhanced system efficiency and automated processing using Jest.
+
+QA Automation Engineer   Jan 2021 - Present
+Quantum Dynamics Corp
+• Architected core QA Automation Engineer features utilizing Git.
+• Enhanced system efficiency and automated processing using Jest.
+
+CERTIFICATIONS
+------------------------------
+Docker Certified Professional
+
+SUMMARY
+------------------------------
+Dedicated Mid-level QA Automation Engineer with proven ability to build scalable software.

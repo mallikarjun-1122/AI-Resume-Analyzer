@@ -1,0 +1,36 @@
+# DEMO DATA — NOT FOR RESEARCH RESULTS
+# Candidate: Jordan Lee
+# File: resume_02_backend_alt_headings.txt
+
+PROFILE
+Backend engineer specializing in distributed systems, real-time message brokers, and document databases with Node.js and Express.js.
+
+TECHNICAL EXPERTISE
+Languages: JavaScript, TypeScript, Go
+Server: Node.js, Express.js, Docker
+Datastores: MongoDB, Redis, PostgreSQL
+Tools: Git, CI/CD, Postman
+
+PROFESSIONAL EXPERIENCE
+Backend Developer
+Nova Labs
+Jun 2021 – Dec 2023
+• Implemented high-throughput asynchronous messaging services using Node.js and Redis.
+• Structured document storage schemas in MongoDB and relational tables in PostgreSQL.
+• Automated test suites using Jest and Postman, achieving 85% code coverage across endpoints.
+• Streamlined continuous integration deployments using Git and Docker container workflows.
+
+KEY PROJECTS
+Real-time Notification Engine
+• Designed event-driven notification system processing real-time websocket connections with Node.js and Redis.
+• Containerized deployment using Docker and automated integration pipelines via CI/CD.
+
+ACADEMICS
+Bachelor of Engineering
+City College of Engineering
+CGPA: 7.8
+2017 – 2021
+
+COURSES
+MongoDB Certified Developer
+Node.js Application Developer
