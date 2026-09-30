@@ -262,7 +262,28 @@ export const batchAnalyzeResumes = async (formData) => {
           const name = typeof file === "object" && file.name ? file.name.replace(/\.[^/.]+$/, "") : `Applicant ${idx + 1}`;
           const filename = typeof file === "object" && file.name ? file.name : `Resume_${idx + 1}.pdf`;
           const scoreVariance = idx === 0 ? 0 : idx * 7;
-          const score = Math.max(10, baseAnalysis.ats.overall_score - scoreVariance);
+          const score = Math.max(15, baseAnalysis.ats.overall_score - scoreVariance);
+          const matched = baseAnalysis.matching.matching_keywords.slice(0, Math.max(1, baseAnalysis.matching.matching_keywords.length - idx));
+          const missing = baseAnalysis.matching.missing_keywords;
+
+          const fitReasons = [];
+          if (matched.length > 0) {
+            fitReasons.push(`Matches ${matched.length} core JD technologies (${matched.slice(0, 3).join(", ")})`);
+          }
+          if (score >= 75) {
+            fitReasons.push("Strong experience depth and high automated ATS alignment");
+          } else if (score >= 50) {
+            fitReasons.push("Moderate qualification match; solid technical foundation");
+          } else {
+            fitReasons.push("Developing profile; requires bridging key domain competencies");
+          }
+
+          const fitReason = fitReasons.join(". ") + ".";
+          const fitLevel = score >= 75 ? "High Fit" : (score >= 50 ? "Moderate Fit" : "Low Fit");
+          const recommendation = score >= 75 ? "Strong Hire" : (score >= 50 ? "Consider" : "Needs Upskilling");
+          const probe = missing.length > 0
+            ? `Ask how they plan to apply ${missing[0]} on team projects.`
+            : `Discuss hands-on implementation patterns using ${matched[0] || "core tools"}.`;
 
           return {
             rank: idx + 1,
@@ -272,12 +293,21 @@ export const batchAnalyzeResumes = async (formData) => {
             email: "N/A",
             ats_score: score,
             match_percentage: score,
-            recommendation: score >= 75 ? "Fit" : (score >= 50 ? "Consider" : "Reject"),
-            status: score >= 75 ? "Top Match" : (score >= 50 ? "Strong Candidate" : "Needs Review"),
-            matched_skills: baseAnalysis.matching.matching_keywords.slice(0, Math.max(1, baseAnalysis.matching.matching_keywords.length - idx)),
-            matching_keywords: baseAnalysis.matching.matching_keywords.slice(0, Math.max(1, baseAnalysis.matching.matching_keywords.length - idx)),
-            missing_skills: baseAnalysis.matching.missing_keywords,
-            missing_keywords: baseAnalysis.matching.missing_keywords,
+            rank_score: score,
+            recommendation: recommendation,
+            fit_level: fitLevel,
+            status: fitLevel,
+            fit_reason: fitReason,
+            key_strengths: [
+              `Covers key requirements: ${matched.slice(0, 4).join(", ") || "General Engineering"}`,
+              `ATS Match Score: ${score}%`,
+              score >= 70 ? "Proven relevant project track record" : "Solid transferable software skills"
+            ],
+            matched_skills: matched,
+            matching_keywords: matched,
+            missing_skills: missing,
+            missing_keywords: missing,
+            interview_probe: probe,
             summary: `Automated assessment based on extracted technical profile and ${filename}.`
           };
         })
@@ -290,12 +320,21 @@ export const batchAnalyzeResumes = async (formData) => {
             email: "N/A",
             ats_score: baseAnalysis.ats.overall_score,
             match_percentage: baseAnalysis.matching.match_percentage,
-            recommendation: "Fit",
-            status: "Top Match",
+            rank_score: baseAnalysis.ats.overall_score,
+            recommendation: "Strong Hire",
+            fit_level: "High Fit",
+            status: "High Fit",
+            fit_reason: `Matches core required JD competencies (${baseAnalysis.matching.matching_keywords.slice(0, 3).join(", ")}) with strong technical alignment.`,
+            key_strengths: [
+              `Direct skills match: ${baseAnalysis.matching.matching_keywords.join(", ") || "All Required"}`,
+              `ATS Score: ${baseAnalysis.ats.overall_score}%`,
+              "Strong project domain relevance"
+            ],
             matched_skills: baseAnalysis.matching.matching_keywords,
             matching_keywords: baseAnalysis.matching.matching_keywords,
             missing_skills: baseAnalysis.matching.missing_keywords,
             missing_keywords: baseAnalysis.matching.missing_keywords,
+            interview_probe: "Probe architecture decisions in recent production projects.",
             summary: "Top alignment with target job requirements."
           }
         ];

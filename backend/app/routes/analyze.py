@@ -162,6 +162,51 @@ async def batch_analyze_resumes(
             edu_norm = (edu_score / 10) * 100 if edu_score else 50
             composite_rank_score = round((skill_score * 0.60) + (exp_norm * 0.25) + (edu_norm * 0.15), 1)
 
+            matched_skills_list = ats.get("matched_skills", [])
+            missing_skills_list = ats.get("missing_skills", [])
+
+            # Construct comprehensive 'Why They Are Fit' reasoning
+            fit_points = []
+            if matched_skills_list:
+                top_skills = matched_skills_list[:4]
+                fit_points.append(f"Direct competency match on required technologies: {', '.join(top_skills)}")
+            if exp_score >= 15:
+                fit_points.append(f"Demonstrated professional experience depth ({exp_score}/20 pts)")
+            elif exp_score >= 10:
+                fit_points.append("Solid practical experience matching core job scope")
+            if edu_score >= 8:
+                fit_points.append("Strong academic qualification aligning with role requirements")
+            elif edu_score >= 5:
+                fit_points.append("Meets standard educational criteria")
+
+            if not fit_points:
+                fit_points.append("Baseline qualifications present; foundational technical profile")
+
+            fit_reason_summary = ". ".join(fit_points) + "."
+
+            key_strengths = []
+            if matched_skills_list:
+                key_strengths.append(f"Covers {len(matched_skills_list)} JD keywords ({', '.join(matched_skills_list[:5])})")
+            if skill_score >= 70:
+                key_strengths.append(f"High ATS compatibility index of {skill_score}%")
+            if exp_score >= 12:
+                key_strengths.append("Verified relevant industry/project experience")
+            if not key_strengths:
+                key_strengths.append("Transferable core software engineering skills")
+
+            if composite_rank_score >= 75:
+                fit_level = "High Fit"
+                recommendation = "Strong Hire"
+            elif composite_rank_score >= 50:
+                fit_level = "Moderate Fit"
+                recommendation = "Consider"
+            else:
+                fit_level = "Low Fit"
+                recommendation = "Needs Upskilling"
+
+            probe_skill = missing_skills_list[0] if missing_skills_list else (matched_skills_list[0] if matched_skills_list else "system design")
+            interview_probe = f"Ask candidate to explain how they utilize {probe_skill} in production workflows to assess depth."
+
             results.append({
                 "filename": file.filename,
                 "name": resume.get("personal_info", {}).get("name") or file.filename.replace(ext, ""),
@@ -171,9 +216,13 @@ async def batch_analyze_resumes(
                 "match_percentage": matching.get("match_percentage", 0),
                 "experience_score": exp_score,
                 "education_score": edu_score,
-                "recommendation": "Strong Hire" if composite_rank_score >= 75 else ("Consider" if composite_rank_score >= 50 else "Reject"),
-                "matched_skills": ats.get("matched_skills", []),
-                "missing_skills": ats.get("missing_skills", []),
+                "recommendation": recommendation,
+                "fit_level": fit_level,
+                "fit_reason": fit_reason_summary,
+                "key_strengths": key_strengths,
+                "matched_skills": matched_skills_list,
+                "missing_skills": missing_skills_list,
+                "interview_probe": interview_probe,
             })
 
             # Cleanup uploaded file
