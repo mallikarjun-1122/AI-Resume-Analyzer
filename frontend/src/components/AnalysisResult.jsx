@@ -464,19 +464,19 @@ function AnalysisResult({ result }) {
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl bg-slate-900/60 border border-slate-800 overflow-hidden transition-all"
+                  className="rounded-2xl bg-zinc-900 border border-zinc-800 overflow-hidden transition-all"
                 >
                   <button
                     onClick={() => setExpandedQuestion(isOpen ? null : idx)}
-                    className="w-full p-4 text-left flex items-center justify-between gap-4 font-semibold text-xs sm:text-sm text-slate-200 hover:text-white"
+                    className="w-full p-4 text-left flex items-center justify-between gap-4 font-semibold text-xs sm:text-sm text-zinc-200 hover:text-white"
                   >
                     <span className="flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-xs flex items-center justify-center font-bold flex-shrink-0">
+                      <span className="w-6 h-6 rounded-full bg-zinc-800 border border-green-400/30 text-green-400 text-xs flex items-center justify-center font-bold flex-shrink-0">
                         {idx + 1}
                       </span>
                       <span>{questionText}</span>
                     </span>
-                    {isOpen ? <FaChevronUp className="text-purple-400 flex-shrink-0" /> : <FaChevronDown className="text-slate-500 flex-shrink-0" />}
+                    {isOpen ? <FaChevronUp className="text-green-400 flex-shrink-0" /> : <FaChevronDown className="text-zinc-500 flex-shrink-0" />}
                   </button>
 
                   <AnimatePresence>
@@ -485,9 +485,9 @@ function AnalysisResult({ result }) {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="px-4 pb-4 text-xs text-slate-400 border-t border-slate-800 pt-3 space-y-2"
+                        className="px-4 pb-4 text-xs text-zinc-400 border-t border-zinc-800 pt-3 space-y-2"
                       >
-                        <p className="font-semibold text-purple-300">💡 Interview Preparation Tip:</p>
+                        <p className="font-semibold text-green-300">💡 Interview Preparation Tip:</p>
                         <p>{tipText}</p>
                       </motion.div>
                     )}

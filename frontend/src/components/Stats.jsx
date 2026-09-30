@@ -12,129 +12,80 @@ function Stats() {
 
   const reasons = [
     {
-      icon: <FaRobot size={40} className="text-blue-600" />,
+      icon: <FaRobot size={32} className="text-green-400" />,
       title: "AI Powered Analysis",
       description:
-        "Advanced AI evaluates your resume, identifies weaknesses, and provides personalized recommendations.",
-      color: "from-blue-500 to-blue-600",
-      bgColor: "from-blue-100 to-blue-50",
+        "Explainable ATS rule scoring combined with Gemini 2.5 generative intelligence for resume optimization.",
     },
     {
-      icon: <FaShieldAlt size={40} className="text-green-600" />,
-      title: "ATS Optimized",
+      icon: <FaShieldAlt size={32} className="text-green-400" />,
+      title: "ATS Compatibility",
       description:
-        "Improve your resume's compatibility with Applicant Tracking Systems used by top companies.",
-      color: "from-green-500 to-green-600",
-      bgColor: "from-green-100 to-green-50",
+        "Deterministic Applicant Tracking System scoring based on strict set-intersection keyword matching.",
     },
     {
-      icon: <FaBolt size={40} className="text-yellow-600" />,
+      icon: <FaBolt size={32} className="text-green-400" />,
       title: "Instant Results",
       description:
-        "Receive ATS scores, missing skills, interview questions, and project suggestions in seconds.",
-      color: "from-yellow-500 to-yellow-600",
-      bgColor: "from-yellow-100 to-yellow-50",
+        "Receive transparent ATS scores, missing skills, STAR bullet points, and customized interview probes in seconds.",
     },
     {
-      icon: <FaLightbulb size={40} className="text-purple-600" />,
+      icon: <FaLightbulb size={32} className="text-green-400" />,
       title: "Career Guidance",
       description:
-        "Get a personalized learning roadmap and actionable steps to increase your chances of getting hired.",
-      color: "from-purple-500 to-purple-600",
-      bgColor: "from-purple-100 to-purple-50",
+        "Tailored portfolio projects and actionable steps to elevate your technical profile for hiring managers.",
     },
   ];
 
   return (
-    <section className="relative py-24 px-6 bg-gradient-to-b from-blue-50 via-indigo-50 to-purple-50 overflow-hidden">
-      {/* Animated Background Glow */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          x: [0, 50, 0],
-          y: [0, -30, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-0 left-0 w-80 h-80 bg-blue-300 rounded-full blur-[140px] opacity-30"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.3, 1],
-          x: [0, -50, 0],
-          y: [0, 30, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-0 right-0 w-80 h-80 bg-purple-300 rounded-full blur-[140px] opacity-30"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          x: [0, 30, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-300 rounded-full blur-[140px] opacity-20"
-      />
+    <section className="relative py-28 px-6 bg-black overflow-hidden border-t border-zinc-900">
+      {/* Subtle green ambient glows */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-green-400/5 rounded-full blur-[160px] pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-400/5 rounded-full blur-[160px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 space-y-16">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
+          className="text-center max-w-3xl mx-auto space-y-4"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-4">
-            Why Choose{" "}
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              AI Resume Analyzer
-            </span>
+          <span className="px-3.5 py-1.5 rounded-full bg-green-400/10 border border-green-400/30 text-green-300 text-xs font-extrabold uppercase tracking-widest">
+            ⭐ Why Choose ResumeAI
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+            Built for Serious <span className="text-green-400">Career Advancement</span>
           </h2>
 
-          <p className="text-center text-gray-600 text-lg max-w-3xl mx-auto mb-16">
-            Designed to help students and professionals create ATS-friendly resumes,
-            improve interview readiness, and accelerate career growth using AI.
+          <p className="text-zinc-400 text-base sm:text-lg leading-relaxed">
+            Designed to help students, developers, and recruiters achieve transparent, ATS-friendly hiring outcomes.
           </p>
         </motion.div>
 
         {/* Stats/Reasons Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {reasons.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:shadow-blue-200/50 hover:border-blue-300 hover:-translate-y-3 transition-all duration-500"
+              className="bg-zinc-950 p-8 rounded-3xl border border-zinc-800 hover:border-green-400/40 relative space-y-4 group transition-all duration-300 shadow-xl"
             >
-              {/* Icon container with gradient */}
-              <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${item.bgColor} flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition duration-500 group-hover:shadow-lg`}>
+              <div className="w-14 h-14 rounded-2xl bg-zinc-900 border border-green-400/30 flex items-center justify-center text-green-300 shadow-lg shadow-green-400/10 group-hover:scale-105 transition-transform">
                 {item.icon}
               </div>
 
-              <h3 className="text-xl font-bold mb-4 text-gray-800 group-hover:text-blue-600 transition">
+              <h3 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
                 {item.title}
               </h3>
 
-              <p className="text-gray-600 leading-7">
+              <p className="text-zinc-400 text-sm leading-relaxed">
                 {item.description}
               </p>
-
-              {/* Decorative line on hover */}
-              <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </motion.div>
           ))}
         </div>
@@ -143,18 +94,16 @@ function Stats() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center pt-4"
         >
-          <motion.button
+          <button
             onClick={() => navigate("/login")}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-5 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300"
+            className="px-8 py-4 rounded-2xl text-base font-black text-black bg-green-400 hover:bg-green-300 shadow-xl shadow-green-400/20 hover:shadow-green-400/35 transition-all duration-300"
           >
-            Start Your Journey Today
-          </motion.button>
+            Start Your Analysis Today
+          </button>
         </motion.div>
       </div>
     </section>

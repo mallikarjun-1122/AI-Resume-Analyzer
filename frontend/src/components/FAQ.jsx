@@ -40,17 +40,17 @@ function FAQ() {
   return (
     <section
       id="faq"
-      className="relative py-28 px-4 sm:px-6 bg-slate-950 overflow-hidden border-t border-slate-900"
+      className="relative py-28 px-4 sm:px-6 bg-black overflow-hidden border-t border-zinc-900"
     >
       <div className="max-w-4xl mx-auto relative z-10 space-y-12">
         <div className="text-center space-y-4">
-          <span className="px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-extrabold uppercase tracking-widest">
+          <span className="px-3.5 py-1.5 rounded-full bg-green-400/10 border border-green-400/30 text-green-300 text-xs font-extrabold uppercase tracking-widest">
             ❓ FAQ & Answers
           </span>
           <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
-            Frequently Asked <span className="gradient-text-primary">Questions</span>
+            Frequently Asked <span className="text-green-400">Questions</span>
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg">
+          <p className="text-zinc-400 text-base sm:text-lg">
             Got questions? We've got answers to help you optimize your resume.
           </p>
         </div>
@@ -61,17 +61,17 @@ function FAQ() {
             return (
               <div
                 key={index}
-                className="glass-panel glass-panel-hover rounded-2xl overflow-hidden"
+                className="bg-zinc-950 border border-zinc-800 hover:border-green-400/40 rounded-2xl overflow-hidden transition-all shadow-xl"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex items-center justify-between p-6 text-left text-white font-bold text-base sm:text-lg"
                 >
                   <span className="flex items-center gap-3">
-                    <FaQuestionCircle className="text-cyan-400 flex-shrink-0" />
+                    <FaQuestionCircle className="text-green-400 flex-shrink-0" />
                     {faq.question}
                   </span>
-                  {isOpen ? <FaChevronUp className="text-cyan-400" /> : <FaChevronDown className="text-slate-500" />}
+                  {isOpen ? <FaChevronUp className="text-green-400" /> : <FaChevronDown className="text-zinc-500" />}
                 </button>
 
                 <AnimatePresence>
@@ -81,7 +81,7 @@ function FAQ() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-slate-800/60 pt-4"
+                      className="px-6 pb-6 text-zinc-300 text-sm leading-relaxed border-t border-zinc-800/80 pt-4"
                     >
                       {faq.answer}
                     </motion.div>

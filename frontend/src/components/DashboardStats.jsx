@@ -80,28 +80,24 @@ export default function DashboardStats({ history = [], mode = "candidate" }) {
           title="Candidates Screened"
           value={`${recruiterStats.candidatesScreened} Candidates`}
           icon={<Users size={24} />}
-          gradient="from-purple-500 to-pink-600 shadow-purple-500/20"
         />
 
         <StatCard
           title="Batch Drives Conducted"
           value={`${recruiterStats.drivesConducted} Drives`}
           icon={<Building size={24} />}
-          gradient="from-cyan-500 to-blue-600 shadow-cyan-500/20"
         />
 
         <StatCard
           title="Top Candidate Match"
           value={`${recruiterStats.topMatch}% Fit`}
           icon={<Award size={24} />}
-          gradient="from-amber-500 to-rose-600 shadow-amber-500/20"
         />
 
         <StatCard
           title="Qualification Rate"
           value={`${recruiterStats.qualificationRate}% Qualified`}
           icon={<CheckCircle size={24} />}
-          gradient="from-emerald-500 to-teal-600 shadow-emerald-500/20"
         />
       </div>
     );
@@ -113,28 +109,24 @@ export default function DashboardStats({ history = [], mode = "candidate" }) {
         title="Total Resumes Uploaded"
         value={total}
         icon={<FileText size={24} />}
-        gradient="from-cyan-500 to-blue-600 shadow-cyan-500/20"
       />
 
       <StatCard
         title="Highest ATS Score"
         value={`${highestATS}%`}
         icon={<Trophy size={24} />}
-        gradient="from-emerald-500 to-teal-600 shadow-emerald-500/20"
       />
 
       <StatCard
         title="Average ATS Score"
         value={`${avgATS}%`}
         icon={<BarChart3 size={24} />}
-        gradient="from-purple-500 to-indigo-600 shadow-purple-500/20"
       />
 
       <StatCard
         title="Average Job Match"
         value={`${avgMatch}%`}
         icon={<Target size={24} />}
-        gradient="from-amber-500 to-rose-600 shadow-amber-500/20"
       />
     </div>
   );
