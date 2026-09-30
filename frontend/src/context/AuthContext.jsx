@@ -22,9 +22,14 @@ const getCandidateUser = (customEmail, customName) => {
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
-    return getCandidateUser();
+    const isAuth = localStorage.getItem("is_authenticated") === "true";
+    const candidateEmail = localStorage.getItem("candidate_email");
+    if (isAuth && candidateEmail) {
+      return getCandidateUser(candidateEmail);
+    }
+    return null;
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let unsubscribe = () => {};
@@ -42,13 +47,26 @@ export function AuthProvider({ children }) {
             }
           };
           setUser(userObj);
+          localStorage.setItem("is_authenticated", "true");
           localStorage.setItem("candidate_email", u.email);
           localStorage.setItem("candidate_name", userObj.user_metadata.full_name);
         } else {
-          setUser(getCandidateUser());
+          const isAuth = localStorage.getItem("is_authenticated") === "true";
+          const candidateEmail = localStorage.getItem("candidate_email");
+          if (isAuth && candidateEmail) {
+            setUser(getCandidateUser(candidateEmail));
+          } else {
+            setUser(null);
+          }
         }
       } catch (err) {
-        setUser(getCandidateUser());
+        const isAuth = localStorage.getItem("is_authenticated") === "true";
+        const candidateEmail = localStorage.getItem("candidate_email");
+        if (isAuth && candidateEmail) {
+          setUser(getCandidateUser(candidateEmail));
+        } else {
+          setUser(null);
+        }
       } finally {
         setLoading(false);
       }
@@ -57,7 +75,7 @@ export function AuthProvider({ children }) {
     getSession();
 
     try {
-      const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      const { data } = supabase.auth.onAuthStateChange((event, session) => {
         if (session?.user) {
           const u = session.user;
           const userObj = {
@@ -68,10 +86,11 @@ export function AuthProvider({ children }) {
             }
           };
           setUser(userObj);
+          localStorage.setItem("is_authenticated", "true");
           localStorage.setItem("candidate_email", u.email);
           localStorage.setItem("candidate_name", userObj.user_metadata.full_name);
-        } else {
-          setUser(getCandidateUser());
+        } else if (event === "SIGNED_OUT") {
+          setUser(null);
         }
       });
       if (data?.subscription) {
@@ -83,6 +102,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const loginAsGuest = (customDetails = {}) => {
+    localStorage.setItem("is_authenticated", "true");
     localStorage.setItem("demo_mode", "true");
     if (customDetails.email) {
       localStorage.setItem("candidate_email", customDetails.email);
@@ -95,15 +115,17 @@ export function AuthProvider({ children }) {
   };
 
   const logout = async () => {
+    localStorage.removeItem("is_authenticated");
     localStorage.removeItem("demo_mode");
     localStorage.removeItem("candidate_email");
     localStorage.removeItem("candidate_name");
+    localStorage.removeItem("candidate_id");
     try {
       await supabase.auth.signOut();
     } catch (e) {
       // ignore
     }
-    setUser(getCandidateUser("", "Candidate"));
+    setUser(null);
   };
 
   return (

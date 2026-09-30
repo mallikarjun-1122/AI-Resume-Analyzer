@@ -7,8 +7,9 @@ function ProtectedRoute({ children }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 text-white flex justify-center items-center">
-        Loading...
+      <div className="min-h-screen bg-black text-white flex flex-col justify-center items-center gap-3">
+        <div className="w-9 h-9 border-2 border-green-400 border-t-transparent rounded-full animate-spin"></div>
+        <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider">Verifying Session...</span>
       </div>
     );
   }
