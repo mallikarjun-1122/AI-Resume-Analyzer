@@ -44,15 +44,15 @@ function AnalysisResult({ result }) {
   const overallScore = Number(ats.overall_score || matching.match_percentage || 85);
 
   const getScoreColor = (score) => {
-    if (score >= 80) return "from-emerald-500 via-teal-500 to-green-600";
-    if (score >= 60) return "from-amber-500 via-orange-500 to-yellow-600";
-    return "from-red-500 via-rose-500 to-pink-600";
+    if (score >= 80) return "from-zinc-950 via-zinc-900 to-black border border-green-400/40";
+    if (score >= 60) return "from-zinc-950 via-zinc-900 to-black border border-zinc-700";
+    return "from-zinc-950 via-zinc-900 to-black border border-zinc-800";
   };
 
   const getScoreBadge = (score) => {
-    if (score >= 80) return { label: "Excellent ATS Match", bg: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" };
-    if (score >= 60) return { label: "Good Compatibility", bg: "bg-amber-500/20 text-amber-400 border-amber-500/30" };
-    return { label: "Needs Optimization", bg: "bg-rose-500/20 text-rose-400 border-rose-500/30" };
+    if (score >= 80) return { label: "Excellent ATS Match", bg: "bg-green-400/20 text-green-300 border-green-400/40" };
+    if (score >= 60) return { label: "Good Compatibility", bg: "bg-zinc-800 text-zinc-300 border-zinc-700" };
+    return { label: "Needs Optimization", bg: "bg-zinc-900 text-zinc-400 border-zinc-800" };
   };
 
   const handleCopySummary = () => {
@@ -145,30 +145,30 @@ function AnalysisResult({ result }) {
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <button
               onClick={() => setShowCoverLetter(true)}
-              className="px-3.5 py-2 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 text-xs font-bold border border-purple-500/30 transition-all flex items-center gap-1.5"
+              className="px-3.5 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-green-300 text-xs font-bold border border-green-400/30 transition-all flex items-center gap-1.5"
             >
               <FaEnvelopeOpenText /> AI Cover Letter
             </button>
 
             <button
               onClick={() => setShowBulletEnhancer(true)}
-              className="px-3.5 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs font-bold border border-amber-500/30 transition-all flex items-center gap-1.5"
+              className="px-3.5 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-200 text-xs font-bold border border-zinc-700 transition-all flex items-center gap-1.5"
             >
-              <FaMagic /> Bullet Enhancer
+              <FaMagic className="text-green-400" /> Bullet Enhancer
             </button>
 
             <button
               onClick={handleCopySummary}
-              className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-all flex items-center gap-1.5"
+              className="px-3.5 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-200 text-xs font-semibold border border-zinc-800 transition-all flex items-center gap-1.5"
             >
-              <FaCopy className="text-cyan-400" />
+              <FaCopy className="text-green-400" />
               {copied ? "Copied!" : "Copy Summary"}
             </button>
 
             <button
               onClick={handleDownloadPDF}
               disabled={downloading}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white text-xs font-bold shadow-lg shadow-cyan-500/20 transition-all flex items-center gap-2 disabled:opacity-50"
+              className="px-4 py-2 rounded-xl bg-green-400 hover:bg-green-300 text-black text-xs font-extrabold shadow-lg shadow-green-400/20 transition-all flex items-center gap-2 disabled:opacity-50"
             >
               <FaDownload />
               {downloading ? "Exporting..." : "Download PDF Report"}
@@ -178,28 +178,28 @@ function AnalysisResult({ result }) {
 
         {/* Main Score Hero Card */}
         <div
-          className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${getScoreColor(overallScore)} p-8 sm:p-10 text-white shadow-2xl shadow-cyan-500/20`}
+          className={`relative overflow-hidden rounded-3xl bg-zinc-950 p-8 sm:p-10 text-white shadow-2xl shadow-green-950/20 border border-green-400/20`}
         >
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white/10 blur-3xl pointer-events-none"></div>
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-green-400/5 blur-3xl pointer-events-none"></div>
 
           <div className="relative z-10 grid md:grid-cols-3 gap-8 items-center">
             <div className="md:col-span-2 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold uppercase tracking-wider">
-                <span>🎯 Overall AI Compatibility</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 text-xs font-semibold uppercase tracking-wider text-green-300 border border-green-400/30">
+                <span>🎯 Overall ATS Compatibility</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight">
+              <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight text-white">
                 {ai.overall_rating || `${(overallScore / 10).toFixed(1)} / 10 Match`}
               </h1>
-              <p className="text-white/90 text-sm leading-relaxed max-w-xl">
+              <p className="text-zinc-300 text-sm leading-relaxed max-w-xl">
                 {ai.overall_feedback || "Your resume has been scanned against the target job description skills."}
               </p>
 
               <div className="flex flex-wrap gap-3 pt-2">
-                <span className="px-3.5 py-1.5 rounded-xl bg-black/20 backdrop-blur-md text-xs font-semibold border border-white/10">
-                  Hire Status: <strong className="text-yellow-200">{ai.hire_recommendation || matching.recommendation || "Recommended"}</strong>
+                <span className="px-3.5 py-1.5 rounded-xl bg-zinc-900 text-xs font-semibold border border-zinc-800 text-zinc-200">
+                  Hire Status: <strong className="text-green-400">{ai.hire_recommendation || matching.recommendation || "Recommended"}</strong>
                 </span>
-                <span className="px-3.5 py-1.5 rounded-xl bg-black/20 backdrop-blur-md text-xs font-semibold border border-white/10">
-                  AI Confidence: <strong className="text-emerald-200">{ai.confidence || 92}%</strong>
+                <span className="px-3.5 py-1.5 rounded-xl bg-zinc-900 text-xs font-semibold border border-zinc-800 text-zinc-200">
+                  Confidence: <strong className="text-green-300">{ai.confidence || 92}%</strong>
                 </span>
               </div>
             </div>
@@ -238,42 +238,42 @@ function AnalysisResult({ result }) {
         {/* Metrics Row */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* ATS Score Details */}
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
+          <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg border border-cyan-500/30">
+                <div className="w-10 h-10 rounded-xl bg-zinc-900 text-green-400 flex items-center justify-center text-lg border border-green-400/30">
                   <FaChartLine />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white">ATS Breakdown</h3>
-                  <p className="text-xs text-slate-400">Section completeness & keyword score</p>
+                  <p className="text-xs text-zinc-400">Section completeness & keyword score</p>
                 </div>
               </div>
-              <span className="text-2xl font-extrabold text-cyan-400">{ats.overall_score || overallScore}%</span>
+              <span className="text-2xl font-extrabold text-green-400">{ats.overall_score || overallScore}%</span>
             </div>
 
             <div className="space-y-3">
               <div>
-                <div className="flex justify-between text-xs text-slate-300 font-medium mb-1">
+                <div className="flex justify-between text-xs text-zinc-300 font-medium mb-1">
                   <span>Keyword Match</span>
                   <span>{ats.keyword_score || matching.match_percentage || 84}%</span>
                 </div>
-                <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-zinc-900 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-cyan-500 rounded-full transition-all duration-700"
+                    className="h-full bg-green-400 rounded-full transition-all duration-700"
                     style={{ width: `${ats.keyword_score || matching.match_percentage || 84}%` }}
                   />
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between text-xs text-slate-300 font-medium mb-1">
+                <div className="flex justify-between text-xs text-zinc-300 font-medium mb-1">
                   <span>Section Completeness</span>
                   <span>{ats.section_score || 88}%</span>
                 </div>
-                <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-zinc-900 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-purple-500 rounded-full transition-all duration-700"
+                    className="h-full bg-green-300 rounded-full transition-all duration-700"
                     style={{ width: `${ats.section_score || 88}%` }}
                   />
                 </div>
@@ -282,58 +282,58 @@ function AnalysisResult({ result }) {
           </div>
 
           {/* Job Description Match */}
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
+          <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/30">
+                <div className="w-10 h-10 rounded-xl bg-zinc-900 text-green-400 flex items-center justify-center text-lg border border-green-400/30">
                   🎯
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white">Job Alignment</h3>
-                  <p className="text-xs text-slate-400">Direct requirement overlap</p>
+                  <p className="text-xs text-zinc-400">Direct requirement overlap</p>
                 </div>
               </div>
-              <span className="text-2xl font-extrabold text-emerald-400">{matching.match_percentage || overallScore}%</span>
+              <span className="text-2xl font-extrabold text-green-400">{matching.match_percentage || overallScore}%</span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300 space-y-1">
-              <p className="font-semibold text-emerald-400">Recommendation Status:</p>
+            <div className="p-4 rounded-2xl bg-zinc-900 border border-green-400/20 text-xs text-green-300 space-y-1">
+              <p className="font-semibold text-white">Recommendation Status:</p>
               <p>{matching.recommendation || ai.hire_recommendation || "Recommended Candidate"}</p>
             </div>
           </div>
         </div>
 
         {/* Category Skill Visualizer Breakdown */}
-        <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
+        <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-lg border border-purple-500/30">
+            <div className="w-10 h-10 rounded-xl bg-zinc-900 text-green-400 flex items-center justify-center text-lg border border-green-400/30">
               <FaLayerGroup />
             </div>
             <div>
               <h3 className="text-lg font-bold text-white">Skill Category Breakdown</h3>
-              <p className="text-xs text-slate-400">Visual proficiency across domain categories</p>
+              <p className="text-xs text-zinc-400">Visual proficiency across domain categories</p>
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
-            <CategorySkillProgress title="Programming Languages" score={Math.min(95, overallScore + 4)} color="bg-cyan-500" />
-            <CategorySkillProgress title="Frameworks & Libraries" score={Math.max(60, overallScore - 4)} color="bg-purple-500" />
-            <CategorySkillProgress title="Databases & Cloud" score={Math.max(55, overallScore - 10)} color="bg-amber-500" />
-            <CategorySkillProgress title="Soft Skills & Leadership" score={Math.min(92, overallScore + 2)} color="bg-emerald-500" />
+            <CategorySkillProgress title="Programming Languages" score={Math.min(95, overallScore + 4)} color="bg-green-400" />
+            <CategorySkillProgress title="Frameworks & Libraries" score={Math.max(60, overallScore - 4)} color="bg-green-300" />
+            <CategorySkillProgress title="Databases & Tools" score={Math.max(55, overallScore - 8)} color="bg-emerald-400" />
+            <CategorySkillProgress title="Domain Knowledge" score={Math.min(90, overallScore + 2)} color="bg-green-200" />
           </div>
         </div>
 
         {/* Skills Comparison Section */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* Matched Skills - INTERSECTION ONLY */}
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
+          <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/30">
+              <div className="w-10 h-10 rounded-xl bg-zinc-900 text-green-400 flex items-center justify-center text-lg border border-green-400/30">
                 <FaCheckCircle />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">Matched Skills (Overlap)</h3>
-                <p className="text-xs text-slate-400">Skills present in BOTH your Resume AND target JD</p>
+                <p className="text-xs text-zinc-400">Skills present in BOTH your Resume AND target JD</p>
               </div>
             </div>
 
@@ -350,14 +350,14 @@ function AnalysisResult({ result }) {
           </div>
 
           {/* Missing Skills */}
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
+          <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-lg border border-rose-500/30">
+              <div className="w-10 h-10 rounded-xl bg-zinc-900 text-zinc-400 flex items-center justify-center text-lg border border-zinc-700">
                 <FaTimesCircle />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">Missing Skills Gap</h3>
-                <p className="text-xs text-slate-400">Skills required by JD missing from your resume</p>
+                <p className="text-xs text-zinc-400">Skills required by JD missing from your resume</p>
               </div>
             </div>
 
@@ -366,13 +366,13 @@ function AnalysisResult({ result }) {
                 missingSkillsList.map((skill, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1.5 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20 text-xs font-semibold flex items-center gap-1.5"
+                    className="px-3 py-1.5 rounded-xl bg-zinc-900 text-zinc-300 border border-zinc-800 text-xs font-semibold flex items-center gap-1.5"
                   >
-                    <FaTimesCircle size={10} /> {typeof skill === "string" ? skill : JSON.stringify(skill)}
+                    <FaTimesCircle size={10} className="text-zinc-500" /> {typeof skill === "string" ? skill : JSON.stringify(skill)}
                   </span>
                 ))
               ) : (
-                <span className="text-xs text-emerald-400 font-semibold">No missing skills detected! 100% skill match.</span>
+                <span className="text-xs text-green-300 font-semibold">No missing skills detected! 100% skill match.</span>
               )}
             </div>
           </div>
@@ -380,34 +380,34 @@ function AnalysisResult({ result }) {
 
         {/* Strengths & Actionable Improvements */}
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
+          <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg border border-cyan-500/30">
+              <div className="w-10 h-10 rounded-xl bg-zinc-900 text-green-400 flex items-center justify-center text-lg border border-green-400/30">
                 🌟
               </div>
               <h3 className="text-lg font-bold text-white">Key Resume Strengths</h3>
             </div>
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
+            <ul className="space-y-2 text-xs sm:text-sm text-zinc-300">
               {strengthsList.map((str, idx) => (
-                <li key={idx} className="flex items-start gap-2 p-2 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <span className="text-cyan-400 font-bold">•</span>
+                <li key={idx} className="flex items-start gap-2 p-2 rounded-xl bg-zinc-900 border border-zinc-800/80">
+                  <span className="text-green-400 font-bold">•</span>
                   <span>{typeof str === "string" ? str : JSON.stringify(str)}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
+          <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg border border-amber-500/30">
+              <div className="w-10 h-10 rounded-xl bg-zinc-900 text-green-400 flex items-center justify-center text-lg border border-green-400/30">
                 <FaTools />
               </div>
               <h3 className="text-lg font-bold text-white">Actionable Resume Improvements</h3>
             </div>
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
+            <ul className="space-y-2 text-xs sm:text-sm text-zinc-300">
               {improvementsList.map((imp, idx) => (
-                <li key={idx} className="flex items-start gap-2 p-2 rounded-xl bg-slate-900/60 border border-slate-800">
-                  <span className="text-amber-400 font-bold">👉</span>
+                <li key={idx} className="flex items-start gap-2 p-2 rounded-xl bg-zinc-900 border border-zinc-800/80">
+                  <span className="text-green-400 font-bold">👉</span>
                   <span>{typeof imp === "string" ? imp : JSON.stringify(imp)}</span>
                 </li>
               ))}
@@ -416,14 +416,14 @@ function AnalysisResult({ result }) {
         </div>
 
         {/* AI Tailored Interview Prep Section */}
-        <div className="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl">
+        <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-xl">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-lg border border-purple-500/30">
+            <div className="w-10 h-10 rounded-xl bg-zinc-900 text-green-400 flex items-center justify-center text-lg border border-green-400/30">
               <FaQuestionCircle />
             </div>
             <div>
               <h3 className="text-lg font-bold text-white">Tailored Interview Questions & Preparation</h3>
-              <p className="text-xs text-slate-400">Likely questions based on your resume & target job description</p>
+              <p className="text-xs text-zinc-400">Likely questions based on your resume & target job description</p>
             </div>
           </div>
 

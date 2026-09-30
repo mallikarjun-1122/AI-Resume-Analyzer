@@ -12,22 +12,22 @@ function Footer() {
   };
 
   return (
-    <footer className="relative bg-slate-950 text-slate-400 pt-16 pb-8 border-t border-slate-900">
+    <footer className="relative bg-black text-zinc-400 pt-16 pb-8 border-t border-zinc-900">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
 
         {/* Logo & Description */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center text-white font-black text-sm">
+            <div className="w-8 h-8 rounded-xl bg-zinc-900 border border-green-400/40 flex items-center justify-center text-green-300 font-black text-sm">
               ⚡
             </div>
             <span className="text-xl font-black text-white">
-              ResumeAI<span className="text-cyan-400">.io</span>
+              ResumeAI<span className="text-green-400">.io</span>
             </span>
           </div>
 
-          <p className="text-xs text-slate-400 leading-relaxed max-w-md">
-            Empowering job seekers worldwide with real-time AI resume analysis, ATS scoring, and interview intelligence.
+          <p className="text-xs text-zinc-400 leading-relaxed max-w-md">
+            Empowering candidates and recruiters with explainable ATS compatibility matching and AI-tailored career guidance.
           </p>
         </div>
 
@@ -38,22 +38,22 @@ function Footer() {
           </h3>
 
           <ul className="flex flex-wrap md:justify-end gap-6 text-xs font-semibold">
-            <li><a href="#features" className="hover:text-cyan-400 transition-colors">Features</a></li>
-            <li><a href="#how" className="hover:text-cyan-400 transition-colors">How It Works</a></li>
-            <li><a href="#faq" className="hover:text-cyan-400 transition-colors">FAQ</a></li>
+            <li><a href="#features" className="hover:text-green-300 transition-colors">Features</a></li>
+            <li><a href="#how" className="hover:text-green-300 transition-colors">How It Works</a></li>
+            <li><a href="#faq" className="hover:text-green-300 transition-colors">FAQ</a></li>
           </ul>
         </div>
 
       </div>
 
       {/* Bottom Copyright & Privacy Notice */}
-      <div className="border-t border-slate-900 mt-12 pt-6 text-xs text-slate-500 max-w-7xl mx-auto px-6 space-y-3">
-        <p className="text-[11px] text-slate-500 leading-normal">
-          <strong className="text-slate-400">Privacy Notice:</strong> Uploaded resumes are parsed temporarily in-memory for ATS compatibility calculation and immediately removed after processing. No resume files are permanently stored on server storage.
+      <div className="border-t border-zinc-900 mt-12 pt-6 text-xs text-zinc-500 max-w-7xl mx-auto px-6 space-y-3">
+        <p className="text-[11px] text-zinc-500 leading-normal">
+          <strong className="text-zinc-400">Privacy Notice:</strong> Uploaded resumes are parsed temporarily in-memory for ATS compatibility calculation and immediately removed after processing. No resume files are permanently stored on server storage.
         </p>
-        <div className="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-slate-900/60">
+        <div className="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-zinc-900/60">
           <span>© {new Date().getFullYear()} AI-Resume-Analyzer. All rights reserved.</span>
-          <span className="flex items-center gap-1">Crafted with <FaHeart className="text-rose-500" /> for job seekers</span>
+          <span className="flex items-center gap-1">Crafted with <FaHeart className="text-green-400" /> for job seekers</span>
         </div>
       </div>
 
@@ -61,7 +61,7 @@ function Footer() {
       <button
         onClick={scrollToTop}
         aria-label="Scroll to top"
-        className="fixed bottom-6 right-6 z-40 p-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-xl shadow-cyan-500/20 hover:scale-110 transition-all"
+        className="fixed bottom-6 right-6 z-40 p-3.5 rounded-2xl bg-zinc-900 text-green-400 border border-green-400/40 shadow-xl shadow-green-400/10 hover:bg-green-400 hover:text-black transition-all"
       >
         <FaArrowUp />
       </button>
