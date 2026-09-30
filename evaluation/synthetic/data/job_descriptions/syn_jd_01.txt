@@ -1,0 +1,26 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Senior Fullstack Cloud Architect
+LOCATION: Remote / Global Operations
+EXPERIENCE REQUIRED: 6+ years
+
+ABOUT THE ROLE:
+We are seeking an experienced Senior Fullstack Cloud Architect to design and implement
+cloud-native web platforms. You will oversee end-to-end distributed system architecture.
+
+REQUIRED TECHNICAL SKILLS:
+- Core Languages & Frameworks: Python, FastAPI, React, TypeScript
+- Data Storage: PostgreSQL, Redis
+- Cloud & Containers: AWS, Docker, Kubernetes
+
+PREFERRED SKILLS:
+- CI/CD, Git version control, Tailwind CSS
+
+RESPONSIBILITIES:
+- Architect highly scalable asynchronous microservices.
+- Lead development of enterprise single-page applications.
+- Manage containerized production Kubernetes clusters on AWS.

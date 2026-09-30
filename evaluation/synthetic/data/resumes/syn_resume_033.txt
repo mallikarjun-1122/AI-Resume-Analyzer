@@ -1,0 +1,41 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_033
+Role: Backend Developer | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Student/intern Backend Developer with proven ability to build scalable software.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: ci/cd, Classification, Docker, Git, SQL
+
+CAREER TRAJECTORY
+------------------------------
+Backend Developer   Jan 2023 - Present
+Apex Global Software
+• Architected core Backend Developer features utilizing Git.
+• Enhanced system efficiency and automated processing using CI/CD.
+
+SCHOOLING AND DEGREES
+------------------------------
+MCA
+Metropolitan Science Institute
+2019 - 2023
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Classification, Git, SQL
+• Constructed scalable service processing data with Classification.
+• Integrated automated pipelines and testing with SQL.
+
+BADGES AND PAPERS
+------------------------------
+None.

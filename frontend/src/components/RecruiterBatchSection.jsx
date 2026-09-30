@@ -43,13 +43,16 @@ export default function RecruiterBatchSection() {
         try {
           const raw = localStorage.getItem("recruiter_batch_runs");
           const runs = raw ? JSON.parse(raw) : [];
-          const topScore = Math.max(...res.leaderboard.map((c) => c.ats_score || 0));
+          const topScore = Math.max(...res.leaderboard.map((c) => c.ats_score ?? 0));
+          const qualifiedCount = res.leaderboard.filter(
+            (candidate) => candidate.recommendation === "Fit"
+          ).length;
 
           runs.unshift({
             id: `batch_${Date.now()}`,
             count: res.leaderboard.length,
             top_score: topScore,
-            qual_rate: 85,
+            qualified_count: qualifiedCount,
             timestamp: new Date().toISOString(),
           });
           localStorage.setItem("recruiter_batch_runs", JSON.stringify(runs));
@@ -61,7 +64,7 @@ export default function RecruiterBatchSection() {
       }
     } catch (err) {
       console.error(err);
-      toast.error("Error processing batch resumes.");
+      toast.error(err.response?.data?.error || err.message || "Error processing batch resumes.");
     } finally {
       setLoading(false);
     }

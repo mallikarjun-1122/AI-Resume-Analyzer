@@ -122,14 +122,22 @@ async def batch_analyze_resumes(
     Recruiter Mode: Process multiple candidate resumes and return a ranked leaderboard.
     """
     try:
+        invalid_files = [
+            file.filename
+            for file in files
+            if Path(file.filename).suffix.lower() not in {".pdf", ".docx"}
+        ]
+        if invalid_files:
+            return {
+                "success": False,
+                "error": "Only PDF and DOCX files are supported: " + ", ".join(invalid_files),
+            }
+
         results = []
         jd = parse_job_description(job_description)
 
         for file in files:
             ext = Path(file.filename).suffix.lower()
-            if ext not in {".pdf", ".docx"}:
-                continue
-
             file_path = UPLOAD_DIR / file.filename
             with open(file_path, "wb") as buffer:
                 shutil.copyfileobj(file.file, buffer)

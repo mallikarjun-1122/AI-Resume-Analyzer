@@ -1,0 +1,43 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_053
+Role: Data Scientist | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Student/intern Data Scientist with proven ability to build scalable software.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: NLP, NumPy, PyTorch, Python, SQL, sklearn
+
+CAREER TRAJECTORY
+------------------------------
+Data Scientist
+Synthetix Data Labs
+Jan 2023 - Present
+• Architected core Data Scientist features utilizing NLP.
+• Enhanced system efficiency and automated processing using NumPy.
+
+SCHOOLING AND DEGREES
+------------------------------
+Bachelor of Engineering
+Apex Institute of Technology
+2014 - 2018
+CGPA: 3.44
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: NumPy, SQL
+• Constructed scalable service processing data with NumPy.
+• Integrated automated pipelines and testing with SQL.
+
+BADGES AND PAPERS
+------------------------------
+None.

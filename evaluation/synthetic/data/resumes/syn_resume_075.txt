@@ -1,0 +1,47 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_075
+Role: Full Stack Developer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+BS in Software Engineering
+Apex Institute of Technology
+2017 - 2021
+CGPA: 3.24
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Git, PyTest, Python, TypeScript
+• Constructed scalable service processing data with Git.
+• Integrated automated pipelines and testing with TypeScript.
+
+SKILLS
+------------------------------
+Technical Skills: css, FastAPI, Git, JavaScript, postgresql, PyTest, Python, REACT, Redis, typescript, TailwindUI
+
+EXPERIENCE
+------------------------------
+Full Stack Developer   Jan 2019 - Dec 2020
+Apex Global Software
+• Architected core Full Stack Developer features utilizing Git.
+• Enhanced system efficiency and automated processing using FastAPI.
+
+Full Stack Developer   Jan 2021 - Present
+Quantum Dynamics Corp
+• Architected core Full Stack Developer features utilizing PyTest.
+• Enhanced system efficiency and automated processing using PostgreSQL.
+
+CERTIFICATIONS
+------------------------------
+AWS Certified Professional
+
+SUMMARY
+------------------------------
+Dedicated Mid-level Full Stack Developer with proven ability to build scalable software.

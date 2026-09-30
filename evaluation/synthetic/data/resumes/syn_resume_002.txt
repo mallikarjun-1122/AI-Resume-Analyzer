@@ -1,0 +1,47 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_002
+Role: Frontend Developer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Junior Frontend Developer with proven ability to build scalable software.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: CSS, Git, JavaScript, Redux, TypeScript
+
+WORK EXPERIENCE
+------------------------------
+Frontend Developer
+Nova Core Systems
+Jan 2022 - Present
+• Architected core Frontend Developer features utilizing Redux.
+• Enhanced system efficiency and automated processing using CSS.
+
+ACADEMIC BACKGROUND
+------------------------------
+MCA
+National Technical University
+2011 - 2015
+CGPA: 3.87
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Redux, TypeScript
+• Constructed scalable service processing data with Redux.
+• Integrated automated pipelines and testing with TypeScript.
+
+Synthetic Platform Project 2
+• Constructed scalable service processing data with CSS.
+• Integrated automated pipelines and testing with JavaScript.
+
+COURSES
+------------------------------
+None.

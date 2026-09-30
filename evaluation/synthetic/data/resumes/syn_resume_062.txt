@@ -1,0 +1,45 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_062
+Role: DevOps Engineer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Junior DevOps Engineer with proven ability to build scalable software. Currently exploring and learning R.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: AWS Cloud, Docker, Jenkins, Linux, python, Terraform, GraphQL
+
+WORK EXPERIENCE
+------------------------------
+DevOps Engineer   Jan 2022 - Present
+Quantum Dynamics Corp
+• Architected core DevOps Engineer features utilizing Linux.
+• Enhanced system efficiency and automated processing using AWS.
+
+ACADEMIC BACKGROUND
+------------------------------
+M.Tech
+Pinnacle Polytechnic School
+2015 - 2019
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Python, Terraform
+• Constructed scalable service processing data with Python.
+• Integrated automated pipelines and testing with Terraform.
+
+Synthetic Platform Project 2
+• Constructed scalable service processing data with Docker.
+• Integrated automated pipelines and testing with Terraform.
+
+COURSES
+------------------------------
+None.

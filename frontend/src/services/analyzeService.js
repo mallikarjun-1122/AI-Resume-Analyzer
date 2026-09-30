@@ -5,6 +5,11 @@ const API = axios.create({
   timeout: 30000,
 });
 
+function responseError(response, action) {
+  const message = response?.data?.error || `The backend could not ${action}.`;
+  return new Error(message);
+}
+
 const SKILL_DICTIONARY = [
   "python", "java", "javascript", "typescript", "c++", "c#", ".net",
   "dsa", "data structures", "algorithms",
@@ -140,6 +145,13 @@ const generateFallbackAnalysis = (jobDescription = "") => {
       matched_skills: matched_skills,
       missing_skills: missing_skills,
       status: status,
+      breakdown: {
+        skills: Math.round((overallScore * 40) / 100),
+        experience: 20,
+        projects: 20,
+        education: 10,
+        certifications: 10,
+      },
       issues: [
         missing_skills.length > 0
           ? `Missing ${missing_skills.length} core JD skills: ${missing_skills.join(", ")}.`
@@ -200,13 +212,22 @@ export const analyzeResume = async (formData) => {
     const response = await API.post("/analyze", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
-    if (response.data && response.data.success && response.data.ats?.overall_score) {
+
+    if (response.data && response.data.success && response.data.ats) {
       return response.data;
     }
+
+    if (response.data && response.data.error) {
+      throw responseError(response, "analyze this resume");
+    }
+
     const jd = formData.get("job_description") || "";
     return generateFallbackAnalysis(jd);
   } catch (error) {
-    console.warn("Backend API timeout or sleep. Running strict dynamic ATS analyzer algorithm:", error);
+    if (error?.response?.data?.error) {
+      throw error;
+    }
+    console.warn("Backend API timeout or offline. Running client-side ATS analyzer fallback:", error);
     const jd = formData.get("job_description") || "";
     return generateFallbackAnalysis(jd);
   }
@@ -217,11 +238,21 @@ export const batchAnalyzeResumes = async (formData) => {
     const response = await API.post("/batch-analyze", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
-    if (response.data && response.data.success && response.data.leaderboard) {
+
+    if (response.data && response.data.success && Array.isArray(response.data.leaderboard)) {
       return response.data;
     }
-    throw new Error("Fallback required");
+
+    if (response.data && response.data.error) {
+      throw responseError(response, "analyze this batch of resumes");
+    }
+
+    throw new Error("Batch analysis response was incomplete.");
   } catch (error) {
+    if (error?.response?.data?.error) {
+      throw error;
+    }
+    console.warn("Backend API timeout or offline for batch analysis. Using fallback:", error);
     const jd = formData.get("job_description") || "";
     const baseAnalysis = generateFallbackAnalysis(jd);
     const files = formData.getAll("files");
@@ -236,11 +267,16 @@ export const batchAnalyzeResumes = async (formData) => {
           return {
             rank: idx + 1,
             candidate_name: name,
+            name: name,
             filename: filename,
+            email: "N/A",
             ats_score: score,
             match_percentage: score,
+            recommendation: score >= 75 ? "Fit" : (score >= 50 ? "Consider" : "Reject"),
             status: score >= 75 ? "Top Match" : (score >= 50 ? "Strong Candidate" : "Needs Review"),
+            matched_skills: baseAnalysis.matching.matching_keywords.slice(0, Math.max(1, baseAnalysis.matching.matching_keywords.length - idx)),
             matching_keywords: baseAnalysis.matching.matching_keywords.slice(0, Math.max(1, baseAnalysis.matching.matching_keywords.length - idx)),
+            missing_skills: baseAnalysis.matching.missing_keywords,
             missing_keywords: baseAnalysis.matching.missing_keywords,
             summary: `Automated assessment based on extracted technical profile and ${filename}.`
           };
@@ -249,11 +285,16 @@ export const batchAnalyzeResumes = async (formData) => {
           {
             rank: 1,
             candidate_name: "Applicant 1",
+            name: "Applicant 1",
             filename: "Resume_1.pdf",
+            email: "N/A",
             ats_score: baseAnalysis.ats.overall_score,
             match_percentage: baseAnalysis.matching.match_percentage,
+            recommendation: "Fit",
             status: "Top Match",
+            matched_skills: baseAnalysis.matching.matching_keywords,
             matching_keywords: baseAnalysis.matching.matching_keywords,
+            missing_skills: baseAnalysis.matching.missing_keywords,
             missing_keywords: baseAnalysis.matching.missing_keywords,
             summary: "Top alignment with target job requirements."
           }
@@ -273,17 +314,35 @@ export const enhanceBulletPoint = async (formData) => {
     const response = await API.post("/enhance-bullet", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
-    if (response.data && response.data.success) return response.data;
-    throw new Error("Fallback required");
+
+    if (response.data && response.data.success && Array.isArray(response.data.enhanced_bullets)) {
+      return response.data;
+    }
+
+    if (response.data && response.data.error) {
+      throw responseError(response, "enhance this bullet point");
+    }
+
+    throw new Error("Bullet enhancement response was incomplete.");
   } catch (error) {
+    if (error?.response?.data?.error) {
+      throw error;
+    }
+    console.warn("Backend API timeout or offline for bullet enhancement. Using fallback:", error);
     const original = formData.get("bullet_point") || "Worked on web application.";
+    const bullets = [
+      `Architected and optimized high-scale web application, improving page speed by 42% and driving 15k+ active monthly engagements.`,
+      `Engineered core full-stack features using React and Python, achieving 99.8% uptime and reducing server response latencies by 35ms.`,
+      `Spearheaded end-to-end development of web platform, collaborating with cross-functional teams to deliver 5 major feature sprints ahead of schedule.`
+    ];
     return {
       success: true,
       original_bullet: original,
+      enhanced_bullets: bullets,
       star_options: {
-        impact_focused: `Architected and optimized high-scale web application, improving page speed by 42% and driving 15k+ active monthly engagements.`,
-        metric_focused: `Engineered core full-stack features using React and Python, achieving 99.8% uptime and reducing server response latencies by 35ms.`,
-        leadership_focused: `Spearheaded end-to-end development of web platform, collaborating with cross-functional teams to deliver 5 major feature sprints ahead of schedule.`
+        impact_focused: bullets[0],
+        metric_focused: bullets[1],
+        leadership_focused: bullets[2]
       }
     };
   }
@@ -294,9 +353,21 @@ export const generateCoverLetter = async (formData) => {
     const response = await API.post("/generate-cover-letter", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
-    if (response.data && response.data.success) return response.data;
-    throw new Error("Fallback required");
+
+    if (response.data && response.data.success && typeof response.data.cover_letter === "string") {
+      return response.data;
+    }
+
+    if (response.data && response.data.error) {
+      throw responseError(response, "generate a cover letter");
+    }
+
+    throw new Error("Cover letter response was incomplete.");
   } catch (error) {
+    if (error?.response?.data?.error) {
+      throw error;
+    }
+    console.warn("Backend API timeout or offline for cover letter. Using fallback:", error);
     const role = formData.get("job_role") || "Software Engineer";
     const candidate = localStorage.getItem("candidate_name") || "Candidate";
     return {

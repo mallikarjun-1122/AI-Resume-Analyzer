@@ -1,0 +1,41 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_001
+Role: Backend Developer | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Student/intern Backend Developer with proven ability to build scalable software.
+
+SKILLS
+------------------------------
+Technical Skills: CI/CD, Docker, git, PostgreSQL, Python, REDIS, Prisma
+
+EXPERIENCE
+------------------------------
+Backend Developer   Jan 2023 - Present
+Synthetix Data Labs
+• Architected core Backend Developer features utilizing CI/CD.
+• Enhanced system efficiency and automated processing using Redis.
+
+EDUCATION
+------------------------------
+M.Sc
+Apex Institute of Technology
+2012 - 2016
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Git, Python, Redis
+• Constructed scalable service processing data with Git.
+• Integrated automated pipelines and testing with Redis.
+
+CERTIFICATIONS
+------------------------------
+None.

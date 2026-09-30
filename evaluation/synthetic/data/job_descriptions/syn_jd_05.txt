@@ -1,0 +1,11 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Senior Data Platform Engineer
+LOCATION: Hybrid
+REQUIREMENTS:
+- Languages & Storage: Python, SQL, PostgreSQL, MySQL, MongoDB, Redis
+- Cloud Infrastructure: Docker, AWS, Kubernetes, Git, CI/CD

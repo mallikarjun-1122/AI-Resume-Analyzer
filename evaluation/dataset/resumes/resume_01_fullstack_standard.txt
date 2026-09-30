@@ -1,0 +1,38 @@
+# DEMO DATA — NOT FOR RESEARCH RESULTS
+# Candidate: Alex Morgan
+# File: resume_01_fullstack_standard.txt
+
+SUMMARY
+Experienced Full-Stack Software Engineer with 3+ years designing and implementing scalable web applications, REST APIs, and microservices using Python, FastAPI, React, and modern cloud technologies.
+
+SKILLS
+Programming Languages: Python, JavaScript, TypeScript
+Frontend: React, HTML, CSS, Tailwind CSS
+Backend: FastAPI, Django, Node.js
+Database: PostgreSQL, MongoDB, Redis
+Cloud & DevOps: Docker, Kubernetes, AWS, Git, CI/CD
+
+EXPERIENCE
+Software Engineer   Jan 2022 - Present
+Acme Technologies
+• Architected scalable REST API backend using Python and FastAPI serving over 100k daily requests.
+• Developed responsive frontend dashboard components with React, TypeScript, and Tailwind CSS.
+• Managed container deployments using Docker and Kubernetes on AWS cloud infrastructure.
+• Optimized PostgreSQL query performance, reducing 95th percentile latency by 35%.
+
+PROJECTS
+E-Commerce Microservices Platform
+• Built distributed microservices utilizing FastAPI, PostgreSQL, and Redis caching.
+• Integrated React web interface with real-time inventory updates and automated Docker builds.
+• Configured CI/CD automated pipeline with Git and GitHub Actions.
+
+EDUCATION
+Bachelor of Technology
+National Institute of Technology
+CGPA: 8.9
+2018 – 2022
+
+CERTIFICATIONS
+AWS Certified Solutions Architect
+Docker Certified Associate
+Certified Kubernetes Administrator

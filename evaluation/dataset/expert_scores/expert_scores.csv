@@ -1,0 +1,8 @@
+# DEMO DATA — NOT FOR RESEARCH RESULTS
+resume_id,jd_id,expert_relevance_score,evaluator_id,scoring_rationale
+resume_01_fullstack_standard,jd_01_senior_fullstack,95.0,evaluator_demo_01,DEMO DATA: Senior fullstack match
+resume_02_backend_alt_headings,jd_01_senior_fullstack,65.0,evaluator_demo_01,DEMO DATA: Strong backend but missing Python/FastAPI
+resume_03_junior_data_analyst,jd_01_senior_fullstack,30.0,evaluator_demo_01,DEMO DATA: Data analyst profile for engineering role
+resume_04_missing_sections,jd_01_senior_fullstack,35.0,evaluator_demo_01,DEMO DATA: Frontend junior only with missing sections
+resume_05_no_recognized_skills,jd_01_senior_fullstack,5.0,evaluator_demo_01,DEMO DATA: Administrative profile
+resume_03_junior_data_analyst,jd_02_junior_analyst,90.0,evaluator_demo_01,DEMO DATA: High match for junior analyst

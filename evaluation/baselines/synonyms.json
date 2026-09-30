@@ -1,0 +1,27 @@
+{
+  "description": "Transparent, deterministic synonym mapping for Baseline C evaluation. Maps non-canonical surface variants to skills.json canonical entries.",
+  "mappings": {
+    "golang": "Go",
+    "postgres": "PostgreSQL",
+    "pgsql": "PostgreSQL",
+    "reactjs": "React",
+    "react.js": "React",
+    "vuejs": "Vue.js",
+    "vue": "Vue.js",
+    "nodejs": "Node.js",
+    "node js": "Node.js",
+    "expressjs": "Express.js",
+    "express js": "Express.js",
+    "k8s": "Kubernetes",
+    "amazon web services": "AWS",
+    "google cloud platform": "GCP",
+    "ms excel": "Excel",
+    "powerbi": "Power BI",
+    "scikit learn": "Scikit-learn",
+    "sklearn": "Scikit-learn",
+    "ci/cd": "CI/CD",
+    "continuous integration": "CI/CD",
+    "rest apis": "FastAPI",
+    "restful apis": "FastAPI"
+  }
+}

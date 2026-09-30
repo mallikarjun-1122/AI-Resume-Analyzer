@@ -1,0 +1,30 @@
+# DEMO DATA — NOT FOR RESEARCH RESULTS
+# Candidate: Taylor Sam
+# File: resume_03_junior_data_analyst.txt
+
+SUMMARY
+Motivated Junior Data Analyst proficient in statistical analysis, business intelligence reporting, and Python data manipulation.
+
+SKILLS
+Python, SQL, MySQL, Excel, Tableau, Power BI, Pandas, NumPy, Matplotlib
+
+EXPERIENCE
+Data Science Intern   Jan 2023 - Jun 2023
+Zeta Analytics
+• Extracted and cleaned multi-source business data using SQL and Python scripts.
+• Built interactive business dashboards with Power BI and Tableau for executive review.
+• Conducted exploratory data analysis with Pandas, NumPy, and Matplotlib.
+
+PROJECTS
+Customer Churn Prediction
+• Performed exploratory data analysis on 50,000 customer records using Python and Pandas.
+• Visualized key churn risk indicators using Matplotlib and Seaborn.
+
+EDUCATION
+B.Sc
+State University
+CGPA: 8.2
+2020 – 2023
+
+CERTIFICATIONS
+Microsoft Certified: Power BI Data Analyst Associate

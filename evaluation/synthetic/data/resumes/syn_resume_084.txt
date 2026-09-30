@@ -1,0 +1,50 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_084
+Role: Data Analyst | Experience: Senior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Senior Data Analyst with proven ability to build scalable software.
+
+SKILLS
+------------------------------
+Technical Skills: Excel, Leadership, Matplotlib, NumPy, Pandas, power bi, PROBLEM SOLVING, Python, SQL, Tableau
+
+EXPERIENCE
+------------------------------
+Data Analyst   Jan 2015 - Dec 2016
+Blue Horizon Digital
+• Architected core Data Analyst features utilizing Python.
+• Enhanced system efficiency and automated processing using Pandas.
+
+Data Analyst   Jan 2017 - Dec 2018
+Quantum Dynamics Corp
+• Architected core Data Analyst features utilizing Tableau.
+• Enhanced system efficiency and automated processing using Problem Solving.
+
+Senior Data Analyst
+Quantum Dynamics Corp
+Jan 2019 - Present
+• Architected core Data Analyst features utilizing Leadership.
+• Enhanced system efficiency and automated processing using Problem Solving.
+
+EDUCATION
+------------------------------
+Diploma
+Metropolitan Science Institute
+2017 - 2021
+CGPA: 3.99
+
+PROJECTS
+------------------------------
+Portfolio available upon request.
+
+CERTIFICATIONS
+------------------------------
+None.

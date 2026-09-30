@@ -1,0 +1,47 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_018
+Role: Frontend Developer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Junior Frontend Developer with proven ability to build scalable software.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: CSS, gitlab, HTML, JavaScript, Next.js, ReactJS, Redux, TypeScript, Haskell
+
+CAREER TRAJECTORY
+------------------------------
+Frontend Developer   Jan 2022 - Present
+Nova Core Systems
+• Architected core Frontend Developer features utilizing CSS.
+• Enhanced system efficiency and automated processing using TypeScript.
+
+SCHOOLING AND DEGREES
+------------------------------
+BS in Software Engineering
+State Engineering University
+2016 - 2020
+CGPA: 3.50
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: GitLab, JavaScript
+• Constructed scalable service processing data with GitLab.
+• Integrated automated pipelines and testing with JavaScript.
+
+Synthetic Platform Project 2
+Technologies: GitLab, TypeScript
+• Constructed scalable service processing data with GitLab.
+• Integrated automated pipelines and testing with TypeScript.
+
+BADGES AND PAPERS
+------------------------------
+None.

@@ -1,0 +1,9 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Junior Python Scripting Assistant
+REQUIREMENTS:
+- Basic automation with Python and version tracking with Git.

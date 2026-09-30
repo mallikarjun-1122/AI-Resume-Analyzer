@@ -1,0 +1,49 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_055
+Role: QA Automation Engineer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+Diploma
+Apex Institute of Technology
+2016 - 2020
+CGPA: 3.98
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: CI/CD, Git, Spring Boot
+• Constructed scalable service processing data with CI/CD.
+• Integrated automated pipelines and testing with Spring Boot.
+
+SKILLS
+------------------------------
+Technical Skills: CI/CD, Git, JavaScript, Jest, PyTest, Spring Boot, testing, Solidity
+
+EXPERIENCE
+------------------------------
+QA Automation Engineer
+Synthetix Data Labs
+Jan 2019 - Dec 2020
+• Architected core QA Automation Engineer features utilizing Jest.
+• Enhanced system efficiency and automated processing using Git.
+
+QA Automation Engineer   Jan 2021 - Present
+Apex Global Software
+• Architected core QA Automation Engineer features utilizing CI/CD.
+• Enhanced system efficiency and automated processing using PyTest.
+
+CERTIFICATIONS
+------------------------------
+Docker Certified Professional
+Certified Systems Developer
+
+SUMMARY
+------------------------------
+Dedicated Mid-level QA Automation Engineer with proven ability to build scalable software.

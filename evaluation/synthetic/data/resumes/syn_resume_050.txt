@@ -1,0 +1,41 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_050
+Role: Frontend Developer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+Diploma
+Horizon Engineering College
+2018 - 2022
+CGPA: 3.48
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with JavaScript.
+• Integrated automated pipelines and testing with TypeScript.
+
+SKILLS
+------------------------------
+Technical Skills: JavaScript, Next js, Redux, Tailwind CSS, typescript, TailwindUI
+
+EXPERIENCE
+------------------------------
+Frontend Developer   Jan 2022 - Present
+Vertex Cloud Solutions
+• Architected core Frontend Developer features utilizing Redux.
+• Enhanced system efficiency and automated processing using Next.js.
+
+CERTIFICATIONS
+------------------------------
+None.
+
+SUMMARY
+------------------------------
+Dedicated Junior Frontend Developer with proven ability to build scalable software.

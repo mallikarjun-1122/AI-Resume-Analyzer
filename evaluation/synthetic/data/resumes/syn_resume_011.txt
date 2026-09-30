@@ -1,0 +1,52 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_011
+Role: Full Stack Developer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Mid-level Full Stack Developer with proven ability to build scalable software. Currently exploring and learning Prompt Engineering.
+
+SKILLS
+------------------------------
+Technical Skills: Docker, Git, JavaScript, PostgreSQL, Python, React, Redis, WebAssembly
+
+EXPERIENCE
+------------------------------
+Full Stack Developer   Jan 2019 - Dec 2020
+Apex Global Software
+• Architected core Full Stack Developer features utilizing Python.
+• Enhanced system efficiency and automated processing using Redis.
+
+Full Stack Developer   Jan 2021 - Present
+Quantum Dynamics Corp
+• Architected core Full Stack Developer features utilizing Python.
+• Enhanced system efficiency and automated processing using Redis.
+
+EDUCATION
+------------------------------
+Bachelor of Technology
+Horizon Engineering College
+2017 - 2021
+CGPA: 3.74
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with PostgreSQL.
+• Integrated automated pipelines and testing with Redis.
+
+Synthetic Platform Project 2
+Technologies: Git, JavaScript, PostgreSQL
+• Constructed scalable service processing data with Git.
+• Integrated automated pipelines and testing with PostgreSQL.
+
+CERTIFICATIONS
+------------------------------
+Docker Certified Professional
+Certified Systems Developer

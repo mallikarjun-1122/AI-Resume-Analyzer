@@ -1,0 +1,16 @@
+# DEMO DATA — NOT FOR RESEARCH RESULTS
+# Role: Senior Full-Stack Engineer
+# File: jd_01_senior_fullstack.txt
+
+We are seeking a Senior Full-Stack Software Engineer to build robust backend web services and rich modern web applications.
+
+Required Technical Skills:
+• Strong programming experience in Python and JavaScript
+• Hands-on framework expertise with FastAPI and React
+• Relational database proficiency with PostgreSQL
+• Containerization and cloud deployment experience with Docker and AWS
+• Version control and collaborative workflows with Git
+
+Qualifications:
+• Bachelor's degree in Computer Science, Technology, or equivalent experience.
+• 3+ years professional software development experience.

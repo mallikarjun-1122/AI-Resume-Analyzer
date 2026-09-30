@@ -1,0 +1,14 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Executive Facilities & Procurement Director
+LOCATION: Synthetic Corporate Headquarters
+EXPERIENCE: 8+ years
+
+ROLE OVERVIEW:
+Direct corporate real estate negotiations, commercial lease agreements,
+physical facility maintenance contracts, and third-party supplier logistics.
+Must maintain strict municipal health code compliance and oversee building security.

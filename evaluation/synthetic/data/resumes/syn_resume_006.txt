@@ -1,0 +1,41 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_006
+Role: DevOps Engineer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Junior DevOps Engineer with proven ability to build scalable software.
+
+SKILLS
+------------------------------
+Technical Skills: AWS Cloud, docker, git, Jenkins, Kotlin, LINUX, python, Terraform
+
+EXPERIENCE
+------------------------------
+DevOps Engineer   Jan 2022 - Present
+Blue Horizon Digital
+• Architected core DevOps Engineer features utilizing AWS.
+• Enhanced system efficiency and automated processing using Jenkins.
+
+EDUCATION
+------------------------------
+B.Sc
+Horizon Engineering College
+2015 - 2019
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Docker, Kotlin, Terraform
+• Constructed scalable service processing data with Docker.
+• Integrated automated pipelines and testing with Terraform.
+
+CERTIFICATIONS
+------------------------------
+None.

@@ -1,0 +1,45 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_005
+Role: Data Scientist | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+B.Tech
+National Technical University
+2018 - 2022
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: NumPy, Pandas, Scikit-learn
+• Constructed scalable service processing data with NumPy.
+• Integrated automated pipelines and testing with Scikit-learn.
+
+Synthetic Platform Project 2
+• Constructed scalable service processing data with Machine Learning.
+• Integrated automated pipelines and testing with Scikit-learn.
+
+SKILLS
+------------------------------
+Technical Skills: Machine Learning, NumPy, Pandas, sklearn, Julia
+
+EXPERIENCE
+------------------------------
+Data Scientist   Jan 2023 - Present
+Apex Global Software
+• Architected core Data Scientist features utilizing NumPy.
+• Enhanced system efficiency and automated processing using Scikit-learn.
+
+CERTIFICATIONS
+------------------------------
+None.
+
+SUMMARY
+------------------------------
+Dedicated Student/intern Data Scientist with proven ability to build scalable software.

@@ -17,13 +17,16 @@ export default function DashboardStats({ history = [], mode = "candidate" }) {
       if (runs.length > 0) {
         const totalScreened = runs.reduce((sum, r) => sum + (r.count || 0), 0);
         const topMatch = Math.max(...runs.map((r) => r.top_score || 0));
-        const avgQual = Math.round(runs.reduce((sum, r) => sum + (r.qual_rate || 80), 0) / runs.length);
+        const qualified = runs.reduce((sum, r) => sum + (r.qualified_count ?? 0), 0);
+        const qualificationRate = totalScreened > 0
+          ? Math.round((qualified / totalScreened) * 100)
+          : 0;
 
         setRecruiterStats({
           candidatesScreened: totalScreened,
           drivesConducted: runs.length,
           topMatch: topMatch,
-          qualificationRate: avgQual,
+          qualificationRate,
         });
       } else {
         setRecruiterStats({

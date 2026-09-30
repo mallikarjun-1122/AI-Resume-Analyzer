@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Resume Analyzer Evaluation Annotation",
+  "type": "object",
+  "required": ["id", "resume_text_path", "job_description_text_path", "gold"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "resume_text_path": { "type": "string", "minLength": 1 },
+    "job_description_text_path": { "type": "string", "minLength": 1 },
+    "ranking_group": { "type": "string" },
+    "expert_rank": { "type": "number", "minimum": 1 },
+    "gold": {
+      "type": "object",
+      "required": ["skills", "education", "experience", "projects", "certifications", "matching"],
+      "properties": {
+        "skills": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string" } } },
+        "education": { "type": "object", "additionalProperties": { "type": ["string", "null"] } },
+        "experience": { "type": "array", "items": { "type": "object" } },
+        "projects": { "type": "array", "items": { "type": "object" } },
+        "certifications": { "type": "array", "items": { "type": "string" } },
+        "matching": {
+          "type": "object",
+          "required": ["matched_skills"],
+          "properties": {
+            "matched_skills": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string" } } },
+            "expert_relevance_score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 }
+          }
+        },
+        "expert_relevance_score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 }
+      }
+    }
+  },
+  "additionalProperties": false
+}

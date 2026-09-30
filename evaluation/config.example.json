@@ -1,0 +1,4 @@
+{
+  "annotations_file": "data/annotations.jsonl",
+  "output_file": "results/evaluation.json"
+}

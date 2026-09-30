@@ -1,0 +1,53 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_023
+Role: QA Automation Engineer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Mid-level QA Automation Engineer with proven ability to build scalable software. Currently exploring and learning GenAI.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: CI/CD, JavaScript, Jest, Postman, PyTest, Testing
+
+CAREER TRAJECTORY
+------------------------------
+QA Automation Engineer   Jan 2019 - Dec 2020
+Synthetix Data Labs
+• Architected core QA Automation Engineer features utilizing CI/CD.
+• Enhanced system efficiency and automated processing using Testing.
+
+QA Automation Engineer
+Blue Horizon Digital
+Jan 2021 - Present
+• Architected core QA Automation Engineer features utilizing Jest.
+• Enhanced system efficiency and automated processing using Testing.
+
+SCHOOLING AND DEGREES
+------------------------------
+BS in Software Engineering
+Metropolitan Science Institute
+2013 - 2017
+CGPA: 3.50
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Jest, Postman
+• Constructed scalable service processing data with Jest.
+• Integrated automated pipelines and testing with Postman.
+
+Synthetic Platform Project 2
+Technologies: CI/CD, Jest, Testing
+• Constructed scalable service processing data with CI/CD.
+• Integrated automated pipelines and testing with Testing.
+
+BADGES AND PAPERS
+------------------------------
+Docker Certified Professional

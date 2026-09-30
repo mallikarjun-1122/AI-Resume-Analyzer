@@ -1,0 +1,13 @@
+# DEMO DATA — NOT FOR RESEARCH RESULTS
+# Role: Junior Data Analyst
+# File: jd_02_junior_analyst.txt
+
+Looking for an analytical Junior Data Analyst to support executive reporting and data analytics pipelines.
+
+Core Requirements:
+• Demonstrated competency writing SQL queries for database reporting.
+• Basic scripting skills in Python for data transformation.
+• Advanced spreadsheet manipulation and pivot table analysis using Excel.
+
+Preferred:
+• Experience with data visualization dashboards.

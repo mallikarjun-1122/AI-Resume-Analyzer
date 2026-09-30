@@ -1,0 +1,42 @@
+{
+  "resume_id": "",
+  "file_path": "resumes/",
+  "evaluator_id": "",
+  "adjudicated": false,
+  "skills": {
+    "Programming Languages": [],
+    "Frontend": [],
+    "Backend": [],
+    "Database": [],
+    "Cloud & DevOps": [],
+    "AI & ML": [],
+    "BI & Analytics": [],
+    "Tools & IDEs": [],
+    "Testing & Quality": [],
+    "Soft Skills": []
+  },
+  "education": {
+    "degree": null,
+    "institution": null,
+    "cgpa": null,
+    "duration": null
+  },
+  "experience": [
+    {
+      "job_title": "",
+      "company": "",
+      "duration": "",
+      "technologies": [],
+      "description": []
+    }
+  ],
+  "projects": [
+    {
+      "title": "",
+      "technologies": [],
+      "description": []
+    }
+  ],
+  "certifications": [],
+  "notes": ""
+}

@@ -35,7 +35,7 @@ export default function BulletEnhancerModal({ isOpen, onClose }) {
       }
     } catch (err) {
       console.error(err);
-      toast.error("Error connecting to AI Bullet Enhancer.");
+      toast.error(err.response?.data?.error || err.message || "Error connecting to AI Bullet Enhancer.");
     } finally {
       setLoading(false);
     }

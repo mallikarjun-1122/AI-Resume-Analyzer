@@ -1,0 +1,46 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_078
+Role: DevOps Engineer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Junior DevOps Engineer with proven ability to build scalable software. Currently exploring and learning Teamwork.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: AWS, CI/CD, docker, Jenkins, Linux, Python, SQLite, terraform
+
+CAREER TRAJECTORY
+------------------------------
+DevOps Engineer   Jan 2022 - Present
+Apex Global Software
+• Architected core DevOps Engineer features utilizing SQLite.
+• Enhanced system efficiency and automated processing using CI/CD.
+
+SCHOOLING AND DEGREES
+------------------------------
+Bachelor of Science in Computing
+National Technical University
+2017 - 2021
+CGPA: 3.82
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with AWS.
+• Integrated automated pipelines and testing with Terraform.
+
+Synthetic Platform Project 2
+Technologies: CI/CD, Linux, Terraform
+• Constructed scalable service processing data with CI/CD.
+• Integrated automated pipelines and testing with Terraform.
+
+BADGES AND PAPERS
+------------------------------
+None.

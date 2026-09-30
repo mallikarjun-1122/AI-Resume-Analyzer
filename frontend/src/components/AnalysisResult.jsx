@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import {
   FaChartLine,
   FaCheckCircle,
@@ -12,7 +13,6 @@ import {
   FaChevronUp,
   FaMagic,
   FaEnvelopeOpenText,
-  FaLayerGroup,
 } from "react-icons/fa";
 import CoverLetterModal from "./CoverLetterModal";
 import BulletEnhancerModal from "./BulletEnhancerModal";
@@ -40,8 +40,9 @@ function AnalysisResult({ result }) {
   const ai = res.ai_review || res.ai || {};
   const ats = res.ats || {};
   const matching = res.matching || {};
+  const breakdown = ats.breakdown || {};
 
-  const overallScore = Number(ats.overall_score || matching.match_percentage || 85);
+  const overallScore = Number(ats.overall_score ?? matching.match_percentage ?? 0);
 
   const getScoreColor = (score) => {
     if (score >= 80) return "from-zinc-950 via-zinc-900 to-black border border-green-400/40";
@@ -56,10 +57,10 @@ function AnalysisResult({ result }) {
   };
 
   const handleCopySummary = () => {
-    const summaryText = `AI Resume Analysis Summary:
+    const summaryText = `Resume Analysis Summary:
 - ATS Score: ${overallScore}%
-- Recommendation: ${ai.hire_recommendation || matching.recommendation || "Recommended"}
-- Rating: ${ai.overall_rating || "8.5/10"}`;
+- Recommendation: ${ai.hire_recommendation ?? matching.recommendation ?? "Not assessed"}
+- Rating: ${ai.overall_rating ?? "Not assessed"}`;
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(summaryText);
@@ -96,38 +97,38 @@ function AnalysisResult({ result }) {
   };
 
   // Matched Skills = Intersection ONLY (Skills present in BOTH Resume and JD)
-  const matchedSkillsList = (Array.isArray(ats.matched_skills) && ats.matched_skills.length > 0)
+  const matchedSkillsList = Array.isArray(ats.matched_skills)
     ? ats.matched_skills
-    : (Array.isArray(matching.matching_keywords) && matching.matching_keywords.length > 0)
+    : Array.isArray(matching.matching_keywords)
     ? matching.matching_keywords
-    : ["Python"];
+    : [];
 
   // Missing Skills = Required JD Skills missing from Resume
-  const missingSkillsList = (Array.isArray(ats.missing_skills) && ats.missing_skills.length > 0)
+  const missingSkillsList = Array.isArray(ats.missing_skills)
     ? ats.missing_skills
-    : (Array.isArray(ai.missing_skills) && ai.missing_skills.length > 0)
+    : Array.isArray(ai.missing_skills)
     ? ai.missing_skills
-    : (Array.isArray(matching.missing_keywords) && matching.missing_keywords.length > 0)
+    : Array.isArray(matching.missing_keywords)
     ? matching.missing_keywords
-    : ["SQL"];
+    : [];
 
-  const strengthsList = Array.isArray(ai.strengths)
+  const strengthsList = Array.isArray(ats.strengths)
+    ? ats.strengths
+    : Array.isArray(ai.strengths)
     ? ai.strengths
-    : ["Clear project architecture and full-stack technical competencies.", "Demonstrated experience with React and FastAPI.", "Structured document layout and high ATS readability."];
+    : [];
 
-  const improvementsList = Array.isArray(ai.improvements)
+  const improvementsList = Array.isArray(ats.suggestions)
+    ? ats.suggestions
+    : Array.isArray(ai.improvements)
     ? ai.improvements
     : Array.isArray(ai.resume_improvements)
     ? ai.resume_improvements
-    : ["Quantify project achievements with measurable data metrics.", "Highlight target job keywords explicitly in your skills section."];
+    : [];
 
   const questionsList = Array.isArray(ai.interview_questions)
     ? ai.interview_questions
-    : [
-        { question: "Walk us through a technical challenge you resolved recently.", tip: "Use STAR method." },
-        { question: "How do you ensure code quality and maintainability?", tip: "Discuss unit testing, linting, and code reviews." },
-        { question: "Explain how your skills align with the core requirements of this role.", tip: "Highlight key project achievements." }
-      ];
+    : [];
 
   return (
     <>
@@ -139,7 +140,7 @@ function AnalysisResult({ result }) {
         <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-3xl glass-panel border border-slate-800">
           <div className="flex items-center gap-2 text-slate-300 text-sm font-semibold">
             <FaMagic className="text-yellow-400" />
-            <span>AI Analysis Generated</span>
+            <span>Resume Analysis Generated</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -346,6 +347,9 @@ function AnalysisResult({ result }) {
                   <FaCheckCircle size={10} /> {typeof skill === "string" ? skill : JSON.stringify(skill)}
                 </span>
               ))}
+              {matchedSkillsList.length === 0 && (
+                <span className="text-xs text-slate-400">No matched skills were extracted.</span>
+              )}
             </div>
           </div>
 
@@ -394,6 +398,9 @@ function AnalysisResult({ result }) {
                   <span>{typeof str === "string" ? str : JSON.stringify(str)}</span>
                 </li>
               ))}
+              {strengthsList.length === 0 && (
+                <li className="text-slate-400">No strengths were generated.</li>
+              )}
             </ul>
           </div>
 
@@ -411,6 +418,9 @@ function AnalysisResult({ result }) {
                   <span>{typeof imp === "string" ? imp : JSON.stringify(imp)}</span>
                 </li>
               ))}
+              {improvementsList.length === 0 && (
+                <li className="text-slate-400">No improvements were generated.</li>
+              )}
             </ul>
           </div>
         </div>
@@ -430,8 +440,8 @@ function AnalysisResult({ result }) {
           <div className="space-y-3">
             {questionsList.map((qObj, idx) => {
               const isOpen = expandedQuestion === idx;
-              const questionText = typeof qObj === "object" ? qObj.question || "Interview Question" : qObj;
-              const tipText = typeof qObj === "object" ? qObj.tip || "Use the STAR method." : "Demonstrate direct competencies.";
+              const questionText = qObj && typeof qObj === "object" ? qObj.question ?? "Question unavailable" : qObj;
+              const tipText = qObj && typeof qObj === "object" ? qObj.tip ?? "No preparation tip supplied." : "No preparation tip supplied.";
 
               return (
                 <div
@@ -467,6 +477,9 @@ function AnalysisResult({ result }) {
                 </div>
               );
             })}
+            {questionsList.length === 0 && (
+              <p className="text-xs text-slate-400">Interview questions are unavailable because no Gemini review was returned.</p>
+            )}
           </div>
         </div>
       </div>
@@ -475,20 +488,6 @@ function AnalysisResult({ result }) {
       <CoverLetterModal isOpen={showCoverLetter} onClose={() => setShowCoverLetter(false)} />
       <BulletEnhancerModal isOpen={showBulletEnhancer} onClose={() => setShowBulletEnhancer(false)} />
     </>
-  );
-}
-
-function CategorySkillProgress({ title, score, color }) {
-  return (
-    <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
-      <div className="flex justify-between text-xs font-bold text-slate-300">
-        <span>{title}</span>
-        <span className="text-slate-100">{score}%</span>
-      </div>
-      <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
-        <div className={`h-full ${color} rounded-full transition-all duration-700`} style={{ width: `${score}%` }} />
-      </div>
-    </div>
   );
 }
 

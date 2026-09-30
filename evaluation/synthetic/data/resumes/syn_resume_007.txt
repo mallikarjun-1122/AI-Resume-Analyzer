@@ -1,0 +1,49 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_007
+Role: QA Automation Engineer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Mid-level QA Automation Engineer with proven ability to build scalable software.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: CI/CD, Jest, postman, PyTest, Selenium, Tableau, Testing, Elixir
+
+WORK EXPERIENCE
+------------------------------
+QA Automation Engineer   Jan 2019 - Dec 2020
+Blue Horizon Digital
+• Architected core QA Automation Engineer features utilizing Postman.
+• Enhanced system efficiency and automated processing using Selenium.
+
+QA Automation Engineer
+Blue Horizon Digital
+Jan 2021 - Present
+• Architected core QA Automation Engineer features utilizing Tableau.
+• Enhanced system efficiency and automated processing using Jest.
+
+ACADEMIC BACKGROUND
+------------------------------
+Bachelor of Technology
+Apex Institute of Technology
+2015
+CGPA: 3.86
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Jest, Selenium, Testing
+• Constructed scalable service processing data with Jest.
+• Integrated automated pipelines and testing with Testing.
+
+COURSES
+------------------------------
+AWS Certified Professional
+Certified Systems Developer

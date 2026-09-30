@@ -1,0 +1,42 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_059
+Role: Full Stack Developer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Mid-level Full Stack Developer with proven ability to build scalable software.
+
+SKILLS
+------------------------------
+Technical Skills: Docker, FastAPI, Git, HTML, PostgreSQL, React, redis
+
+EXPERIENCE
+------------------------------
+Full Stack Developer
+Vertex Cloud Solutions
+Jan 2019 - Dec 2020
+• Architected core Full Stack Developer features utilizing FastAPI.
+• Enhanced system efficiency and automated processing using React.
+
+Full Stack Developer   Jan 2021 - Present
+Vertex Cloud Solutions
+• Architected core Full Stack Developer features utilizing React.
+• Enhanced system efficiency and automated processing using Git.
+
+EDUCATION
+------------------------------
+Self-taught practical background.
+
+PROJECTS
+------------------------------
+Portfolio available upon request.
+
+CERTIFICATIONS
+------------------------------
+None.

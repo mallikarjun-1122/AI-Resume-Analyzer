@@ -1,0 +1,41 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_093
+Role: Data Scientist | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Student/intern Data Scientist with proven ability to build scalable software. Currently exploring and learning Selenium.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: Deep Learning, machine learning, PyTorch, Python, SQL, TensorFlow
+
+CAREER TRAJECTORY
+------------------------------
+Data Scientist   Jan 2023 - Present
+Blue Horizon Digital
+• Architected core Data Scientist features utilizing SQL.
+• Enhanced system efficiency and automated processing using Machine Learning.
+
+SCHOOLING AND DEGREES
+------------------------------
+M.Sc
+State Engineering University
+2011 - 2015
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: PyTorch, Python, TensorFlow
+• Constructed scalable service processing data with PyTorch.
+• Integrated automated pipelines and testing with TensorFlow.
+
+BADGES AND PAPERS
+------------------------------
+None.

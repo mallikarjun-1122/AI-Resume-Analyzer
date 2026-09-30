@@ -1,0 +1,9 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Cloud Infrastructure Associate
+REQUIREMENTS:
+- Cloud deployment: AWS, Docker, Terraform, CI/CD, Git, Python.

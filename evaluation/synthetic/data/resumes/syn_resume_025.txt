@@ -1,0 +1,42 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_025
+Role: Backend Developer | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+BCA
+Apex Institute of Technology
+2020 - 2024
+CGPA: 3.66
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Docker, FastAPI, Jest, Redis
+• Constructed scalable service processing data with Docker.
+• Integrated automated pipelines and testing with Redis.
+
+SKILLS
+------------------------------
+Technical Skills: Docker, fastapi, Jest, Python, Redis, Julia
+
+EXPERIENCE
+------------------------------
+Backend Developer   Jan 2023 - Present
+Vertex Cloud Solutions
+• Architected core Backend Developer features utilizing Docker.
+• Enhanced system efficiency and automated processing using Python.
+
+CERTIFICATIONS
+------------------------------
+None.
+
+SUMMARY
+------------------------------
+Dedicated Student/intern Backend Developer with proven ability to build scalable software.

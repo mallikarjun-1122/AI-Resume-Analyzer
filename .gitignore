@@ -20,3 +20,12 @@ frontend/.env
 
 # Antigravity artifacts
 .gemini/
+
+# Research paper working files
+LITERATURE_REVIEW.md
+REFERENCES.md
+RESEARCH_BASELINE.md
+RESEARCH_CLAIMS_AUDIT.md
+RESEARCH_DATA_COLLECTION.md
+RESEARCH_PAPER_DRAFT.md
+RESULTS_TABLES.md

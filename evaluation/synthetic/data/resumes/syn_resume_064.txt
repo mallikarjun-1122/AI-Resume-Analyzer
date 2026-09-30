@@ -1,0 +1,52 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_064
+Role: Software Engineer | Experience: Senior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Senior Software Engineer with proven ability to build scalable software. Currently exploring and learning Redis.
+
+SKILLS
+------------------------------
+Technical Skills: c++, DSA, Data Structures, docker, git, Problem Solving, Python, SQL, TailwindUI
+
+EXPERIENCE
+------------------------------
+Software Engineer   Jan 2015 - Dec 2016
+Synthetix Data Labs
+• Architected core Software Engineer features utilizing C++.
+• Enhanced system efficiency and automated processing using Docker.
+
+Software Engineer   Jan 2017 - Dec 2018
+Quantum Dynamics Corp
+• Architected core Software Engineer features utilizing Git.
+• Enhanced system efficiency and automated processing using DSA.
+
+Senior Software Engineer   Jan 2019 - Present
+Blue Horizon Digital
+• Architected core Software Engineer features utilizing Problem Solving.
+• Enhanced system efficiency and automated processing using Data Structures.
+
+EDUCATION
+------------------------------
+B.Sc
+Apex Institute of Technology
+2016 - 2020
+CGPA: 3.51
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Docker, Python, SQL
+• Constructed scalable service processing data with Docker.
+• Integrated automated pipelines and testing with SQL.
+
+CERTIFICATIONS
+------------------------------
+None.

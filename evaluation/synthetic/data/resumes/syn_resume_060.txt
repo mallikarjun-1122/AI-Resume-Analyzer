@@ -1,0 +1,57 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_060
+Role: Data Analyst | Experience: Senior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+M.Tech
+Horizon Engineering College
+2021
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Node.js, NumPy, Problem Solving
+• Constructed scalable service processing data with Node.js.
+• Integrated automated pipelines and testing with Problem Solving.
+
+Synthetic Platform Project 2
+Technologies: Excel, SQL
+• Constructed scalable service processing data with Excel.
+• Integrated automated pipelines and testing with SQL.
+
+SKILLS
+------------------------------
+Technical Skills: excel, Matplotlib, Node js, NumPy, Pandas, power bi, Problem Solving, python, SQL, TABLEAU
+
+EXPERIENCE
+------------------------------
+Data Analyst   Jan 2015 - Dec 2016
+Synthetix Data Labs
+• Architected core Data Analyst features utilizing Pandas.
+• Enhanced system efficiency and automated processing using Tableau.
+
+Data Analyst   Jan 2017 - Dec 2018
+Quantum Dynamics Corp
+• Architected core Data Analyst features utilizing Tableau.
+• Enhanced system efficiency and automated processing using NumPy.
+
+Senior Data Analyst   Jan 2019 - Present
+Apex Global Software
+• Architected core Data Analyst features utilizing SQL.
+• Enhanced system efficiency and automated processing using Excel.
+
+CERTIFICATIONS
+------------------------------
+PostgreSQL Certified Professional
+Certified Systems Developer
+
+SUMMARY
+------------------------------
+Dedicated Senior Data Analyst with proven ability to build scalable software.

@@ -1,0 +1,57 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_032
+Role: Software Engineer | Experience: Senior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Senior Software Engineer with proven ability to build scalable software.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: C++, DSA, data structures, Docker, git, java, NLP, Problem Solving, Python, SQL, WebAssembly
+
+WORK EXPERIENCE
+------------------------------
+Software Engineer   Jan 2015 - Dec 2016
+Synthetix Data Labs
+• Architected core Software Engineer features utilizing DSA.
+• Enhanced system efficiency and automated processing using Java.
+
+Software Engineer   Jan 2017 - Dec 2018
+Nova Core Systems
+• Architected core Software Engineer features utilizing Git.
+• Enhanced system efficiency and automated processing using C++.
+
+Senior Software Engineer   Jan 2019 - Present
+Quantum Dynamics Corp
+• Architected core Software Engineer features utilizing Data Structures.
+• Enhanced system efficiency and automated processing using DSA.
+
+ACADEMIC BACKGROUND
+------------------------------
+B.Sc
+National Technical University
+2013 - 2017
+CGPA: 3.22
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: DSA, Git, Python
+• Constructed scalable service processing data with DSA.
+• Integrated automated pipelines and testing with Python.
+
+Synthetic Platform Project 2
+Technologies: Data Structures, Java
+• Constructed scalable service processing data with Data Structures.
+• Integrated automated pipelines and testing with Java.
+
+COURSES
+------------------------------
+AWS Certified Professional

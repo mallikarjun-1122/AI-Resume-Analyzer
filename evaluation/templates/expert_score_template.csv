@@ -1,0 +1,3 @@
+resume_id,jd_id,expert_relevance_score,evaluator_id,scoring_rationale
+resume_01,jd_01,85.0,expert_01,"Candidate possesses strong core competencies with 1 minor skill gap."
+resume_02,jd_01,45.0,expert_01,"Candidate lacks key required backend frameworks."

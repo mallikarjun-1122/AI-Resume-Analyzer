@@ -1,0 +1,47 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_043
+Role: Full Stack Developer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Mid-level Full Stack Developer with proven ability to build scalable software. Currently exploring and learning EDA.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: CSS, Docker, Git, HTML, PostgreSQL, Python, ReactJS, Redis, seaborn, TypeScript
+
+CAREER TRAJECTORY
+------------------------------
+Full Stack Developer   Jan 2019 - Dec 2020
+Blue Horizon Digital
+• Architected core Full Stack Developer features utilizing PostgreSQL.
+• Enhanced system efficiency and automated processing using Git.
+
+Full Stack Developer   Jan 2021 - Present
+Vertex Cloud Solutions
+• Architected core Full Stack Developer features utilizing Docker.
+• Enhanced system efficiency and automated processing using React.
+
+SCHOOLING AND DEGREES
+------------------------------
+B.E
+Horizon Engineering College
+2015 - 2019
+CGPA: 3.64
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: CSS, Python, React, TypeScript
+• Constructed scalable service processing data with CSS.
+• Integrated automated pipelines and testing with TypeScript.
+
+BADGES AND PAPERS
+------------------------------
+AWS Certified Professional

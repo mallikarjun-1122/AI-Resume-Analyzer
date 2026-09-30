@@ -1,0 +1,56 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_048
+Role: Software Engineer | Experience: Senior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Senior Software Engineer with proven ability to build scalable software.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: C++, DSA, Data Structures, Docker, Git, java, Problem Solving, Python, Redux, SQL
+
+CAREER TRAJECTORY
+------------------------------
+Software Engineer   Jan 2015 - Dec 2016
+Blue Horizon Digital
+• Architected core Software Engineer features utilizing Problem Solving.
+• Enhanced system efficiency and automated processing using Docker.
+
+Software Engineer   Jan 2017 - Dec 2018
+Apex Global Software
+• Architected core Software Engineer features utilizing Redux.
+• Enhanced system efficiency and automated processing using Git.
+
+Senior Software Engineer   Jan 2019 - Present
+Nova Core Systems
+• Architected core Software Engineer features utilizing Redux.
+• Enhanced system efficiency and automated processing using C++.
+
+SCHOOLING AND DEGREES
+------------------------------
+M.Tech
+State Engineering University
+2014 - 2018
+CGPA: 3.71
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: C++, Problem Solving, SQL
+• Constructed scalable service processing data with C++.
+• Integrated automated pipelines and testing with SQL.
+
+Synthetic Platform Project 2
+• Constructed scalable service processing data with C++.
+• Integrated automated pipelines and testing with SQL.
+
+BADGES AND PAPERS
+------------------------------
+AWS Certified Professional

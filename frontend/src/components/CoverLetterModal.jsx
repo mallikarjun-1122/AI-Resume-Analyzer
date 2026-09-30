@@ -34,7 +34,7 @@ export default function CoverLetterModal({ isOpen, onClose, defaultJd = "" }) {
       }
     } catch (err) {
       console.error(err);
-      toast.error("Error generating cover letter.");
+      toast.error(err.response?.data?.error || err.message || "Error generating cover letter.");
     } finally {
       setLoading(false);
     }

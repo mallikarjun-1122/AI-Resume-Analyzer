@@ -1,0 +1,14 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+JOB TITLE: Senior Cloud DevOps & Site Reliability Engineer
+LOCATION: Remote
+EXPERIENCE: 5+ years
+
+REQUIREMENTS:
+- Cloud platforms: AWS, Azure
+- Infrastructure as Code: Terraform, Docker, Kubernetes
+- Automation & Scripting: Jenkins, CI/CD, Python, Git

@@ -151,10 +151,10 @@ function ResumeUpload({ onAnalysisComplete }) {
         await saveHistory({
           user_id: user?.id || "demo-user-123",
           resume_name: file.name,
-          ats_score: result.ats?.overall_score || 0,
-          job_match: result.matching?.match_percentage || 0,
-          recommendation: result.matching?.recommendation || "Unknown",
-          overall_rating: result.ai_review?.overall_rating || "Unknown",
+          ats_score: result.ats?.overall_score ?? 0,
+          job_match: result.matching?.match_percentage ?? 0,
+          recommendation: result.matching?.recommendation ?? "Unknown",
+          overall_rating: result.ai_review?.overall_rating ?? "Unavailable",
           analysis: result,
         });
       } catch (saveErr) {

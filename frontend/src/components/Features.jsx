@@ -13,7 +13,7 @@ function Features() {
       icon: <FaBrain size={28} className="text-cyan-400" />,
       title: "AI Resume Analysis",
       description:
-        "Deep learning scan of your resume against target roles to extract section strengths, clarity score, and bullet point impact.",
+        "Rule-based resume analysis with optional Gemini-generated feedback for the uploaded resume and target role.",
       badge: "Gemini 2.5 Powered",
       color: "from-cyan-500/20 to-blue-500/20 border-cyan-500/30"
     },
@@ -22,7 +22,7 @@ function Features() {
       title: "Real-time ATS Compatibility",
       description:
         "Instant Applicant Tracking System score break-downs measuring keyword match percentage, section structure, and readability.",
-      badge: "98% Accuracy",
+      badge: "Explainable Scoring",
       color: "from-emerald-500/20 to-teal-500/20 border-emerald-500/30"
     },
     {

@@ -1,0 +1,48 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_047
+Role: QA Automation Engineer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+PROFESSIONAL SUMMARY
+------------------------------
+Dedicated Mid-level QA Automation Engineer with proven ability to build scalable software.
+
+TECHNICAL EXPERTISE
+------------------------------
+Technical Skills: CI/CD, Git, JavaScript, jest, PyTest, Python, Testing
+
+WORK EXPERIENCE
+------------------------------
+QA Automation Engineer   Jan 2019 - Dec 2020
+Synthetix Data Labs
+• Architected core QA Automation Engineer features utilizing Git.
+• Enhanced system efficiency and automated processing using Python.
+
+QA Automation Engineer   Jan 2021 - Present
+Vertex Cloud Solutions
+• Architected core QA Automation Engineer features utilizing Jest.
+• Enhanced system efficiency and automated processing using JavaScript.
+
+ACADEMIC BACKGROUND
+------------------------------
+B.E
+Pinnacle Polytechnic School
+2017
+CGPA: 3.75
+
+KEY PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: Git, PyTest, Python, Testing
+• Constructed scalable service processing data with Git.
+• Integrated automated pipelines and testing with Testing.
+
+COURSES
+------------------------------
+AWS Certified Professional
+Certified Systems Developer

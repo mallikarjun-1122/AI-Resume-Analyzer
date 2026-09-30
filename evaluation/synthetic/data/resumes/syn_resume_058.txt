@@ -1,0 +1,41 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_058
+Role: Frontend Developer | Experience: Junior
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+MY PHILOSOPHY
+------------------------------
+Dedicated Junior Frontend Developer with proven ability to build scalable software.
+
+CORE COMPETENCIES & TOOLKIT
+------------------------------
+Technical Skills: CSS, JAVASCRIPT, Next js, Redux, typescript
+
+CAREER TRAJECTORY
+------------------------------
+Frontend Developer   Jan 2022 - Present
+Blue Horizon Digital
+• Architected core Frontend Developer features utilizing Redux.
+• Enhanced system efficiency and automated processing using CSS.
+
+SCHOOLING AND DEGREES
+------------------------------
+Bachelor of Science in Computing
+State Engineering University
+2011 - 2015
+
+CREATIVE ENDEAVORS
+------------------------------
+Synthetic Platform Project 1
+Technologies: CSS, Redux
+• Constructed scalable service processing data with CSS.
+• Integrated automated pipelines and testing with Redux.
+
+BADGES AND PAPERS
+------------------------------
+None.

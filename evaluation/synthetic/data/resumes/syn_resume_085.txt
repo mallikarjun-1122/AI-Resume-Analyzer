@@ -1,0 +1,41 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_085
+Role: Data Scientist | Experience: Student/intern
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+EDUCATION
+------------------------------
+Diploma
+Apex Institute of Technology
+2018 - 2022
+CGPA: 3.86
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+• Constructed scalable service processing data with Deep Learning.
+• Integrated automated pipelines and testing with PyTorch.
+
+SKILLS
+------------------------------
+Technical Skills: Deep Learning, Java, pytorch, Python, SQL, Prisma
+
+EXPERIENCE
+------------------------------
+Data Scientist   Jan 2023 - Present
+Blue Horizon Digital
+• Architected core Data Scientist features utilizing SQL.
+• Enhanced system efficiency and automated processing using Python.
+
+CERTIFICATIONS
+------------------------------
+None.
+
+SUMMARY
+------------------------------
+Dedicated Student/intern Data Scientist with proven ability to build scalable software.

@@ -1,0 +1,53 @@
+# =====================================================================
+# SYNTHETIC — NOT REAL RESEARCH DATA
+# Generated deterministically for controlled evaluation harness testing.
+# All personal details, names, and contact details are purely fictitious.
+# =====================================================================
+
+SYNTHETICCANDIDATE_091
+Role: Full Stack Developer | Experience: Mid-level
+synthetic.candidate@example.org | (555) 019-8234 | Synthetic City, SC
+
+SUMMARY
+------------------------------
+Dedicated Mid-level Full Stack Developer with proven ability to build scalable software. Currently exploring and learning Tableau.
+
+SKILLS
+------------------------------
+Technical Skills: FastAPI, Git, JavaScript, PostgreSQL, Python, RAG, Redis, GraphQL
+
+EXPERIENCE
+------------------------------
+Full Stack Developer
+Quantum Dynamics Corp
+Jan 2019 - Dec 2020
+• Architected core Full Stack Developer features utilizing JavaScript.
+• Enhanced system efficiency and automated processing using FastAPI.
+
+Full Stack Developer   Jan 2021 - Present
+Nova Core Systems
+• Architected core Full Stack Developer features utilizing JavaScript.
+• Enhanced system efficiency and automated processing using PostgreSQL.
+
+EDUCATION
+------------------------------
+B.Sc
+State Engineering University
+2021
+CGPA: 3.85
+
+PROJECTS
+------------------------------
+Synthetic Platform Project 1
+Technologies: FastAPI, Git, Redis
+• Constructed scalable service processing data with FastAPI.
+• Integrated automated pipelines and testing with Redis.
+
+Synthetic Platform Project 2
+• Constructed scalable service processing data with FastAPI.
+• Integrated automated pipelines and testing with Redis.
+
+CERTIFICATIONS
+------------------------------
+AWS Certified Professional
+Certified Systems Developer
