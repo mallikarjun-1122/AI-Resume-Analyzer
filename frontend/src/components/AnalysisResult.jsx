@@ -215,6 +215,22 @@ function AnalysisResult({ result }) {
               <div className={`mt-3 px-3 py-1 rounded-full text-xs font-bold border ${getScoreBadge(overallScore).bg}`}>
                 {getScoreBadge(overallScore).label}
               </div>
+
+              {/* Industry Benchmark Scale */}
+              <div className="w-full mt-4 pt-3 border-t border-white/10 text-[10px] text-white/80 space-y-1">
+                <div className="flex justify-between">
+                  <span>80-100%: Strong Candidate</span>
+                  <span className="font-bold text-emerald-300">Top 15%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>60-79%: Moderate Match</span>
+                  <span className="font-bold text-amber-300">Review</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>0-59%: Missing Core Skills</span>
+                  <span className="font-bold text-rose-300">Rejection Risk</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

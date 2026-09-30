@@ -7,8 +7,14 @@ const getCandidateUser = (customEmail, customName) => {
   const email = customEmail || localStorage.getItem("candidate_email") || "";
   let name = customName || localStorage.getItem("candidate_name") || (email.includes("@") ? email.split("@")[0] : "Candidate");
 
+  let guestId = localStorage.getItem("candidate_id");
+  if (!guestId || guestId === "demo-user-123") {
+    guestId = `usr_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+    localStorage.setItem("candidate_id", guestId);
+  }
+
   return {
-    id: localStorage.getItem("candidate_id") || "demo-user-123",
+    id: guestId,
     email: email,
     user_metadata: { full_name: name }
   };

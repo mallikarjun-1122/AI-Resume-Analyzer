@@ -135,5 +135,69 @@
     "Teamwork",
     "Critical Thinking",
     "Time Management"
+  ],
+
+  "Marketing & Sales": [
+    "SEO",
+    "SEM",
+    "Content Marketing",
+    "Social Media Marketing",
+    "Email Marketing",
+    "Google Analytics",
+    "HubSpot",
+    "Salesforce",
+    "Lead Generation",
+    "CRM",
+    "Copywriting",
+    "Digital Marketing"
+  ],
+
+  "Finance & Accounting": [
+    "Financial Analysis",
+    "Financial Modeling",
+    "Accounting",
+    "Bookkeeping",
+    "Taxation",
+    "QuickBooks",
+    "Auditing",
+    "Budgeting",
+    "Forecasting",
+    "Risk Management",
+    "VBA"
+  ],
+
+  "Design & Creative": [
+    "UI/UX Design",
+    "Figma",
+    "Adobe XD",
+    "Photoshop",
+    "Illustrator",
+    "InDesign",
+    "Canva",
+    "Wireframing",
+    "Prototyping",
+    "User Research"
+  ],
+
+  "Management & Operations": [
+    "Project Management",
+    "Agile",
+    "Scrum",
+    "Jira",
+    "Kanban",
+    "Product Management",
+    "Operations Management",
+    "Vendor Management",
+    "Supply Chain"
+  ],
+
+  "Human Resources": [
+    "Recruitment",
+    "Talent Acquisition",
+    "Employee Relations",
+    "Onboarding",
+    "HRIS",
+    "Performance Management",
+    "Payroll"
   ]
 }

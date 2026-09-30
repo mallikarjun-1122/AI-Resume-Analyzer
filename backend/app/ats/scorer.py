@@ -45,7 +45,12 @@ def calculate_ats_score(
         "certifications": certification_score,
     }
 
-    overall_score = sum(breakdown.values())
+    # Strict ATS Score based on skill intersection ratio
+    total_jd_skills_count = len(matched_skills) + len(missing_skills)
+    if total_jd_skills_count > 0:
+        overall_score = round((len(matched_skills) / total_jd_skills_count) * 100)
+    else:
+        overall_score = sum(breakdown.values())
 
     strengths = generate_strengths(
         resume,

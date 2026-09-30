@@ -46,10 +46,15 @@ function Footer() {
 
       </div>
 
-      {/* Bottom Copyright */}
-      <div className="border-t border-slate-900 mt-12 pt-6 text-center text-xs text-slate-500 flex flex-wrap justify-between items-center max-w-7xl mx-auto px-6">
-        <span>© {new Date().getFullYear()} ResumeAI.io. All rights reserved.</span>
-        <span className="flex items-center gap-1">Crafted with <FaHeart className="text-rose-500" /> for job seekers</span>
+      {/* Bottom Copyright & Privacy Notice */}
+      <div className="border-t border-slate-900 mt-12 pt-6 text-xs text-slate-500 max-w-7xl mx-auto px-6 space-y-3">
+        <p className="text-[11px] text-slate-500 leading-normal">
+          <strong className="text-slate-400">Privacy Notice:</strong> Uploaded resumes are parsed temporarily in-memory for ATS compatibility calculation and immediately removed after processing. No resume files are permanently stored on server storage.
+        </p>
+        <div className="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-slate-900/60">
+          <span>© {new Date().getFullYear()} AI-Resume-Analyzer. All rights reserved.</span>
+          <span className="flex items-center gap-1">Crafted with <FaHeart className="text-rose-500" /> for job seekers</span>
+        </div>
       </div>
 
       {/* Floating Scroll Top */}
