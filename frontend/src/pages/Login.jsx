@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import {
   FaEnvelope,
   FaLock,
@@ -8,19 +8,27 @@ import {
   FaArrowRight
 } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
+import { loginUser } from "../services/authService";
 
 function Login() {
   const navigate = useNavigate();
-  const { user, loginAsGuest } = useAuth();
+  const [searchParams] = useSearchParams();
+  const { user, loginUserSession, loginAsGuest } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const emailParam = searchParams.get("email");
+    if (emailParam) {
+      setEmail(emailParam);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (user) {
@@ -33,45 +41,45 @@ function Login() {
 
     const trimmedEmail = email.trim();
     if (!trimmedEmail || !password) {
-      toast.error("Please enter email and password");
+      toast.error("Please enter both email and password.");
       return;
     }
 
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const result = await loginUser({
         email: trimmedEmail,
         password,
       });
 
-      if (error) {
-        const prefix = trimmedEmail.split("@")[0];
-        const formattedName = prefix.charAt(0).toUpperCase() + prefix.slice(1);
-        localStorage.setItem("candidate_email", trimmedEmail);
-        localStorage.setItem("candidate_name", formattedName);
-        loginAsGuest({ email: trimmedEmail, full_name: formattedName });
-        toast.success(`Welcome back, ${formattedName}!`);
-        navigate("/dashboard");
+      if (!result.success) {
+        if (result.code === "USER_NOT_FOUND") {
+          toast.error("No account found with this email. Redirecting you to Sign Up to create your account...", {
+            duration: 3500,
+          });
+          setTimeout(() => {
+            navigate(`/register?email=${encodeURIComponent(trimmedEmail)}`);
+          }, 1000);
+          return;
+        }
+
+        if (result.code === "INVALID_PASSWORD") {
+          toast.error("Incorrect password. Please verify your credentials and try again.");
+          return;
+        }
+
+        toast.error(result.message || "Login failed. Please check your credentials.");
         return;
       }
 
-      const u = data?.user;
-      const formattedName = u?.user_metadata?.full_name || (u?.email ? u.email.split("@")[0] : "Candidate");
-      const userEmail = u?.email || trimmedEmail;
-      localStorage.setItem("candidate_email", userEmail);
-      localStorage.setItem("candidate_name", formattedName);
-      loginAsGuest({ email: userEmail, full_name: formattedName });
-      toast.success(`Welcome back, ${formattedName}!`);
+      // Successful login
+      loginUserSession(result.user);
+      toast.success(`Welcome back, ${result.user.fullName || "Candidate"}!`);
       navigate("/dashboard");
     } catch (error) {
-      const prefix = trimmedEmail.split("@")[0];
-      const formattedName = prefix.charAt(0).toUpperCase() + prefix.slice(1);
-      localStorage.setItem("candidate_email", trimmedEmail);
-      localStorage.setItem("candidate_name", formattedName);
-      loginAsGuest({ email: trimmedEmail, full_name: formattedName });
-      toast.success(`Welcome back, ${formattedName}!`);
-      navigate("/dashboard");
+      console.error("Login error:", error);
+      toast.error("An unexpected error occurred during login. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -79,9 +87,9 @@ function Login() {
 
   const handleGuestLogin = () => {
     const guestEmail = "candidate@analyzer.ai";
-    const guestName = "Candidate";
+    const guestName = "Demo Candidate";
     loginAsGuest({ email: guestEmail, full_name: guestName });
-    toast.success("Entered as Candidate");
+    toast.success("Entered as Demo Candidate");
     navigate("/dashboard");
   };
 

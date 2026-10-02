@@ -12,7 +12,8 @@ export default function VersionComparerModal({ isOpen, onClose }) {
 
   useEffect(() => {
     if (isOpen) {
-      getHistory(user?.id).then((data) => {
+      const userKey = user?.email || user?.id || localStorage.getItem("candidate_email") || localStorage.getItem("candidate_id");
+      getHistory(userKey).then((data) => {
         if (data) {
           setHistory(data);
           if (data.length >= 2) {

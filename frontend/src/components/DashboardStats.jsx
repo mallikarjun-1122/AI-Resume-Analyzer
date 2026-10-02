@@ -12,7 +12,8 @@ export default function DashboardStats({ history = [], mode = "candidate" }) {
 
   useEffect(() => {
     try {
-      const raw = localStorage.getItem("recruiter_batch_runs");
+      const userKey = (localStorage.getItem("candidate_email") || "default").trim().toLowerCase();
+      const raw = localStorage.getItem(`recruiter_batch_runs_${userKey}`);
       const runs = raw ? JSON.parse(raw) : [];
       if (runs.length > 0) {
         const totalScreened = runs.reduce((sum, r) => sum + (r.count || 0), 0);

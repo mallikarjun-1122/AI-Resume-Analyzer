@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import {
   FaUser,
   FaEnvelope,
@@ -8,14 +8,15 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
+import { registerUser, findUserByEmail } from "../services/authService";
 
 function Register() {
   const navigate = useNavigate();
-  const { user, loginAsGuest } = useAuth();
+  const [searchParams] = useSearchParams();
+  const { user, loginUserSession } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
   const [fullName, setFullName] = useState("");
@@ -23,6 +24,13 @@ function Register() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+
+  useEffect(() => {
+    const emailParam = searchParams.get("email");
+    if (emailParam) {
+      setEmail(emailParam);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (user) {
@@ -37,7 +45,12 @@ function Register() {
     const trimmedEmail = email.trim();
 
     if (!trimmedName || !trimmedEmail || !password) {
-      toast.error("Please fill all fields.");
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters.");
       return;
     }
 
@@ -46,32 +59,49 @@ function Register() {
       return;
     }
 
+    // Check if account already exists before trying to register
+    const existing = findUserByEmail(trimmedEmail);
+    if (existing) {
+      toast.error("An account with this email already exists! Redirecting to Login...", {
+        duration: 3500,
+      });
+      setTimeout(() => {
+        navigate(`/login?email=${encodeURIComponent(trimmedEmail)}`);
+      }, 1000);
+      return;
+    }
+
     setLoading(true);
 
     try {
-      localStorage.setItem("candidate_name", trimmedName);
-      localStorage.setItem("candidate_email", trimmedEmail);
-
-      await supabase.auth.signUp({
+      const result = await registerUser({
+        fullName: trimmedName,
         email: trimmedEmail,
         password,
-        options: {
-          data: {
-            full_name: trimmedName,
-          },
-        },
       });
 
-      loginAsGuest({ email: trimmedEmail, full_name: trimmedName });
+      if (!result.success) {
+        if (result.code === "USER_EXISTS") {
+          toast.error("An account with this email already exists! Redirecting to Login...", {
+            duration: 3500,
+          });
+          setTimeout(() => {
+            navigate(`/login?email=${encodeURIComponent(trimmedEmail)}`);
+          }, 1000);
+          return;
+        }
+
+        toast.error(result.message || "Registration failed. Please try again.");
+        return;
+      }
+
+      // Successful registration
+      loginUserSession(result.user);
       toast.success(`Account Created! Welcome, ${trimmedName}!`);
       navigate("/dashboard");
     } catch (err) {
-      localStorage.setItem("candidate_name", trimmedName);
-      localStorage.setItem("candidate_email", trimmedEmail);
-
-      loginAsGuest({ email: trimmedEmail, full_name: trimmedName });
-      toast.success(`Account Created! Welcome, ${trimmedName}!`);
-      navigate("/dashboard");
+      console.error("Registration error:", err);
+      toast.error("An unexpected error occurred during registration.");
     } finally {
       setLoading(false);
     }

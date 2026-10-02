@@ -101,17 +101,29 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const loginAsGuest = (customDetails = {}) => {
+  const loginUserSession = (userObj) => {
+    const email = userObj.email;
+    const fullName = userObj.fullName || userObj.user_metadata?.full_name || (email.includes("@") ? email.split("@")[0] : "Candidate");
+    const id = userObj.id || `usr_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
+
     localStorage.setItem("is_authenticated", "true");
+    localStorage.setItem("candidate_email", email);
+    localStorage.setItem("candidate_name", fullName);
+    localStorage.setItem("candidate_id", id);
+    localStorage.removeItem("demo_mode");
+
+    setUser({
+      id,
+      email,
+      user_metadata: { full_name: fullName },
+    });
+  };
+
+  const loginAsGuest = (customDetails = {}) => {
+    const guestEmail = customDetails.email || "candidate@analyzer.ai";
+    const guestName = customDetails.full_name || "Demo Candidate";
+    loginUserSession({ email: guestEmail, fullName: guestName });
     localStorage.setItem("demo_mode", "true");
-    if (customDetails.email) {
-      localStorage.setItem("candidate_email", customDetails.email);
-    }
-    if (customDetails.full_name) {
-      localStorage.setItem("candidate_name", customDetails.full_name);
-    }
-    const candidateUser = getCandidateUser(customDetails.email, customDetails.full_name);
-    setUser(candidateUser);
   };
 
   const logout = async () => {
@@ -133,8 +145,9 @@ export function AuthProvider({ children }) {
       value={{
         user,
         loading,
+        loginUserSession,
         loginAsGuest,
-        logout
+        logout,
       }}
     >
       {children}

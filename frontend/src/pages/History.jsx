@@ -30,7 +30,8 @@ function History() {
   async function loadHistory() {
     setLoading(true);
     try {
-      const data = await getHistory(user?.id);
+      const userKey = user?.email || user?.id || localStorage.getItem("candidate_email") || localStorage.getItem("candidate_id");
+      const data = await getHistory(userKey);
       setHistory(data || []);
     } catch (e) {
       console.error("Error loading history:", e);
@@ -42,7 +43,8 @@ function History() {
   async function handleDelete(id) {
     if (!window.confirm("Are you sure you want to delete this analysis report?")) return;
     try {
-      await deleteHistory(id);
+      const userKey = user?.email || user?.id || localStorage.getItem("candidate_email") || localStorage.getItem("candidate_id");
+      await deleteHistory(id, userKey);
       setHistory((prev) => prev.filter((item) => item.id !== id));
     } catch (e) {
       console.error("Error deleting history:", e);

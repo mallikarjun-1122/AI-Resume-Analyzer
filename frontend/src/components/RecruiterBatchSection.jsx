@@ -54,7 +54,9 @@ export default function RecruiterBatchSection() {
 
         // Save batch run stats to localStorage
         try {
-          const raw = localStorage.getItem("recruiter_batch_runs");
+          const userKey = (localStorage.getItem("candidate_email") || "default").trim().toLowerCase();
+          const storageKey = `recruiter_batch_runs_${userKey}`;
+          const raw = localStorage.getItem(storageKey);
           const runs = raw ? JSON.parse(raw) : [];
           const topScore = Math.max(...res.leaderboard.map((c) => c.ats_score ?? 0));
           const qualifiedCount = res.leaderboard.filter(
@@ -68,7 +70,7 @@ export default function RecruiterBatchSection() {
             qualified_count: qualifiedCount,
             timestamp: new Date().toISOString(),
           });
-          localStorage.setItem("recruiter_batch_runs", JSON.stringify(runs));
+          localStorage.setItem(storageKey, JSON.stringify(runs));
         } catch (saveErr) {
           console.warn("Recruiter stats save warning:", saveErr);
         }

@@ -57,8 +57,12 @@ function Profile() {
 
   async function loadStats() {
     try {
-      const history = await getHistory(user?.id);
-      if (!history || history.length === 0) return;
+      const userKey = user?.email || user?.id || localStorage.getItem("candidate_email") || localStorage.getItem("candidate_id");
+      const history = await getHistory(userKey);
+      if (!history || history.length === 0) {
+        setStats({ total: 0, avgATS: 0, highestATS: 0, avgMatch: 0 });
+        return;
+      }
 
       const total = history.length;
       const avgATS = Math.round(
@@ -74,6 +78,7 @@ function Profile() {
       setStats({ total, avgATS, highestATS, avgMatch });
     } catch (err) {
       console.error(err);
+      setStats({ total: 0, avgATS: 0, highestATS: 0, avgMatch: 0 });
     }
   }
 

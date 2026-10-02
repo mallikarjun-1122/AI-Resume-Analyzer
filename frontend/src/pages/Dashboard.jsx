@@ -35,7 +35,8 @@ function Dashboard() {
   const loadHistory = async () => {
     try {
       setLoading(true);
-      const data = await getHistory(user?.id);
+      const userKey = user?.email || user?.id || localStorage.getItem("candidate_email") || localStorage.getItem("candidate_id");
+      const data = await getHistory(userKey);
       const list = data || [];
       setHistory(list);
 
@@ -43,13 +44,17 @@ function Dashboard() {
         const latest = list[0];
         if (latest.analysis && (latest.analysis.ats || latest.analysis.success)) {
           setAnalysisResult(latest.analysis);
+        } else {
+          setAnalysisResult(null);
         }
       } else {
-        // When history is empty (e.g. after user deletes all history), clear the dashboard report
+        // When history is empty (e.g. new user or after user deletes all history), clear the dashboard report
         setAnalysisResult(null);
       }
     } catch (error) {
       console.error("History Error:", error);
+      setHistory([]);
+      setAnalysisResult(null);
     } finally {
       setLoading(false);
     }
@@ -180,12 +185,20 @@ function Dashboard() {
                 {analysisResult ? (
                   <AnalysisResult result={analysisResult} />
                 ) : (
-                  <div className="glass-panel rounded-3xl p-10 text-center border border-slate-800 space-y-3">
-                    <div className="text-5xl mb-2">🤖</div>
-                    <h3 className="text-xl font-bold text-white">Ready for Analysis</h3>
-                    <p className="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">
-                      Upload a resume and job description above to generate your comprehensive ATS score & AI review report.
-                    </p>
+                  <div className="bg-zinc-950 rounded-3xl p-10 sm:p-14 text-center border border-zinc-800 space-y-4 shadow-xl">
+                    <div className="w-16 h-16 rounded-2xl bg-zinc-900 border border-green-400/30 flex items-center justify-center text-3xl mx-auto text-green-300 shadow-lg shadow-green-400/10">
+                      📄
+                    </div>
+                    <div className="space-y-1">
+                      <h3 className="text-xl sm:text-2xl font-black text-white">No Resume Analyzed Yet</h3>
+                      <p className="text-zinc-400 text-xs sm:text-sm max-w-lg mx-auto">
+                        Upload your resume and enter a target job description above to generate your real-time ATS match score, keyword breakdown, STAR bullets, and AI review.
+                      </p>
+                    </div>
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-semibold text-zinc-400">
+                      <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                      Ready to analyze your first resume
+                    </div>
                   </div>
                 )}
               </div>

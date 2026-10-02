@@ -148,15 +148,22 @@ function ResumeUpload({ onAnalysisComplete }) {
 
       // Safe saving history
       try {
-        await saveHistory({
-          user_id: user?.id || "demo-user-123",
-          resume_name: file.name,
-          ats_score: result.ats?.overall_score ?? 0,
-          job_match: result.matching?.match_percentage ?? 0,
-          recommendation: result.matching?.recommendation ?? "Unknown",
-          overall_rating: result.ai_review?.overall_rating ?? "Unavailable",
-          analysis: result,
-        });
+        const userEmail = user?.email || localStorage.getItem("candidate_email") || "";
+        const userId = user?.id || localStorage.getItem("candidate_id") || "usr_guest";
+
+        await saveHistory(
+          {
+            user_id: userId,
+            user_email: userEmail,
+            resume_name: file.name,
+            ats_score: result.ats?.overall_score ?? 0,
+            job_match: result.matching?.match_percentage ?? 0,
+            recommendation: result.matching?.recommendation ?? "Unknown",
+            overall_rating: result.ai_review?.overall_rating ?? "Unavailable",
+            analysis: result,
+          },
+          userEmail || userId
+        );
       } catch (saveErr) {
         console.warn("Save history notification:", saveErr);
       }
